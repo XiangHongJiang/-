@@ -8,6 +8,30 @@
 
 /*
  
+ + (id)getSeachParameters:(NSDictionary*)dic CompletionHandler:(void(^)(id responseObj, NSError *error))complete{
+ //http://api.bilibili.com/search?_device=android&_hwid=831fc7511fa9aff5&appkey=85eb6835b0a1034e&bangumi_num=1&build=408005&keyword=%E5%B9%B2%E7%89%A9%E5%A6%B9&main_ver=v3&page=1&pagesize=20&platform=android&search_type=all&source_type=0&special_num=1&topic_num=1&upuser_num=1&sign=fb67d8906d97af4f4cdfa29a143df3d6
+ NSMutableDictionary* mdic = [dic mutableCopy];
+ mdic[@"_device"] = @"android";
+ mdic[@"_hwid"] = @"831fc7511fa9aff5";
+ mdic[@"appkey"] = APPKEY;
+ mdic[@"bangumi_num"] = @"1";
+ mdic[@"build"] = @"408005";
+ mdic[@"main_ver"] = @"v3";
+ mdic[@"page"] = @"1";
+ mdic[@"pagesize"] = @"20";
+ mdic[@"platform"] = @"android";
+ mdic[@"search_type"] = @"all";
+ mdic[@"source_type"] = @"0";
+ mdic[@"special_num"] = @"1";
+ mdic[@"topic_num"] = @"1";
+ mdic[@"upuser_num"] = @"1";
+ NSString* basePath = [mdic appendGetSortParameterWithSignWithBasePath: @"http://api.bilibili.cn/search?"];
+ return [self Get:basePath parameters:nil completionHandler:^(id responseObj, NSError *error) {
+ complete([SearchModel mj_objectWithKeyValues: [NSJSONSerialization json2DicWithData: responseObj][@"result"]],error);
+ }];
+ }
+
+ 
  //画江湖
  http://api.bilibili.com/suggest?_device=android&_hwid=bcbfd479c4762248&appkey=c1b107428d337928&bangumi_acc_num=1&bangumi_num=0&build=412001&func=suggest&main_ver=v3&platform=android&special_acc_num=1&special_num=0&suggest_type=accurate&term=%E7%94%BB%E6%B1%9F%E6%B9%96%E4%B9%8B%20%E7%81%B5%E4%B8%BB&topic_acc_num=1&topic_num=0&upuser_acc_num=1&upuser_num=0&sign=7c1130e157d2d973a5c91642268d069e
  http://api.bilibili.com/search?_device=android&_hwid=bcbfd479c4762248&appkey=c1b107428d337928&build=412001&keyword=%E7%94%BB%E6%B1%9F%E6%B9%96%E4%B9%8B%20%E7%81%B5%E4%B8%BB&main_ver=v3&page=1&pagesize=20&platform=android&search_type=all&source_type=0&sign=c9d196e894a93f733cba5bbc0205b59c

@@ -377,6 +377,7 @@
 		BC370F9D1C95854500D7A81C /* XHDDOnlineSliderHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC370F9C1C95854500D7A81C /* XHDDOnlineSliderHeaderView.m */; };
 		BC370F9F1C95855100D7A81C /* XHDDOnlineSliderHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC370F9E1C95855000D7A81C /* XHDDOnlineSliderHeaderView.xib */; };
 		BC370FA21C959DE600D7A81C /* XHDDOnlineJokeDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC370FA11C959DE600D7A81C /* XHDDOnlineJokeDetailController.m */; };
+		BC370FC41C95BFE400D7A81C /* XHDDOnlineJokeBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC370FC31C95BFE400D7A81C /* XHDDOnlineJokeBaseModel.m */; };
 		BC3965941C8E687700BC23EF /* XHDDOnlineCategoryDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3965921C8E687700BC23EF /* XHDDOnlineCategoryDetailCell.m */; };
 		BC3965951C8E687700BC23EF /* XHDDOnlineCategoryDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC3965931C8E687700BC23EF /* XHDDOnlineCategoryDetailCell.xib */; };
 		BC39659D1C8E928400BC23EF /* XHDDOnlineMy3DLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = BC39659C1C8E928400BC23EF /* XHDDOnlineMy3DLayout.m */; };
@@ -1201,6 +1202,8 @@
 		BC370F9E1C95855000D7A81C /* XHDDOnlineSliderHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHDDOnlineSliderHeaderView.xib; sourceTree = "<group>"; };
 		BC370FA01C959DE600D7A81C /* XHDDOnlineJokeDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHDDOnlineJokeDetailController.h; sourceTree = "<group>"; };
 		BC370FA11C959DE600D7A81C /* XHDDOnlineJokeDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHDDOnlineJokeDetailController.m; sourceTree = "<group>"; };
+		BC370FC21C95BFE400D7A81C /* XHDDOnlineJokeBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHDDOnlineJokeBaseModel.h; sourceTree = "<group>"; };
+		BC370FC31C95BFE400D7A81C /* XHDDOnlineJokeBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHDDOnlineJokeBaseModel.m; sourceTree = "<group>"; };
 		BC3965911C8E687700BC23EF /* XHDDOnlineCategoryDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHDDOnlineCategoryDetailCell.h; sourceTree = "<group>"; };
 		BC3965921C8E687700BC23EF /* XHDDOnlineCategoryDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHDDOnlineCategoryDetailCell.m; sourceTree = "<group>"; };
 		BC3965931C8E687700BC23EF /* XHDDOnlineCategoryDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHDDOnlineCategoryDetailCell.xib; sourceTree = "<group>"; };
@@ -1742,6 +1745,8 @@
 				BCF1E3AC1C92C5AA00CA3338 /* XHDDOnlineJokeGifModel.m */,
 				BCF1E3AE1C92C5BA00CA3338 /* XHDDOnlineJokeVideoModel.h */,
 				BCF1E3AF1C92C5BA00CA3338 /* XHDDOnlineJokeVideoModel.m */,
+				BC370FC21C95BFE400D7A81C /* XHDDOnlineJokeBaseModel.h */,
+				BC370FC31C95BFE400D7A81C /* XHDDOnlineJokeBaseModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -3972,6 +3977,7 @@
 				BC0F645D1C8DC62C005F599C /* SDWebImageDownloaderOperation.m in Sources */,
 				BC370F791C9548FD00D7A81C /* RACTupleSequence.m in Sources */,
 				BC3965EA1C8FC67B00BC23EF /* XHDDOnlineFunPlayDetailNumberCell.m in Sources */,
+				BC370FC41C95BFE400D7A81C /* XHDDOnlineJokeBaseModel.m in Sources */,
 				BC370F711C9548FD00D7A81C /* RACStringSequence.m in Sources */,
 				BC370F9D1C95854500D7A81C /* XHDDOnlineSliderHeaderView.m in Sources */,
 				BC0148311C8B010800AA4C45 /* RECommonFunctions.m in Sources */,

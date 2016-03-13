@@ -202,8 +202,10 @@
     
     XHDDOnlineJokeDetailController *jokeDetailCtrl = [[XHDDOnlineJokeDetailController alloc] init];
     
-    jokeDetailCtrl.jokeBaseModel = self.jokeBaseModel.list[indexPath.row];
-   
+    //传入模型和类型
+    jokeDetailCtrl.jokeBaseDetailModel = self.jokeBaseModel.list[indexPath.row];
+    jokeDetailCtrl.jokeType = self.jokeType;
+    
     [self.viewController.navigationController pushViewController:jokeDetailCtrl animated:NO];
     
 }

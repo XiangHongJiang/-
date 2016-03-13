@@ -30,7 +30,7 @@
 }
 
 
-- (void)setGifDetailModel:(JokeGF_List *)gifDetailModel{
+- (void)setGifDetailModel:(JokeBase_List *)gifDetailModel{
 
     _gifDetailModel = gifDetailModel;
     

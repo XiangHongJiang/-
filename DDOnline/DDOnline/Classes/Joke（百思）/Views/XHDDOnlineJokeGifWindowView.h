@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "XHDDOnlineJokeGifModel.h"
+#import "XHDDOnlineJokeBaseModel.h"
 
 @interface XHDDOnlineJokeGifWindowView : UIView
 /**
  *  XHDDOnlineJokeGifModel
  */
-@property (nonatomic, strong) JokeGF_List *gifDetailModel;;
+@property (nonatomic, strong) JokeBase_List *gifDetailModel;;
 
 + (id)jokeGifWindowView;
 

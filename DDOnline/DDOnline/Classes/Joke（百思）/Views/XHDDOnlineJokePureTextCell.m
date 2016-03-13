@@ -7,7 +7,6 @@
 //
 
 #import "XHDDOnlineJokePureTextCell.h"
-#import "XHDDOnlineJokePureTextModel.h"
 
 @interface XHDDOnlineJokePureTextCell()
 @property (weak, nonatomic) IBOutlet UIButton *pinglunBtn;//commend

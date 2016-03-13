@@ -54,41 +54,41 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
-    if (self.pureTextDetailModel) {
+    if (self.jokeType == JokeTypeDuanzi) {
         
         XHDDOnlineJokePureTextCell *cell = [tableView dequeueReusableCellWithIdentifier:@"XHDDOnlineJokePureTextCell"];
-        cell.pureTextDetailModel = self.jokeBaseModel;
+        cell.pureTextDetailModel = self.jokeBaseDetailModel;
         return cell;
         
     }
-    else if(self.gifDetailModel){
+    else if(self.jokeType == JokeTypeGif){
     
         XHDDOnlineJokeGifCell *cell = [tableView dequeueReusableCellWithIdentifier:@"XHDDOnlineJokeGifCell"];
-        cell.gifDetailModel = self.jokeBaseModel;
+        cell.gifDetailModel = self.jokeBaseDetailModel;
         
         return cell;
     }
     else{
         
         XHDDOnlineJokeVideoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"XHDDOnlineJokeVideoCell"];
-        cell.videoDetailModel = self.jokeBaseModel;
+        cell.videoDetailModel = self.jokeBaseDetailModel;
         return cell;
     }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 
-    if (self.pureTextDetailModel) {
+    if (self.jokeType == JokeTypeDuanzi) {
         
-        return [XHDDOnlineJokePureTextCell rowHeightWithPureTextDetailModel:self.pureTextDetailModel];
+        return [XHDDOnlineJokePureTextCell rowHeightWithPureTextDetailModel:self.jokeBaseDetailModel];
     }
-    else if(self.gifDetailModel){
+    else if(self.jokeType == JokeTypeGif){
     
-        return [XHDDOnlineJokeGifCell rowHeightWithgifDetailModel:self.gifDetailModel];
+        return [XHDDOnlineJokeGifCell rowHeightWithgifDetailModel:self.jokeBaseDetailModel];
     }
     else{
     
-        return [XHDDOnlineJokeVideoCell rowHeightWithvideoDetailModel:self.videoDetailModel];
+        return [XHDDOnlineJokeVideoCell rowHeightWithvideoDetailModel:self.jokeBaseDetailModel];
     }
 }
 

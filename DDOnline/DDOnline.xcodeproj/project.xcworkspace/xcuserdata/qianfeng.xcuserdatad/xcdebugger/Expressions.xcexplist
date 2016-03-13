@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "__49-[XHDDOnlineFunPlayDeatailController requestData]_block_invoke:XHDDOnlineFunPlayDeatailController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[XHDDOnlineFunPlayDetailNumberCell setFunPlayDesc:]:XHDDOnlineFunPlayDetailNumberCell.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "funPlayDetailModel">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[XHDDOnlineFunPlayDeatailController tableView:cellForRowAtIndexPath:]:XHDDOnlineFunPlayDeatailController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[XHDDOnlineFunPlayLatestCell collectionView:cellForItemAtIndexPath:]:XHDDOnlineFunPlayLatestCell.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "latestModel">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

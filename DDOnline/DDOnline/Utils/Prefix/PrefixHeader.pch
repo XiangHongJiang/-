@@ -1,0 +1,59 @@
+//
+//  PrefixHeader.pch
+//  Tools
+//
+//  Created by JXH on 15/2/19.
+//  Copyright © 2015年 JXH. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+//$(SRCROOT)
+
+//解决AFNetworking导入时出错的问题
+#ifndef TARGET_OS_IOS
+#define TARGET_OS_IOS TARGET_OS_IPHONE
+#endif
+#ifndef TARGET_OS_WATCH
+#define TARGET_OS_WATCH 0
+#endif
+
+//UIKit
+#import <UIKit/UIKit.h>
+
+//接口文件
+#import "Const.h"
+
+//一些宏定义
+#import "PreConfig.h"
+
+//自己封装的网络请求类
+#import "XHNetHelp.h"
+
+//Masonry布局
+#define MAS_SHORTHAND_GLOBALS
+#import "Masonry.h"
+
+//MJExtension
+#import "MJExtension.h"
+
+//MJRefresh
+#import "MJRefresh.h"
+
+//SDWebImage
+#import "UIImageView+WebCache.h"
+
+//
+#import "RESideMenu.h"
+
+//
+#import "XHUtils.h"
+
+//
+#import "UIView+Extension.h"
+
+//
+#import "ReactiveCocoa.h"
+
+#endif /* PrefixHeader_pch */

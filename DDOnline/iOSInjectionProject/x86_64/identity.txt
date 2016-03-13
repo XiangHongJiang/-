@@ -1,0 +1,2 @@
+/Users/qianfeng/Library/Developer/Xcode/DerivedData/DDOnline-eeatkzazhgybgmbcztyzyzbztkqq/Build/Products/Debug-iphonesimulator/DDOnline.app
+iPhone Developer

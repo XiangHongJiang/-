@@ -136,7 +136,7 @@
 #pragma mark - tableView dataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return _requestCount;//self.jokeBaseModel.list.count;
+    return self.jokeBaseModel.list.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
@@ -175,8 +175,6 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     CGFloat rowHeight = 0;
-    
-    
     switch (self.jokeType) {
             
         case JokeTypeDuanzi:{

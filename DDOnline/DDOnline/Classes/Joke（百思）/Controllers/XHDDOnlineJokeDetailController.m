@@ -57,21 +57,21 @@
     if (self.pureTextDetailModel) {
         
         XHDDOnlineJokePureTextCell *cell = [tableView dequeueReusableCellWithIdentifier:@"XHDDOnlineJokePureTextCell"];
-        cell.pureTextDetailModel = self.pureTextDetailModel;
+        cell.pureTextDetailModel = self.jokeBaseModel;
         return cell;
         
     }
     else if(self.gifDetailModel){
     
         XHDDOnlineJokeGifCell *cell = [tableView dequeueReusableCellWithIdentifier:@"XHDDOnlineJokeGifCell"];
-        cell.gifDetailModel = self.gifDetailModel;
+        cell.gifDetailModel = self.jokeBaseModel;
         
         return cell;
     }
     else{
         
         XHDDOnlineJokeVideoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"XHDDOnlineJokeVideoCell"];
-        cell.videoDetailModel = self.videoDetailModel;
+        cell.videoDetailModel = self.jokeBaseModel;
         return cell;
     }
 }

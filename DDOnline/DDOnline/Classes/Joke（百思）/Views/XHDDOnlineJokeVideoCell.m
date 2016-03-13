@@ -76,7 +76,7 @@
     [self.playView removeFromSuperview];
 }
 
-- (void)setVideoDetailModel:(JokeVideo_List *)videoDetailModel{
+- (void)setVideoDetailModel:(JokeBase_List *)videoDetailModel{
 
     _videoDetailModel = videoDetailModel;
     
@@ -137,7 +137,7 @@
 
     // Configure the view for the selected state
 }
-+ (CGFloat)rowHeightWithvideoDetailModel:(JokeVideo_List *)videoDetailModel{
++ (CGFloat)rowHeightWithvideoDetailModel:(JokeBase_List *)videoDetailModel{
 
     CGSize size = [XHUtils calculateSizeWithText:videoDetailModel.text maxSize:CGSizeMake(JScreenWidth - 20, CGFLOAT_MAX) font:15];
    

@@ -7,17 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "XHDDOnlineJokePureTextModel.h"
+#import "XHDDOnlineJokeBaseModel.h"
 
 @interface XHDDOnlineJokePureTextCell : UITableViewCell
 /**
  *  pureTextDetailModel
  */
-@property (nonatomic, strong) PureText_List *pureTextDetailModel;
+@property (nonatomic, strong) JokeBase_List *pureTextDetailModel;
 
 //获取cell
 + (id)jokePureTextCellWithTableView:(UITableView *)tableView;
 //获取高度
-+(CGFloat)rowHeightWithPureTextDetailModel:(PureText_List *)pureTextDetailModel;
++(CGFloat)rowHeightWithPureTextDetailModel:(JokeBase_List *)pureTextDetailModel;
 
 @end

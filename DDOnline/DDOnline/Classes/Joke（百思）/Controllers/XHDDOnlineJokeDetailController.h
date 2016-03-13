@@ -8,21 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-#import "XHDDOnlineJokeGifModel.h"
-#import "XHDDOnlineJokePureTextModel.h"
-#import "XHDDOnlineJokeVideoModel.h"
+#import "XHDDOnlineJokeBaseModel.h"
 
 @interface XHDDOnlineJokeDetailController : UITableViewController
-/**
- *  pureTextDetailModel
- */
-@property (nonatomic, strong) PureText_List *pureTextDetailModel;
-/**
- *  XHDDOnlineJokeGifModel
- */
-@property (nonatomic, strong) JokeGF_List *gifDetailModel;
-/**
- *  JokeVideo_List
- */
-@property (nonatomic, strong) JokeVideo_List *videoDetailModel;
+/** *  jokeBaseModel */
+@property (nonatomic, strong) JokeBase_List *jokeBaseModel;
 @end

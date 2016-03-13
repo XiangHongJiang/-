@@ -457,7 +457,6 @@
 		BCF1E22A1C91CFD100CA3338 /* XHQuickNavView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF1E2291C91CFD100CA3338 /* XHQuickNavView.m */; };
 		BCF1E22E1C91E16400CA3338 /* XHDDOnlineJokeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF1E22C1C91E16400CA3338 /* XHDDOnlineJokeCell.m */; };
 		BCF1E22F1C91E16400CA3338 /* XHDDOnlineJokeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCF1E22D1C91E16400CA3338 /* XHDDOnlineJokeCell.xib */; };
-		BCF1E2321C92540C00CA3338 /* XHDDOnlineJokePureTextModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF1E2311C92540C00CA3338 /* XHDDOnlineJokePureTextModel.m */; };
 		BCF1E2361C92598400CA3338 /* XHDDOnlineJokePureTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF1E2341C92598400CA3338 /* XHDDOnlineJokePureTextCell.m */; };
 		BCF1E2371C92598400CA3338 /* XHDDOnlineJokePureTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCF1E2351C92598400CA3338 /* XHDDOnlineJokePureTextCell.xib */; };
 		BCF1E23A1C9270A800CA3338 /* XHUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF1E2391C9270A800CA3338 /* XHUtils.m */; };
@@ -620,8 +619,6 @@
 		BCF1E3A51C92994700CA3338 /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = BCF1E36F1C92994700CA3338 /* Contents.json */; };
 		BCF1E3A61C92994700CA3338 /* loginBtnBgClick.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF1E3701C92994700CA3338 /* loginBtnBgClick.png */; };
 		BCF1E3A71C92994700CA3338 /* loginBtnBgClick@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF1E3711C92994700CA3338 /* loginBtnBgClick@2x.png */; };
-		BCF1E3AD1C92C5AA00CA3338 /* XHDDOnlineJokeGifModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF1E3AC1C92C5AA00CA3338 /* XHDDOnlineJokeGifModel.m */; };
-		BCF1E3B01C92C5BA00CA3338 /* XHDDOnlineJokeVideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF1E3AF1C92C5BA00CA3338 /* XHDDOnlineJokeVideoModel.m */; };
 		BCF1E3B41C92C71F00CA3338 /* XHDDOnlineJokeGifCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF1E3B21C92C71F00CA3338 /* XHDDOnlineJokeGifCell.m */; };
 		BCF1E3B51C92C71F00CA3338 /* XHDDOnlineJokeGifCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCF1E3B31C92C71F00CA3338 /* XHDDOnlineJokeGifCell.xib */; };
 		BCF1E3B91C92C73A00CA3338 /* XHDDOnlineJokeVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF1E3B71C92C73A00CA3338 /* XHDDOnlineJokeVideoCell.m */; };
@@ -1337,8 +1334,6 @@
 		BCF1E22B1C91E16400CA3338 /* XHDDOnlineJokeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHDDOnlineJokeCell.h; sourceTree = "<group>"; };
 		BCF1E22C1C91E16400CA3338 /* XHDDOnlineJokeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHDDOnlineJokeCell.m; sourceTree = "<group>"; };
 		BCF1E22D1C91E16400CA3338 /* XHDDOnlineJokeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHDDOnlineJokeCell.xib; sourceTree = "<group>"; };
-		BCF1E2301C92540C00CA3338 /* XHDDOnlineJokePureTextModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHDDOnlineJokePureTextModel.h; sourceTree = "<group>"; };
-		BCF1E2311C92540C00CA3338 /* XHDDOnlineJokePureTextModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHDDOnlineJokePureTextModel.m; sourceTree = "<group>"; };
 		BCF1E2331C92598400CA3338 /* XHDDOnlineJokePureTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHDDOnlineJokePureTextCell.h; sourceTree = "<group>"; };
 		BCF1E2341C92598400CA3338 /* XHDDOnlineJokePureTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHDDOnlineJokePureTextCell.m; sourceTree = "<group>"; };
 		BCF1E2351C92598400CA3338 /* XHDDOnlineJokePureTextCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHDDOnlineJokePureTextCell.xib; sourceTree = "<group>"; };
@@ -1503,10 +1498,6 @@
 		BCF1E36F1C92994700CA3338 /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
 		BCF1E3701C92994700CA3338 /* loginBtnBgClick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginBtnBgClick.png; sourceTree = "<group>"; };
 		BCF1E3711C92994700CA3338 /* loginBtnBgClick@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loginBtnBgClick@2x.png"; sourceTree = "<group>"; };
-		BCF1E3AB1C92C5AA00CA3338 /* XHDDOnlineJokeGifModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHDDOnlineJokeGifModel.h; sourceTree = "<group>"; };
-		BCF1E3AC1C92C5AA00CA3338 /* XHDDOnlineJokeGifModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHDDOnlineJokeGifModel.m; sourceTree = "<group>"; };
-		BCF1E3AE1C92C5BA00CA3338 /* XHDDOnlineJokeVideoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHDDOnlineJokeVideoModel.h; sourceTree = "<group>"; };
-		BCF1E3AF1C92C5BA00CA3338 /* XHDDOnlineJokeVideoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHDDOnlineJokeVideoModel.m; sourceTree = "<group>"; };
 		BCF1E3B11C92C71F00CA3338 /* XHDDOnlineJokeGifCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHDDOnlineJokeGifCell.h; sourceTree = "<group>"; };
 		BCF1E3B21C92C71F00CA3338 /* XHDDOnlineJokeGifCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHDDOnlineJokeGifCell.m; sourceTree = "<group>"; };
 		BCF1E3B31C92C71F00CA3338 /* XHDDOnlineJokeGifCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHDDOnlineJokeGifCell.xib; sourceTree = "<group>"; };
@@ -1739,12 +1730,6 @@
 		BC0148001C8AFED600AA4C45 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				BCF1E2301C92540C00CA3338 /* XHDDOnlineJokePureTextModel.h */,
-				BCF1E2311C92540C00CA3338 /* XHDDOnlineJokePureTextModel.m */,
-				BCF1E3AB1C92C5AA00CA3338 /* XHDDOnlineJokeGifModel.h */,
-				BCF1E3AC1C92C5AA00CA3338 /* XHDDOnlineJokeGifModel.m */,
-				BCF1E3AE1C92C5BA00CA3338 /* XHDDOnlineJokeVideoModel.h */,
-				BCF1E3AF1C92C5BA00CA3338 /* XHDDOnlineJokeVideoModel.m */,
 				BC370FC21C95BFE400D7A81C /* XHDDOnlineJokeBaseModel.h */,
 				BC370FC31C95BFE400D7A81C /* XHDDOnlineJokeBaseModel.m */,
 			);
@@ -4038,7 +4023,6 @@
 				BC0149991C8B014A00AA4C45 /* UIScrollView+MJRefresh.m in Sources */,
 				BC370F781C9548FD00D7A81C /* RACTuple.m in Sources */,
 				BC370F7F1C9548FD00D7A81C /* UIBarButtonItem+RACCommandSupport.m in Sources */,
-				BCF1E2321C92540C00CA3338 /* XHDDOnlineJokePureTextModel.m in Sources */,
 				BC3965D71C8EBB2900BC23EF /* UIProgressView+AFNetworking.m in Sources */,
 				BC370F7B1C9548FD00D7A81C /* RACUnit.m in Sources */,
 				BC014A011C8B022F00AA4C45 /* XHDDOnlineRootTabBarController.m in Sources */,
@@ -4084,7 +4068,6 @@
 				BC50CA1F1C93B88700DEF3CC /* NJKWebViewProgress.m in Sources */,
 				BCF1E1D01C90867D00CA3338 /* XHDDOnlineCategoryDetailModel.m in Sources */,
 				BCF1E22E1C91E16400CA3338 /* XHDDOnlineJokeCell.m in Sources */,
-				BCF1E3B01C92C5BA00CA3338 /* XHDDOnlineJokeVideoModel.m in Sources */,
 				BC50CA2B1C94354C00DEF3CC /* XHSearchCtrlView.m in Sources */,
 				BC370F701C9548FD00D7A81C /* RACStream.m in Sources */,
 				BC370F4F1C9548FD00D7A81C /* RACChannel.m in Sources */,
@@ -4165,7 +4148,6 @@
 				BC01488D1C8B013300AA4C45 /* MASViewAttribute.m in Sources */,
 				BC01498C1C8B014A00AA4C45 /* MJRefreshHeader.m in Sources */,
 				BCF1E23A1C9270A800CA3338 /* XHUtils.m in Sources */,
-				BCF1E3AD1C92C5AA00CA3338 /* XHDDOnlineJokeGifModel.m in Sources */,
 				BC370F801C9548FD00D7A81C /* UIButton+RACCommandSupport.m in Sources */,
 				BC014A131C8B060300AA4C45 /* XHDDOnlineMineController.m in Sources */,
 				BC370F461C9548FD00D7A81C /* NSSet+RACSequenceAdditions.m in Sources */,

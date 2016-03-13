@@ -7,15 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "XHDDOnlineJokeVideoModel.h"
+#import "XHDDOnlineJokeBaseModel.h"
 
 @interface XHDDOnlineJokeVideoCell : UITableViewCell
 /**
  *  JokeVideo_List
  */
-@property (nonatomic, strong) JokeVideo_List *videoDetailModel;
+@property (nonatomic, strong) JokeBase_List *videoDetailModel;
 
 +(id)jokeVideoCellWithTableView:(UITableView *)tableView;
 //获取高度
-+(CGFloat)rowHeightWithvideoDetailModel:(JokeVideo_List *)videoDetailModel;
++(CGFloat)rowHeightWithvideoDetailModel:(JokeBase_List *)videoDetailModel;
 @end

@@ -7,16 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "XHDDOnlineJokeGifModel.h"
+#import "XHDDOnlineJokeBaseModel.h"
 
 @interface XHDDOnlineJokeGifCell : UITableViewCell
 
 /**
  *  XHDDOnlineJokeGifModel
  */
-@property (nonatomic, strong) JokeGF_List *gifDetailModel;
+@property (nonatomic, strong)  JokeBase_List *gifDetailModel;
 
 +(id)jokeGifCellWithTableView:(UITableView *)tableView;
 //获取高度
-+(CGFloat)rowHeightWithgifDetailModel:(JokeGF_List *)gifDetailModel;
++(CGFloat)rowHeightWithgifDetailModel:(JokeBase_List *)gifDetailModel;
 @end

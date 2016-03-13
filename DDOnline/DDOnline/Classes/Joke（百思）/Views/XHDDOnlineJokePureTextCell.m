@@ -43,7 +43,7 @@
     [super setSelected:selected animated:animated];
 }
 #pragma mark - 赋值数据，布局
-- (void)setPureTextDetailModel:(PureText_List *)pureTextDetailModel{
+- (void)setPureTextDetailModel:(JokeBase_List *)pureTextDetailModel{
 
     _pureTextDetailModel = pureTextDetailModel;
 
@@ -69,7 +69,7 @@
 }
 #pragma mark - 类方法返回高度
 //返回高度
-+(CGFloat)rowHeightWithPureTextDetailModel:(PureText_List *)pureTextDetailModel{
++(CGFloat)rowHeightWithPureTextDetailModel:(JokeBase_List *)pureTextDetailModel{
 
    CGSize size = [XHUtils calculateSizeWithText:pureTextDetailModel.text maxSize:CGSizeMake(JScreenWidth - 20, CGFLOAT_MAX) font:15];
     

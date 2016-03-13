@@ -73,7 +73,7 @@
     // Configure the view for the selected state
 }
 #pragma mark - 赋值模型
-- (void)setGifDetailModel:(JokeGF_List *)gifDetailModel{
+- (void)setGifDetailModel:(JokeBase_List *)gifDetailModel{
 
     _gifDetailModel = gifDetailModel;
     NSString *headerUrlStr = gifDetailModel.u.header[0];
@@ -145,7 +145,7 @@
 }
 
 #pragma mark - 类方法返回高度
-+ (CGFloat)rowHeightWithgifDetailModel:(JokeGF_List *)gifDetailModel{
++ (CGFloat)rowHeightWithgifDetailModel:(JokeBase_List *)gifDetailModel{
     
     CGSize size = [XHUtils calculateSizeWithText:gifDetailModel.text maxSize:CGSizeMake(JScreenWidth - 20, CGFLOAT_MAX) font:15];
     

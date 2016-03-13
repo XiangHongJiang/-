@@ -8,12 +8,12 @@
 
 #import "XHDDOnlineJokeCell.h"
 
-#import "XHDDOnlineJokePureTextModel.h"
-#import "XHDDOnlineJokeGifModel.h"
-#import "XHDDOnlineJokeVideoModel.h"
+#import "XHDDOnlineJokeBaseModel.h"
+
 #import "XHDDOnlineJokePureTextCell.h"
 #import "XHDDOnlineJokeGifCell.h"
 #import "XHDDOnlineJokeVideoCell.h"
+
 #import "XHDDOnlineJokeDetailController.h"
 
 
@@ -26,12 +26,8 @@
 @property (nonatomic, copy) NSString *jokeUrlStr;
 /* *  jokeTableView */
 @property (weak, nonatomic) IBOutlet UITableView *jokeTableView;
-/** *  XHDDOnlineJokePureTextModel */
-@property (nonatomic, strong) XHDDOnlineJokePureTextModel * jokePureTextModel;
-/** *  XHDDOnlineJokeGifModel */
-@property (nonatomic, strong) XHDDOnlineJokeGifModel *jokeGifModel;
-/** *  XHDDOnlineJokeVideoModel */
-@property (nonatomic, strong) XHDDOnlineJokeVideoModel *jokeVideoModel;
+/** *  jokeBaseModel */
+@property (nonatomic, strong) XHDDOnlineJokeBaseModel *jokeBaseModel;
 
 @end
 
@@ -41,7 +37,14 @@
     //添加刷新
     [self addRefresh];
 }
-#pragma mark -根据传进来的类型，进行数据请求
+#pragma mark - 添加刷新
+- (void)addRefresh{
+    //添加下拉刷新
+    self.jokeTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(requestData)];
+    //添加上啦加载
+    self.jokeTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(requestMoreData)];
+}
+#pragma mark - 根据传进来的类型，进行数据请求
 - (void)setJokeType:(JokeType)jokeType{
     _jokeType = jokeType;
     
@@ -63,48 +66,6 @@
     //请求数据
     [self requestData];
 }
-#pragma mark - 添加刷新
-- (void)addRefresh{
-    //添加下拉刷新
-    self.jokeTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(requestData)];
-    //添加上啦加载
-    self.jokeTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(requestMoreData)];
-}
-#pragma mark - 上啦加载
-- (void)requestMoreData{
-
-       _requestCount += 20;
-    //防止循环引用对象
-    __weak typeof (self) weakSelf = self;
-    
-    [XHNetHelp getDataWithPath:[NSString stringWithFormat:self.jokeUrlStr,_requestCount] andParams:nil andComplete:^(BOOL succeed, id result) {
-        
-        if (succeed) {
-            
-            NSDictionary *modelDict = [NSJSONSerialization JSONObjectWithData:result options:NSJSONReadingMutableContainers error:nil];
-            
-            //根据传进来的类型进行不同数据的加载
-//            XHDDOnlineJokeBaseModel *jokeBaseModel = [XHDDOnlineJokeBaseModel jokeBaseModelWithJokeType:self.jokeType andDict:modelDict];
-//            
-//            weakSelf.jokeBaseModel = jokeBaseModel;
-
-            //存储数据模型
-            [self modelWithDict:modelDict];
-            
-            //停止刷新
-            [weakSelf.jokeTableView.mj_footer endRefreshing];
-            
-            //刷新tableView
-            [weakSelf.jokeTableView reloadData];
-            
-        }
-        else{
-            
-            JLog(@"请求失败：%@",result);
-        }
-    }];
-
-}
 #pragma mark - 请求数据,下拉刷新
 - (void)requestData{
 
@@ -119,8 +80,11 @@
             
             NSDictionary *modelDict = [NSJSONSerialization JSONObjectWithData:result options:NSJSONReadingMutableContainers error:nil];
             
+ 
             //存储数据模型
-            [weakSelf modelWithDict:modelDict];
+            XHDDOnlineJokeBaseModel *jokeBaseModel = [XHDDOnlineJokeBaseModel mj_objectWithKeyValues:modelDict];
+            
+            weakSelf.jokeBaseModel = jokeBaseModel;
             
             //停止刷新
             [weakSelf.jokeTableView.mj_header endRefreshing];
@@ -135,39 +99,40 @@
         }
     }];
 }
-//存储数据模型
-- (void)modelWithDict:(NSDictionary *)modelDict{
+#pragma mark - 上啦加载
+- (void)requestMoreData{
     
+    _requestCount += 20;
     //防止循环引用对象
     __weak typeof (self) weakSelf = self;
-    //根据传进来的类型进行不同数据的加载
-    switch (self.jokeType) {
+    
+    [XHNetHelp getDataWithPath:[NSString stringWithFormat:self.jokeUrlStr,_requestCount] andParams:nil andComplete:^(BOOL succeed, id result) {
+        
+        if (succeed) {
             
-        case JokeTypeDuanzi:{//段子
-           
-            XHDDOnlineJokePureTextModel *jokePureTextModel =            [XHDDOnlineJokePureTextModel mj_objectWithKeyValues:modelDict];
+            NSDictionary *modelDict = [NSJSONSerialization JSONObjectWithData:result options:NSJSONReadingMutableContainers error:nil];
             
-            weakSelf.jokePureTextModel = jokePureTextModel;
+            
+            //存储数据模型
+            XHDDOnlineJokeBaseModel *jokeBaseModel = [XHDDOnlineJokeBaseModel mj_objectWithKeyValues:modelDict];
+            
+            weakSelf.jokeBaseModel = jokeBaseModel;
+            
+            //停止刷新
+            [weakSelf.jokeTableView.mj_footer endRefreshing];
+            
+            //刷新tableView
+            [weakSelf.jokeTableView reloadData];
+            
         }
-            break;
+        else{
             
-        case JokeTypeGif:{//图
-            XHDDOnlineJokeGifModel *jokeGifModel = [XHDDOnlineJokeGifModel mj_objectWithKeyValues:modelDict];
-            weakSelf.jokeGifModel = jokeGifModel;
-            
+            JLog(@"请求失败：%@",result);
         }
-            break;
-            
-        case JokeTypeVideo:{//短片
-            XHDDOnlineJokeVideoModel *jokeVideoModel =            [XHDDOnlineJokeVideoModel mj_objectWithKeyValues:modelDict];
-            weakSelf.jokeVideoModel = jokeVideoModel;
-        }
-            break;
-        default:
-            break;
-    }
+    }];
     
 }
+
 #pragma mark - tableView dataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
@@ -181,14 +146,14 @@
            
            cell = [XHDDOnlineJokePureTextCell jokePureTextCellWithTableView:tableView];
             XHDDOnlineJokePureTextCell *pureTextCell = (XHDDOnlineJokePureTextCell *)cell;
-            pureTextCell.pureTextDetailModel = self.jokePureTextModel.list[indexPath.row];
+            pureTextCell.pureTextDetailModel = self.jokeBaseModel.list[indexPath.row];
             
         }
             break;
         case JokeTypeGif:{
         
             XHDDOnlineJokeGifCell *cell = [XHDDOnlineJokeGifCell jokeGifCellWithTableView:tableView];
-            cell.gifDetailModel = self.jokeGifModel.list[indexPath.row];
+            cell.gifDetailModel = self.jokeBaseModel.list[indexPath.row];
 
             return cell;
         }
@@ -196,7 +161,7 @@
         case JokeTypeVideo:{
             
             XHDDOnlineJokeVideoCell *cell = [XHDDOnlineJokeVideoCell jokeVideoCellWithTableView:tableView];
-            cell.videoDetailModel = self.jokeVideoModel.list[indexPath.row];
+            cell.videoDetailModel = self.jokeBaseModel.list[indexPath.row];
             
             return cell;
         }
@@ -215,15 +180,15 @@
     switch (self.jokeType) {
             
         case JokeTypeDuanzi:{
-            rowHeight = [XHDDOnlineJokePureTextCell rowHeightWithPureTextDetailModel:self.jokePureTextModel.list[indexPath.row]];
+            rowHeight = [XHDDOnlineJokePureTextCell rowHeightWithPureTextDetailModel:self.jokeBaseModel.list[indexPath.row]];
         }break;
             
             case JokeTypeGif:
-            rowHeight = [XHDDOnlineJokeGifCell rowHeightWithgifDetailModel:self.jokeGifModel.list[indexPath.row]];
+            rowHeight = [XHDDOnlineJokeGifCell rowHeightWithgifDetailModel:self.jokeBaseModel.list[indexPath.row]];
             break;
             
             case JokeTypeVideo:
-            rowHeight = [XHDDOnlineJokeVideoCell rowHeightWithvideoDetailModel:self.jokeVideoModel.list[indexPath.row]];
+            rowHeight = [XHDDOnlineJokeVideoCell rowHeightWithvideoDetailModel:self.jokeBaseModel.list[indexPath.row]];
             break;
         default:
             break;
@@ -237,22 +202,8 @@
     
     XHDDOnlineJokeDetailController *jokeDetailCtrl = [[XHDDOnlineJokeDetailController alloc] init];
     
-    
-    switch (self.jokeType) {
-        case JokeTypeDuanzi:
-            jokeDetailCtrl.pureTextDetailModel = self.jokePureTextModel.list[indexPath.row];
-            break;
-            case JokeTypeGif:
-            jokeDetailCtrl.gifDetailModel = self.jokeGifModel.list[indexPath.row];
-            break;
-            case JokeTypeVideo:
-            jokeDetailCtrl.videoDetailModel = self.jokeVideoModel.list[indexPath.row];
-            break;
-            
-        default:
-            break;
-    }
-
+    jokeDetailCtrl.jokeBaseModel = self.jokeBaseModel.list[indexPath.row];
+   
     [self.viewController.navigationController pushViewController:jokeDetailCtrl animated:NO];
     
 }

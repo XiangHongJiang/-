@@ -41,14 +41,14 @@
     
     if (gifDetailModel.gif) {//gif不为空
         
-        gifUrl = self.gifDetailModel.gif.images[0];
+        gifUrl = [self.gifDetailModel.gif.images lastObject];
         gifHeight = gifDetailModel.gif.height;
         gifWidth = gifDetailModel.gif.width;
         
     }else{//image不为空
         gifHeight = gifDetailModel.image.height;
         gifWidth = gifDetailModel.image.width;
-        gifUrl = self.gifDetailModel.image.download_url[0];
+        gifUrl = [self.gifDetailModel.image.download_url lastObject];
     }
     //比例
     CGFloat ratio = gifWidth / (JScreenWidth - 60);
@@ -57,7 +57,9 @@
     self.frame = CGRectMake(0, 0, JScreenWidth, JScreenHeight);
     self.gifScrollView.frame = CGRectMake(0, 0, JScreenWidth, JScreenHeight - 30);
     self.gifScrollView.contentSize = CGSizeMake(0, gifImageViewHeight - 50);
-    self.gifWindowImageView.frame = CGRectMake(30, 30, JScreenWidth - 60, gifImageViewHeight - 50);
+    
+    self.gifWindowImageView.frame = CGRectMake(30, 30, JScreenWidth - 60, gifImageViewHeight);
+    
     if (gifImageViewHeight < JScreenHeight - 60) {
         
         self.gifWindowImageView.center = self.center;
@@ -70,26 +72,8 @@
         
     } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         
-                if (!gifDetailModel.gif) {
-        
-                    CGSize size  = image.size;
-                  self.gifWindowImageView.image = [self clipImage:image withRect:CGRectMake(0, 0, size.width, size.height - 50)];
-                }
-        
         
     }];
 
-
-    
-}
-- (UIImage *)clipImage:(UIImage *)image withRect:(CGRect)rect{
-    
-    CGImageRef cgImage = image.CGImage;
-    
-    cgImage = CGImageCreateWithImageInRect(cgImage,rect);
-    
-    image = [UIImage imageWithCGImage:cgImage];
-    
-    return image;
 }
 @end

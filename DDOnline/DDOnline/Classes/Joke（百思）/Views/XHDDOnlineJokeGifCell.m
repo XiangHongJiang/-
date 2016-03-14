@@ -94,14 +94,14 @@
     CGFloat gifWidth;
     if (gifDetailModel.gif) {//gif不为空
         
-        gifUrl = gifDetailModel.gif.images[0];
+        gifUrl = [gifDetailModel.gif.images lastObject];
         gifHeight = gifDetailModel.gif.height;
         gifWidth = gifDetailModel.gif.width;
         self.isGifImage.hidden = NO;
         
     }else{//image不为空
     
-        gifUrl = gifDetailModel.image.download_url[0];
+        gifUrl = [gifDetailModel.image.download_url lastObject];
         gifHeight = gifDetailModel.image.height;
         gifWidth = gifDetailModel.image.width;
         self.isGifImage.hidden = YES;
@@ -113,16 +113,9 @@
         JLog(@"%f",receivedSize * 1.0 / expectedSize);
         
     } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-        
-        if (!gifDetailModel.gif) {
-            
-            CGSize size  = image.size;
-            self.gifImageView.image = [self clipImage:image withRect:CGRectMake(0, 0, size.width, size.height - 50)];
-        }
-        
+
         
     }];
-
     
     // 设置按钮文字
     [self setupButtonTitle:self.dingBtn count:[gifDetailModel.up integerValue] placeholder:@"顶"];
@@ -146,36 +139,7 @@
 
 #pragma mark - 类方法返回高度
 + (CGFloat)rowHeightWithgifDetailModel:(JokeBase_List *)gifDetailModel{
-    
-    CGSize size = [XHUtils calculateSizeWithText:gifDetailModel.text maxSize:CGSizeMake(JScreenWidth - 20, CGFLOAT_MAX) font:15];
-    
-    //图url
-//    CGFloat gifHeight;
-//    CGFloat gifWidth;
-//    
-//    if (gifDetailModel.gif) {//gif不为空
-//        gifHeight = gifDetailModel.gif.height;
-//        gifWidth = gifDetailModel.gif.width;
-//        
-//    }else{//image不为空
-//        gifHeight = gifDetailModel.image.height;
-//        gifWidth = gifDetailModel.image.width;
-//    }
-//    CGFloat ratio = gifWidth / (JScreenWidth - 20);
-//    CGFloat gifImageViewHeight = gifHeight / ratio;
  
-    return size.height + 110 + 200;
-    
-}
-
-- (UIImage *)clipImage:(UIImage *)image withRect:(CGRect)rect{
-    
-    CGImageRef cgImage = image.CGImage;
-    
-    cgImage = CGImageCreateWithImageInRect(cgImage,rect);
-    
-    image = [UIImage imageWithCGImage:cgImage];
-    
-    return image;
+    return gifDetailModel.textHeight + 110 + 200;
 }
 @end

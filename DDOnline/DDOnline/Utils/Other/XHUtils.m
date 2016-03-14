@@ -57,4 +57,15 @@
     
     return dateStr;
 }
+
++(UIImage *)clipImage:(UIImage *)image withRect:(CGRect)rect{
+
+    CGImageRef cgImage = image.CGImage;
+
+    cgImage = CGImageCreateWithImageInRect(cgImage,rect);
+
+    image = [UIImage imageWithCGImage:cgImage];
+
+    return image;
+}
 @end

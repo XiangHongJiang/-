@@ -51,6 +51,10 @@
 @property (nonatomic, copy) NSString *type;
 
 @property (nonatomic, copy) NSString *text;
+/**
+ *  textLabelHeight
+ */
+@property (nonatomic, assign) CGFloat textHeight;
 
 @property (nonatomic, assign) NSInteger down;
 

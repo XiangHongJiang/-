@@ -70,10 +70,8 @@
 //返回高度
 +(CGFloat)rowHeightWithPureTextDetailModel:(JokeBase_List *)pureTextDetailModel{
 
-   CGSize size = [XHUtils calculateSizeWithText:pureTextDetailModel.text maxSize:CGSizeMake(JScreenWidth - 20, CGFLOAT_MAX) font:15];
-    
     //110其他子视图的位置
-    return size.height + 110;
+    return pureTextDetailModel.textHeight + 110;
 }
 /**
  * 设置底部按钮文字

@@ -30,6 +30,7 @@
 @property (nonatomic, strong) NSArray *durl;
 
 @end
+
 @interface PlayDurl : NSObject
 
 @property (nonatomic, assign) NSInteger size;

@@ -25,6 +25,32 @@
 + (NSDictionary *)objectClassInArray{
     return @{@"tags" : [JokeBase_Tags class]};
 }
+//textHeight
+- (void)setText:(NSString *)text{
+
+    _text = text;
+    
+    self.textHeight =[XHUtils calculateSizeWithText:text maxSize:CGSizeMake(JScreenWidth - 10, CGFLOAT_MAX) font:15].height;
+    
+}
+//imageHeight
+- (void)setImage:(JokeGF_Image *)image{
+
+    _image = image;
+    
+    
+    
+}
+//gifHeight
+- (void)setGif:(JokeGF_Gif *)gif{
+
+    _gif = gif;
+}
+//videoHeight
+- (void)setVideo:(JokeVideo_Video *)video{
+
+    _video = video;
+}
 
 @end
 

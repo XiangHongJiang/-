@@ -139,8 +139,6 @@
 }
 + (CGFloat)rowHeightWithvideoDetailModel:(JokeBase_List *)videoDetailModel{
 
-    CGSize size = [XHUtils calculateSizeWithText:videoDetailModel.text maxSize:CGSizeMake(JScreenWidth - 20, CGFLOAT_MAX) font:15];
-   
-    return size.height + 110 + 200;
+    return videoDetailModel.textHeight + 110 + 200;
 }
 @end

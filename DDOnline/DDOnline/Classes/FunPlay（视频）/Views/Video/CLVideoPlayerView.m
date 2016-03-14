@@ -27,7 +27,7 @@
 @property (nonatomic,strong)NSTimer *timer;
 
 /*全屏控制器*/
-@property (nonatomic,strong)CLFullLeftViewController *fullLeft;
+@property (nonatomic,weak)CLFullLeftViewController *fullLeft;
 
 /*是否隐藏toolView视图的判断*/
 @property (nonatomic,assign)BOOL isHiddenToolView;
@@ -102,6 +102,7 @@
 -(void)setUrlString:(NSString *)urlString{
     
     _urlString = urlString;
+    
     NSURL *url = [NSURL URLWithString:urlString];
     //创建播放器的item
     AVPlayerItem *item = [AVPlayerItem playerItemWithURL:url];
@@ -264,7 +265,8 @@
     if (sender.selected) {
         
         //创建一个横屏的控制器用于横屏
-         self.fullLeft = [[CLFullLeftViewController alloc]init];
+        CLFullLeftViewController * fullLeft = [[CLFullLeftViewController alloc]init];
+        self.fullLeft = fullLeft;
        //推出满屏控制器
         
         [nav pushViewController:self.fullLeft animated:NO];

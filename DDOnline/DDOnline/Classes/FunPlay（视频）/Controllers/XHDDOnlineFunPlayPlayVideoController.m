@@ -74,14 +74,14 @@
         if (succeed) {
             
             NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:result options:NSJSONReadingMutableContainers error:nil];
- 
+
             XHDDOnlineFunPlayUrlModel *urlModel = [XHDDOnlineFunPlayUrlModel mj_objectWithKeyValues:dict];
             
            PlayDurl *PlayUrl = urlModel.durl[0];
-            
+
             self.playUrl = PlayUrl.url;
             
-            [self performSelectorOnMainThread:@selector(playVideo:) withObject:self.playUrl waitUntilDone:NO];
+           [self playVideo:PlayUrl.url];
         }
         else{
         
@@ -98,6 +98,7 @@
 }
 // 通过URL播放视频
 - (void)playVideo:(NSString *)url{
+    
     JLog(@"%@",url);
 
     self.videoView.urlString = url;

@@ -13,4 +13,5 @@
 + (NSString *)timeStringFromDateString:(NSString *)dateString;
 
 + (CGSize)calculateSizeWithText:(NSString *)text maxSize:(CGSize)maxSize font:(CGFloat)font;
++ (UIImage *)clipImage:(UIImage *)image withRect:(CGRect)rect;
 @end

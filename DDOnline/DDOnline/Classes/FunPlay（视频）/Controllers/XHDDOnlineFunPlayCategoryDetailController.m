@@ -100,11 +100,8 @@
     detailCtrl.season_id = [self.categoryDetailModel.result[indexPath.row] season_id];
     
     detailCtrl.view.backgroundColor = JColorNavBg;
-    
-    RESideMenu *sideMenu = (RESideMenu *)[UIApplication sharedApplication].keyWindow.rootViewController;
-    XHDDOnlineRootTabBarController *tbc = sideMenu.contentViewController.childViewControllers[0];
-    UINavigationController *nav = (UINavigationController *)tbc.selectedViewController;
-    [nav pushViewController:detailCtrl animated:YES];
+
+    [self.navigationController pushViewController:detailCtrl animated:YES];
     
 }
 

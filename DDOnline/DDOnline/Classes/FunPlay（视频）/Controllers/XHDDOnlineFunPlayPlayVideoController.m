@@ -111,6 +111,12 @@
 
 }
 #pragma mark - Table view data source
-
+- (void)dealloc{
+    
+    [self.videoView.player pause];
+    self.videoView.player = nil;
+    self.videoView.playerLayer = nil;
+    
+}
 
 @end

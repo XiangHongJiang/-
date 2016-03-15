@@ -11,8 +11,8 @@
         "capInsets" : {
           "bottom" : 2,
           "top" : 2,
-          "right" : 25,
-          "left" : 24
+          "left" : 24,
+          "right" : 25
         }
       },
       "idiom" : "universal",
@@ -30,8 +30,8 @@
         "capInsets" : {
           "bottom" : 2,
           "top" : 2,
-          "right" : 2,
-          "left" : 2
+          "left" : 2,
+          "right" : 2
         }
       },
       "idiom" : "universal",
@@ -39,8 +39,23 @@
       "scale" : "2x"
     },
     {
+      "scale" : "3x",
       "idiom" : "universal",
-      "scale" : "3x"
+      "filename" : "mainCellBackground@3x.png",
+      "resizing" : {
+        "mode" : "9-part",
+        "center" : {
+          "mode" : "fill",
+          "width" : 2,
+          "height" : 2
+        },
+        "capInsets" : {
+          "right" : 2,
+          "top" : 2,
+          "left" : 2,
+          "bottom" : 2
+        }
+      }
     }
   ],
   "info" : {

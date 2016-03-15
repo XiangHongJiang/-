@@ -9,13 +9,13 @@
 #import "XHUtils.h"
 
 @implementation XHUtils
+//
 + (CGSize)calculateSizeWithText:(NSString *)text maxSize:(CGSize)maxSize font:(CGFloat)font{
 
     CGSize size = [text boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:font]} context:nil].size;
     
     return size;
 }
-
 //字符串转化成日期
 + (NSString *)timeStringFromDateString:(NSString *)dateString
 {
@@ -57,7 +57,7 @@
     
     return dateStr;
 }
-
+//clipImage
 +(UIImage *)clipImage:(UIImage *)image withRect:(CGRect)rect{
 
     CGImageRef cgImage = image.CGImage;
@@ -67,5 +67,37 @@
     image = [UIImage imageWithCGImage:cgImage];
 
     return image;
+}
+// Label
++ (UILabel *)createLabelFrame:(CGRect)frame text:(NSString *)text font:(UIFont *)font
+{
+    UILabel *label = [[UILabel alloc] initWithFrame:frame];
+    label.text = text;
+    label.font = font;
+    return label;
+}
++ (UIButton *)createBtnFrame:(CGRect)frame imageName:(NSString *)imageName bgColor:(UIColor *)bgColor radius:(CGFloat)radius target:(id)target action:(SEL)action
+{
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn.frame = frame;
+    [btn setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+    [btn setBackgroundColor:bgColor];
+    //设置圆角
+    btn.layer.cornerRadius = radius;
+    btn.layer.masksToBounds = YES;
+    //点击事件
+    [btn addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
+    return btn;
+    
+}
++ (UIButton *)creatBtnWithFrame:(CGRect)frame title:(NSString *)title target:(id)target action:(SEL)action{
+    
+    //创建btn
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = frame;
+    [button setTitle:title forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
+    return button;
 }
 @end

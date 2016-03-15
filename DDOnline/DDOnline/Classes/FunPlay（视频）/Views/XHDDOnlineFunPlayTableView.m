@@ -155,7 +155,7 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    JLog(@"tableViewScroll");
+
 //    XHDDOnlineFunPlayLatestCell *cell =
  
     if (self.cellCollectionView.contentOffset.y >= 0) {

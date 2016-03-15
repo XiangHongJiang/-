@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 @interface CLVideoPlayerView : UIView
+@property (nonatomic,strong)AVPlayer *player;
+@property (nonatomic,strong)AVPlayerLayer *playerLayer;
 
-
-@property (nonatomic,strong)NSString *urlString;
+@property (nonatomic,copy)NSString *urlString;
 
 +(instancetype)videoPlayerView;
 

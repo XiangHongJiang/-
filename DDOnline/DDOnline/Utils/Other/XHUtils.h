@@ -14,4 +14,13 @@
 
 + (CGSize)calculateSizeWithText:(NSString *)text maxSize:(CGSize)maxSize font:(CGFloat)font;
 + (UIImage *)clipImage:(UIImage *)image withRect:(CGRect)rect;
+
++ (UILabel *)createLabelFrame:(CGRect)frame text:(NSString *)text font:(UIFont *)font;
++ (UIButton *)createBtnFrame:(CGRect)frame imageName:(NSString *)imageName bgColor:(UIColor *)bgColor radius:(CGFloat)radius target:(id)target action:(SEL)action;
+
+/**
+ *  创建Btn的方法
+ */
++ (UIButton *)creatBtnWithFrame:(CGRect)frame title:(NSString *)title target:(id)target action:(SEL)action;
 @end
+

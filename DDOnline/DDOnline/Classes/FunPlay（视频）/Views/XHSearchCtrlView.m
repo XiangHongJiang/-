@@ -181,11 +181,9 @@
     NSDictionary * info = notification.userInfo;
     CGRect rect =  [info[UIKeyboardFrameEndUserInfoKey] CGRectValue];//结束时键盘的frame位置
     self.historySearchTableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
-
-    [UIView animateWithDuration:0.1 animations:^{
-        
+    
         self.bottomSoundView.y = rect.origin.y - 40 - JTopSpace;
-    }];
+
 
     if (rect.origin.y < JScreenHeight) {
      self.historySearchTableView.contentInset = UIEdgeInsetsMake(0, 0, 20 + rect.size.height, 0);

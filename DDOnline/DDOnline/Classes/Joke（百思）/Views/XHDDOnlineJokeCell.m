@@ -73,13 +73,10 @@
     __weak typeof (self) weakSelf = self;
     
     [XHNetHelp getDataWithPath:[NSString stringWithFormat:self.jokeUrlStr,20] andParams:nil andComplete:^(BOOL succeed, id result) {
-      
         if (succeed) {
             
              _requestCount = 20;
-            
             NSDictionary *modelDict = [NSJSONSerialization JSONObjectWithData:result options:NSJSONReadingMutableContainers error:nil];
-            
  
             //存储数据模型
             XHDDOnlineJokeBaseModel *jokeBaseModel = [XHDDOnlineJokeBaseModel mj_objectWithKeyValues:modelDict];

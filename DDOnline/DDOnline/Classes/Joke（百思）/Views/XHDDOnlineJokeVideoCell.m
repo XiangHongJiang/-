@@ -44,6 +44,24 @@
 
 @implementation XHDDOnlineJokeVideoCell
 
+- (CLVideoPlayerView *)playView{
+
+    if (_playView == nil) {
+        
+        CLVideoPlayerView *view = [CLVideoPlayerView videoPlayerView];
+        view.frame = CGRectMake(0, 0, JScreenWidth - 20, 200);
+        self.playView = view;
+        
+        UILongPressGestureRecognizer *lpGR  = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(playend:)];
+        lpGR.minimumPressDuration = 1.5;
+        [view addGestureRecognizer:lpGR];
+        
+        [self.gifImageView addSubview:view];
+    }
+    
+    return _playView;
+}
+
 + (id)jokeVideoCellWithTableView:(UITableView *)tableView{
 
     NSString * className = NSStringFromClass([self class]);
@@ -58,22 +76,29 @@
     
     JLog(@"播放");
     
-    CLVideoPlayerView *view = [CLVideoPlayerView videoPlayerView];
-    view.frame = CGRectMake(0, 0, JScreenWidth, JScreenWidth * 9 / 16);
-    self.playView = view;
-    UITapGestureRecognizer *tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(playend)];
+    [self sendSubviewToBack:sender];
     
-    [view addGestureRecognizer:tapGR];
-    
-    [[UIApplication sharedApplication].keyWindow addSubview:view];
-    
-    view.urlString = @"http://wvideo.spriteapp.cn/video/2016/0312/56e3cf7eab301_wpd.mp4";
+    self.playView.urlString = [self.videoDetailModel.video.video firstObject];
     
 }
 
-- (void)playend{
+- (void)playend:(UILongPressGestureRecognizer *)lpGR{
+    
+ 
+    if (lpGR.state == UIGestureRecognizerStateBegan) {
+        
+        [self bringSubviewToFront:self.playVideoBtn];
 
-    [self.playView removeFromSuperview];
+        
+        [self.playView.player pause];
+        [self.playView.playerLayer removeFromSuperlayer];
+        self.playView.player = nil;
+        self.playView.playerLayer = nil;
+        [self.playView removeFromSuperview];
+        
+    }
+
+
 }
 
 - (void)setVideoDetailModel:(JokeBase_List *)videoDetailModel{

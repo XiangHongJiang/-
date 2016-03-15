@@ -8,13 +8,10 @@
 
 #import "CLVideoPlayerView.h"
 #import "CLFullLeftViewController.h"
-#import "RESideMenu.h"
-#import "XHDDOnlineRootTabBarController.h"
-#import "XHDDOnlineMainController.h"
+
 @interface CLVideoPlayerView ()
 
-@property (nonatomic,strong)AVPlayer *player;
-@property (nonatomic,strong)AVPlayerLayer *playerLayer;
+
 
 @property (weak, nonatomic) IBOutlet UIButton *playBtn;
 @property (weak, nonatomic) IBOutlet UISlider *slider;
@@ -64,6 +61,7 @@
     [videoPlayer.indicatorView startAnimating];
     return videoPlayer;
 }
+
 
 -(void)awakeFromNib{
     
@@ -206,11 +204,9 @@
         
         self.isHiddenToolView = !self.isHiddenToolView;
         
-        RESideMenu *sideMenu = (RESideMenu *)[UIApplication sharedApplication].keyWindow.rootViewController;
-        XHDDOnlineRootTabBarController *tbc = sideMenu.contentViewController.childViewControllers[0];
-        UINavigationController *nav = (UINavigationController *)tbc.selectedViewController;
+       
+        UINavigationController *nav = self.viewController.navigationController;
    
-        
         nav.navigationBarHidden = !nav.navigationBarHidden;
         if (self.isHiddenToolView) {
             self.toolView.alpha = 0;
@@ -256,18 +252,15 @@
 - (IBAction)switchOrientation:(UIButton *)sender {
  
     sender.selected = !sender.selected;
-    
-    RESideMenu *sideMenu = (RESideMenu *)[UIApplication sharedApplication].keyWindow.rootViewController;
-    XHDDOnlineRootTabBarController *tbc = sideMenu.contentViewController.childViewControllers[0];
-    UINavigationController *nav = (UINavigationController *)tbc.selectedViewController;
-    
+
+    UINavigationController *nav = self.viewController.navigationController;
     
     if (sender.selected) {
         
         //创建一个横屏的控制器用于横屏
         CLFullLeftViewController * fullLeft = [[CLFullLeftViewController alloc]init];
-        self.fullLeft = fullLeft;
        //推出满屏控制器
+        self.fullLeft = fullLeft;
         
         [nav pushViewController:self.fullLeft animated:NO];
         //保存当前视图的fame值
@@ -280,18 +273,18 @@
 
      
     }else{
-        //让满屏控制器消失
-        [nav popViewControllerAnimated:NO];
         
-        //获得顶部控制器
-        UIViewController *vc = nav.topViewController;
-        //将视图的大小设置为原来的大小
-        self.frame = self.rectFrame;
-        
+        UIViewController *vc =  nav.viewControllers[nav.viewControllers.count - 2];
         //将视图添加到顶部控制器View上
         [vc.view addSubview:self];
-        self.fullLeft = nil;
-        
+
+        //让满屏控制器消失
+        [nav popViewControllerAnimated:NO];
+
+        //将视图的大小设置为原来的大小
+        self.frame = self.rectFrame;
+
+//        self.fullLeft = nil;
 
     }
 }
@@ -353,6 +346,14 @@
     [self startSlider:slider];
     [self slider:slider];
 
+}
+
+- (void)dealloc{
+
+    [self.player pause];
+    self.player = nil;
+    self.playerLayer = nil;
+    
 }
 
 

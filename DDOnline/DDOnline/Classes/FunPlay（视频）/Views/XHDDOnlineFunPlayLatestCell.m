@@ -116,7 +116,6 @@
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
     
-    JLog(@"collectionViewScroll");
     if (scrollView.contentOffset.y == 0 || scrollView.contentOffset.y == (scrollView.contentSize.height - scrollView.frame.size.height)) {
         
         scrollView.scrollEnabled = !scrollView.scrollEnabled;

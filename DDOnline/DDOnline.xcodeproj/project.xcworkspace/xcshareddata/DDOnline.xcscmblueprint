@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "1A9D6B647002C5A3461558208ADCCD11FD120F56",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "4F497459B0690C00B51E220CE925C78DD265C048" : 0,
+    "1A9D6B647002C5A3461558208ADCCD11FD120F56" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "D9484F1F-8C81-4E2E-86DB-369A9F843308",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "4F497459B0690C00B51E220CE925C78DD265C048" : "FightDDOnline%202",
+    "1A9D6B647002C5A3461558208ADCCD11FD120F56" : "DDOnline"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "DDOnline",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "DDOnline\/DDOnline.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/XiangHongJiang\/DDOnline.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "1A9D6B647002C5A3461558208ADCCD11FD120F56"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/XiangHongJiang\/BHouse.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "4F497459B0690C00B51E220CE925C78DD265C048"
+    }
+  ]
+}

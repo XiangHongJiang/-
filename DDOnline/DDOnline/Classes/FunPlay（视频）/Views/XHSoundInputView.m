@@ -64,7 +64,8 @@
     [UIView animateWithDuration:1.5 animations:^{
         self.menuView.y = 0;
     }];
-    [UIView animateWithDuration:1.5 delay:2 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+    
+    [UIView animateWithDuration:2 delay:1.5 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
         
         self.menuView.y = - self.menuView.height;
         
@@ -83,10 +84,10 @@
         }
         
         //如果存在Block对象回调Block
-        if (_detectSoundSucceedBlock) {
-            
-             self.detectSoundSucceedBlock(_soundString);
-        }
+//        if (_detectSoundSucceedBlock) {
+//            
+//             self.detectSoundSucceedBlock(_soundString);
+//        }
 
     }];
     
@@ -119,6 +120,7 @@
     if (_speechRecognizer == nil) {//对象不存在，创建
         
         [self createSpeechRecognizer];
+        [self settingSpeechRecognizerParame];
     }
     else{//存在，设置参数
         
@@ -151,6 +153,7 @@
             //设置方言
             [_speechRecognizer setParameter:instance.accent forKey:[IFlySpeechConstant ACCENT]];
         }else if ([instance.language isEqualToString:[IATConfig english]]) {
+            
             [_speechRecognizer setParameter:instance.language forKey:[IFlySpeechConstant LANGUAGE]];
         }
         
@@ -162,7 +165,7 @@
         //设置听写结果格式为json
         [_speechRecognizer setParameter:@"json" forKey:[IFlySpeechConstant RESULT_TYPE]];
         //保存录音文件，保存在sdk工作路径中，如未设置工作路径，则默认保存在library/cache下
-        [_speechRecognizer setParameter:@"" forKey:[IFlySpeechConstant ASR_AUDIO_PATH]];
+//        [_speechRecognizer setParameter:@"" forKey:[IFlySpeechConstant ASR_AUDIO_PATH]];
         
     }
     
@@ -193,9 +196,12 @@
     
     //转为结果字符串
     NSString *resultFromJSON = [self stringFromJson:resultString];
+
     NSLog(@"result:%@\nresultFromJSON:%@",resultString, resultFromJSON);
     
     _soundString = resultFromJSON;
+
+    self.detectSoundSucceedBlock(_soundString);
     
 }
 #pragma mark - 其他

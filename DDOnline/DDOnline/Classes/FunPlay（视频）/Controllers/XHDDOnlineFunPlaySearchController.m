@@ -241,8 +241,11 @@
             [_historySearch removeObject:soundString];
             [_historySearch insertObject:soundString atIndex:0];
             weakSelf.searchCtrlView.historySearchArray = _historySearch;
+            
+           weakSelf.searchBar.text = soundString;
         }
-        weakSelf.searchBar.text = soundString;
+        
+
         
     };
 }

@@ -654,6 +654,10 @@
 		BCF1E3CB1C9332C300CA3338 /* XHDDOnlineJokeGifWindowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCF1E3CA1C9332C300CA3338 /* XHDDOnlineJokeGifWindowView.xib */; };
 		BCFCCB751C97F6D5003B4308 /* XHDDOnlineChatMessageTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFCCB741C97F6D5003B4308 /* XHDDOnlineChatMessageTableView.m */; };
 		BCFCCB781C97F6ED003B4308 /* XHDDOnlineChatContactsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFCCB771C97F6ED003B4308 /* XHDDOnlineChatContactsTableView.m */; };
+		BCFCCB7C1C9814D4003B4308 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCFCCB7B1C9814D4003B4308 /* Security.framework */; };
+		BCFCCB7E1C9814E6003B4308 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCFCCB7D1C9814E6003B4308 /* CFNetwork.framework */; };
+		BCFCCB801C9814F0003B4308 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCFCCB7F1C9814F0003B4308 /* CoreFoundation.framework */; };
+		BCFCCB831C982AB2003B4308 /* jpush-ios-2.1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCFCCB811C982AB2003B4308 /* jpush-ios-2.1.0.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1593,6 +1597,11 @@
 		BCFCCB741C97F6D5003B4308 /* XHDDOnlineChatMessageTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHDDOnlineChatMessageTableView.m; sourceTree = "<group>"; };
 		BCFCCB761C97F6ED003B4308 /* XHDDOnlineChatContactsTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHDDOnlineChatContactsTableView.h; sourceTree = "<group>"; };
 		BCFCCB771C97F6ED003B4308 /* XHDDOnlineChatContactsTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHDDOnlineChatContactsTableView.m; sourceTree = "<group>"; };
+		BCFCCB7B1C9814D4003B4308 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		BCFCCB7D1C9814E6003B4308 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		BCFCCB7F1C9814F0003B4308 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		BCFCCB811C982AB2003B4308 /* jpush-ios-2.1.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-2.1.0.a"; sourceTree = "<group>"; };
+		BCFCCB821C982AB2003B4308 /* JPUSHService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1600,11 +1609,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCFCCB801C9814F0003B4308 /* CoreFoundation.framework in Frameworks */,
+				BCFCCB7E1C9814E6003B4308 /* CFNetwork.framework in Frameworks */,
+				BCFCCB7C1C9814D4003B4308 /* Security.framework in Frameworks */,
 				BC370D401C950D0B00D7A81C /* CoreGraphics.framework in Frameworks */,
 				BC370D3E1C94550500D7A81C /* iflyMSC.framework in Frameworks */,
 				BC50CA3F1C94539100DEF3CC /* libz.dylib in Frameworks */,
 				BC50CA3D1C94538500DEF3CC /* SystemConfiguration.framework in Frameworks */,
 				BC50CA3B1C94531B00DEF3CC /* VideoToolbox.framework in Frameworks */,
+				BCFCCB831C982AB2003B4308 /* jpush-ios-2.1.0.a in Frameworks */,
 				BC50CA391C94530C00DEF3CC /* AVFoundation.framework in Frameworks */,
 				BC50CA371C9452F900DEF3CC /* CoreTelephony.framework in Frameworks */,
 			);
@@ -2519,9 +2532,10 @@
 		BC370D411C950D1300D7A81C /* Framework */ = {
 			isa = PBXGroup;
 			children = (
+				BCFCCB7A1C981457003B4308 /* JPush */,
+				BCFCCB791C981440003B4308 /* Video */,
 				BC370D3F1C950D0B00D7A81C /* CoreGraphics.framework */,
 				BC50CA3E1C94539100DEF3CC /* libz.dylib */,
-				BC370D3D1C94550500D7A81C /* iflyMSC.framework */,
 				BC50CA3C1C94538500DEF3CC /* SystemConfiguration.framework */,
 				BC50CA3A1C94531B00DEF3CC /* VideoToolbox.framework */,
 				BC50CA381C94530C00DEF3CC /* AVFoundation.framework */,
@@ -3640,6 +3654,26 @@
 			name = "短视频";
 			sourceTree = "<group>";
 		};
+		BCFCCB791C981440003B4308 /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				BC370D3D1C94550500D7A81C /* iflyMSC.framework */,
+			);
+			name = Video;
+			sourceTree = "<group>";
+		};
+		BCFCCB7A1C981457003B4308 /* JPush */ = {
+			isa = PBXGroup;
+			children = (
+				BCFCCB811C982AB2003B4308 /* jpush-ios-2.1.0.a */,
+				BCFCCB821C982AB2003B4308 /* JPUSHService.h */,
+				BCFCCB7F1C9814F0003B4308 /* CoreFoundation.framework */,
+				BCFCCB7D1C9814E6003B4308 /* CFNetwork.framework */,
+				BCFCCB7B1C9814D4003B4308 /* Security.framework */,
+			);
+			name = JPush;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -3691,6 +3725,11 @@
 					BC0147BC1C8AFCAF00AA4C45 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = W272WDFC9W;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					BC0147D51C8AFCAF00AA4C45 = {
 						CreatedOnToolsVersion = 7.2;
@@ -4447,10 +4486,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/**";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)";
 			};
 			name = Debug;
 		};
@@ -4484,9 +4525,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/**";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -4495,7 +4538,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Zhenghao Yang (RBDKPK3NJP)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4503,8 +4546,12 @@
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/DDOnline/Utils/Prefix/PrefixHeader.pch";
 				INFOPLIST_FILE = DDOnline/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/DDOnline/Utils",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.JXHDev.DDOnline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "61c2884a-fb57-4042-9008-1d2608502d37";
@@ -4524,8 +4571,12 @@
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/DDOnline/Utils/Prefix/PrefixHeader.pch";
 				INFOPLIST_FILE = DDOnline/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/DDOnline/Utils",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.JXHDev.DDOnline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "61c2884a-fb57-4042-9008-1d2608502d37";

@@ -9,6 +9,11 @@
 #ifndef Const_h
 #define Const_h
 
+#pragma mark - 极光推送
+
+#define JPushAppKey @"b83d9e909e58142cb5c5d6d0"
+#define JPushChannel @"appStore"//极光推送通道，如：APPSTORE，程序包下载渠道，用于统计
+
 #pragma mark - 科大讯飞
 
 #define APPID_VALUE   @"56cfbe50"

@@ -5,6 +5,9 @@
 //  Created by qianfeng on 16/3/5.
 //  Copyright © 2016年 JXHDev. All rights reserved.
 //
+/*| JPUSH | I - [JPUSHSessionController] sis is not on protect
+ 2016-03-16 09:23:27.570 | JPUSH | I - [JPUSHAddressController] Action - sendSisRequest
+ */
 
 #import "AppDelegate.h"
 
@@ -37,19 +40,19 @@
     
     return YES;
 }
-//1
+//1.设置根视图控制器
 - (void)setRootViewController{
 
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
-    [self.window makeKeyAndVisible];
     
     RESideMenu *sideMenu = [[RESideMenu alloc] initWithContentViewController:[[XHDDOnlineMainController alloc] init] leftMenuViewController:[[XHDDOnlineSliderController alloc] init] rightMenuViewController:nil];
     
     self.window.rootViewController = sideMenu;
+    [self.window makeKeyAndVisible];
 
 }
-//2
+//2.语音识别设置
 - (void)speechRecognizeServiceInit{
     
     //设置sdk的log等级，log保存在下面设置的工作路径中
@@ -66,7 +69,6 @@
     
 }
 #pragma mark - 极光推送相关
-
 - (void)setJPushAlias{
 
 //    [JPUSHService setTags:@"1520" alias:@"150114" callbackSelector:<#(SEL)#> object:<#(id)#>]
@@ -140,29 +142,32 @@
     [JPUSHService handleRemoteNotification:userInfo];
     // 清空通知栏通知，清除应用 icon 上面的角标
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+
     
     //处理推送消息
     //1.获取推送消息
     JLog(@"%@",userInfo);
     NSDictionary *apsInfo = userInfo[@"aps"];
     //2.取出通知类型
-    NSString *notiType = userInfo[@"noti_type"];
+//    NSString *notiType = userInfo[@"noti_type"];
+
     
     //3.获取通知内容
     NSString *message = apsInfo[@"alert"];
     
-    if ([notiType isEqualToString:@"alert"]) {
-        
+//    if ([notiType isEqualToString:@"alert"]) {
+    
         // 这个枚举类型代表当前应用所处的状态，是在激活状态（前台），还是后台。
         //		UIApplicationStateActive,
         //		UIApplicationStateInactive,
         //		UIApplicationStateBackground
         if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"警告" message:message delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+           
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"通知" message:message delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
             [alertView show];
             
         }
-    }
+//    }
     // 当应用点击通知栏进入的时候，跳转到相应的 viewController;
     // 根据应用不同的状态和通知的不同类型，做不同的处理。
     else{
@@ -171,8 +176,8 @@
     
     
     }
-    
     completionHandler(UIBackgroundFetchResultNewData);
+    
 }
 //3.0.4接收本地通知
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification{
@@ -180,7 +185,6 @@
       [JPUSHService showLocalNotificationAtFront:notification identifierKey:nil];
 
 }
-
 #pragma mark - other
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -199,6 +203,9 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    //进入前台，让上标为0;
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {

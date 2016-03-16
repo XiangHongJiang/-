@@ -35,7 +35,7 @@ static NSString *const kFunPlayCategoryDetailUrl = @"http://bangumi.bilibili.com
 static NSString *const kFunPlayAidToCidUrl = @"http://www.bilibilijj.com/Api/AvToCid/%@";//aid to cid
 
 //cid转播放地址
-static NSString *const kFunPlayCidToPlayUrl = @"http://interface.bilibili.com/playurl?platform=android&_device=android&_hwid=831fc7511fa9aff5&_aid=3090561&_tid=0&_p=1&_down=0&cid=%@&quality=3&otype=json&appkey=86385cdc024c0f6c&type=mp4&sign=7fed8a9b7b446de4369936b6c1c40c3f";//cid to url
+static NSString *const kFunPlayCidToPlayUrl = @"http://interface.bilibili.com/playurl?platform=android&_device=android&_hwid=831fc7511fa9aff5&_aid=%@&_tid=0&_p=1&_down=0&cid=%@&quality=3&otype=json&appkey=86385cdc024c0f6c&type=mp4&sign=7fed8a9b7b446de4369936b6c1c40c3f";//cid to url
 
 #pragma mark - 百思
 //最新纯文字

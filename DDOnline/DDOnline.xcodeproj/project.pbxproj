@@ -658,6 +658,13 @@
 		BCFCCB7E1C9814E6003B4308 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCFCCB7D1C9814E6003B4308 /* CFNetwork.framework */; };
 		BCFCCB801C9814F0003B4308 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCFCCB7F1C9814F0003B4308 /* CoreFoundation.framework */; };
 		BCFCCB831C982AB2003B4308 /* jpush-ios-2.1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCFCCB811C982AB2003B4308 /* jpush-ios-2.1.0.a */; };
+		BCFF10BC1C98653C0004F8E8 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCFF10BB1C98653C0004F8E8 /* MobileCoreServices.framework */; };
+		BCFF10BE1C98655C0004F8E8 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BCFF10BD1C98655C0004F8E8 /* libsqlite3.tbd */; };
+		BCFF10C01C98656B0004F8E8 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BCFF10BF1C98656B0004F8E8 /* libz.tbd */; };
+		BCFF10C21C9865790004F8E8 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BCFF10C11C9865790004F8E8 /* libiconv.tbd */; };
+		BCFF10C41C9865810004F8E8 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BCFF10C31C9865810004F8E8 /* libresolv.tbd */; };
+		BCFF10C61C98658A0004F8E8 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BCFF10C51C98658A0004F8E8 /* libxml2.tbd */; };
+		BCFF10C81C9865FA0004F8E8 /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BCFF10C71C9865FA0004F8E8 /* libstdc++.6.0.9.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1602,6 +1609,13 @@
 		BCFCCB7F1C9814F0003B4308 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		BCFCCB811C982AB2003B4308 /* jpush-ios-2.1.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-2.1.0.a"; sourceTree = "<group>"; };
 		BCFCCB821C982AB2003B4308 /* JPUSHService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
+		BCFF10BB1C98653C0004F8E8 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		BCFF10BD1C98655C0004F8E8 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		BCFF10BF1C98656B0004F8E8 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		BCFF10C11C9865790004F8E8 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
+		BCFF10C31C9865810004F8E8 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
+		BCFF10C51C98658A0004F8E8 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
+		BCFF10C71C9865FA0004F8E8 /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1609,6 +1623,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCFF10C81C9865FA0004F8E8 /* libstdc++.6.0.9.tbd in Frameworks */,
+				BCFF10C61C98658A0004F8E8 /* libxml2.tbd in Frameworks */,
+				BCFF10C41C9865810004F8E8 /* libresolv.tbd in Frameworks */,
+				BCFF10C21C9865790004F8E8 /* libiconv.tbd in Frameworks */,
+				BCFF10C01C98656B0004F8E8 /* libz.tbd in Frameworks */,
+				BCFF10BE1C98655C0004F8E8 /* libsqlite3.tbd in Frameworks */,
+				BCFF10BC1C98653C0004F8E8 /* MobileCoreServices.framework in Frameworks */,
 				BCFCCB801C9814F0003B4308 /* CoreFoundation.framework in Frameworks */,
 				BCFCCB7E1C9814E6003B4308 /* CFNetwork.framework in Frameworks */,
 				BCFCCB7C1C9814D4003B4308 /* Security.framework in Frameworks */,
@@ -2532,14 +2553,9 @@
 		BC370D411C950D1300D7A81C /* Framework */ = {
 			isa = PBXGroup;
 			children = (
-				BCFCCB7A1C981457003B4308 /* JPush */,
-				BCFCCB791C981440003B4308 /* Video */,
-				BC370D3F1C950D0B00D7A81C /* CoreGraphics.framework */,
-				BC50CA3E1C94539100DEF3CC /* libz.dylib */,
-				BC50CA3C1C94538500DEF3CC /* SystemConfiguration.framework */,
-				BC50CA3A1C94531B00DEF3CC /* VideoToolbox.framework */,
-				BC50CA381C94530C00DEF3CC /* AVFoundation.framework */,
-				BC50CA361C9452F800DEF3CC /* CoreTelephony.framework */,
+				BCFF10BA1C98650B0004F8E8 /* EMO（环信） */,
+				BCFCCB7A1C981457003B4308 /* JPush（极光） */,
+				BCFCCB791C981440003B4308 /* Audio（讯飞） */,
 			);
 			name = Framework;
 			sourceTree = "<group>";
@@ -3654,15 +3670,21 @@
 			name = "短视频";
 			sourceTree = "<group>";
 		};
-		BCFCCB791C981440003B4308 /* Video */ = {
+		BCFCCB791C981440003B4308 /* Audio（讯飞） */ = {
 			isa = PBXGroup;
 			children = (
+				BC370D3F1C950D0B00D7A81C /* CoreGraphics.framework */,
+				BC50CA3E1C94539100DEF3CC /* libz.dylib */,
+				BC50CA3C1C94538500DEF3CC /* SystemConfiguration.framework */,
+				BC50CA3A1C94531B00DEF3CC /* VideoToolbox.framework */,
+				BC50CA381C94530C00DEF3CC /* AVFoundation.framework */,
+				BC50CA361C9452F800DEF3CC /* CoreTelephony.framework */,
 				BC370D3D1C94550500D7A81C /* iflyMSC.framework */,
 			);
-			name = Video;
+			name = "Audio（讯飞）";
 			sourceTree = "<group>";
 		};
-		BCFCCB7A1C981457003B4308 /* JPush */ = {
+		BCFCCB7A1C981457003B4308 /* JPush（极光） */ = {
 			isa = PBXGroup;
 			children = (
 				BCFCCB811C982AB2003B4308 /* jpush-ios-2.1.0.a */,
@@ -3671,7 +3693,21 @@
 				BCFCCB7D1C9814E6003B4308 /* CFNetwork.framework */,
 				BCFCCB7B1C9814D4003B4308 /* Security.framework */,
 			);
-			name = JPush;
+			name = "JPush（极光）";
+			sourceTree = "<group>";
+		};
+		BCFF10BA1C98650B0004F8E8 /* EMO（环信） */ = {
+			isa = PBXGroup;
+			children = (
+				BCFF10C71C9865FA0004F8E8 /* libstdc++.6.0.9.tbd */,
+				BCFF10C51C98658A0004F8E8 /* libxml2.tbd */,
+				BCFF10C31C9865810004F8E8 /* libresolv.tbd */,
+				BCFF10C11C9865790004F8E8 /* libiconv.tbd */,
+				BCFF10BF1C98656B0004F8E8 /* libz.tbd */,
+				BCFF10BD1C98655C0004F8E8 /* libsqlite3.tbd */,
+				BCFF10BB1C98653C0004F8E8 /* MobileCoreServices.framework */,
+			);
+			name = "EMO（环信）";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -3728,6 +3764,9 @@
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 0;
 							};
 						};
 					};
@@ -4491,7 +4530,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)";
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/**";
 			};
 			name = Debug;
 		};
@@ -4512,7 +4551,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -4529,7 +4568,7 @@
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/**";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)";
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/**";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -4539,6 +4578,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4552,9 +4592,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/DDOnline/Utils",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.JXHDev.DDOnline;
+				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Dev.DDOnline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "61c2884a-fb57-4042-9008-1d2608502d37";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -4563,7 +4604,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4577,9 +4618,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/DDOnline/Utils",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.JXHDev.DDOnline;
+				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Dev.DDOnline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "61c2884a-fb57-4042-9008-1d2608502d37";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

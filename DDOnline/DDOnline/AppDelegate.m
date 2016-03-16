@@ -32,6 +32,7 @@
     
     //3.添加极光推送
     [self configJPushService:launchOptions];
+  
 
     
     return YES;
@@ -65,26 +66,52 @@
     
 }
 #pragma mark - 极光推送相关
+
+- (void)setJPushAlias{
+
+//    [JPUSHService setTags:@"1520" alias:@"150114" callbackSelector:<#(SEL)#> object:<#(id)#>]
+    
+    [JPUSHService setTags:nil alias:@"150114" fetchCompletionHandle:^(int iResCode, NSSet *iTags, NSString *iAlias) {
+        
+        // iResCode 为0 表示设置成功，6002 表示超时
+        // 当设置别名失败的时候，重新调用此方法，继续设置，直到设置成功。
+        
+        if (iResCode != 0) {
+            
+            [self setJPushAlias];
+        }
+        else if(iResCode == 6002){
+        
+            JLog(@"设置别名请求超时");
+            
+        }
+        else{
+        
+            JLog(@"请求成功");
+        }
+    }];
+    
+}
 //3.0.0
 - (void)configJPushService:(NSDictionary *)launchOptions{
 
     //启动Jpush
     [JPUSHService setupWithOption:launchOptions appKey:JPushAppKey channel:JPushChannel apsForProduction:NO];
     
-    if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
-        //可以添加自定义categories
-        [JPUSHService registerForRemoteNotificationTypes:(UIUserNotificationTypeBadge |
-                                                          UIUserNotificationTypeSound |
-                                                          UIUserNotificationTypeAlert)
-                                              categories:nil];
-    } else {
-        //categories 必须为nil
-        [JPUSHService registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
-                                                          UIRemoteNotificationTypeSound |
-                                                          UIRemoteNotificationTypeAlert)
-                                              categories:nil];
-    }
-
+//    if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
+//        //可以添加自定义categories
+//        [JPUSHService registerForRemoteNotificationTypes:(UIUserNotificationTypeBadge |
+//                                                          UIUserNotificationTypeSound |
+//                                                          UIUserNotificationTypeAlert)
+//                                              categories:nil];
+//    } else {
+//        //categories 必须为nil
+//        [JPUSHService registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
+//                                                          UIRemoteNotificationTypeSound |
+//                                                          UIRemoteNotificationTypeAlert)
+//                                              categories:nil];
+//    }
+//
     // 申请远程推送权限
     [JPUSHService registerForRemoteNotificationTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert) categories:nil];
 
@@ -94,6 +121,9 @@
 
     //接收到设备信息，可用来给相应设备发送推送消息
     [JPUSHService registerDeviceToken:deviceToken];
+    
+    [self setJPushAlias];
+//    [JPUSHService setAlias:@"123" callbackSelector:@se object:<#(id)#>]
 }
 //3.0.2
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error{
@@ -136,11 +166,19 @@
     // 当应用点击通知栏进入的时候，跳转到相应的 viewController;
     // 根据应用不同的状态和通知的不同类型，做不同的处理。
     else{
+        
+        JLog(@"处理推送");
     
     
     }
     
     completionHandler(UIBackgroundFetchResultNewData);
+}
+//3.0.4接收本地通知
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification{
+    
+      [JPUSHService showLocalNotificationAtFront:notification identifierKey:nil];
+
 }
 
 #pragma mark - other

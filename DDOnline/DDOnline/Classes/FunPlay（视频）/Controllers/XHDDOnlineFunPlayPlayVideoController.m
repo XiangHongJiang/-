@@ -69,7 +69,7 @@
 
     static int i = 0;
     
-    [XHNetHelp getDataWithPath:[NSString stringWithFormat:kFunPlayCidToPlayUrl,self.cid] andParams:nil andComplete:^(BOOL succeed, id result) {
+    [XHNetHelp getDataWithPath:[NSString stringWithFormat:kFunPlayCidToPlayUrl,self.aid,self.cid] andParams:nil andComplete:^(BOOL succeed, id result) {
        
         if (succeed) {
             

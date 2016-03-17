@@ -12,6 +12,7 @@
 #import "XHDDOnlineChatContactsTableView.h"
 #import "EMSDKFull.h"
 #import "XHDDOnlineChatFunctionView.h"
+#import "XHDDOnlineChatAddFriendController.h"
 
 @interface XHDDOnlineChatController ()<UIScrollViewDelegate>
 /** *  消息btn */
@@ -184,6 +185,8 @@
                 
             case ChatFunctionViewFunctionTypeAddFriends:
             {
+                [self.navigationController pushViewController:[[XHDDOnlineChatAddFriendController alloc] init] animated:NO];
+                
                 JLog(@"进入添加好友界面");
             }
                 break;
@@ -200,7 +203,6 @@
     };
     
 }
-
 //改变btn状态
 - (void)changeNavBtnState{
     

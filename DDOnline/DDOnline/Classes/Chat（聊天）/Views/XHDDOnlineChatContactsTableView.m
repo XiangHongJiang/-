@@ -21,13 +21,25 @@
      */
     NSArray *_tempDataArray;
 }
+/** *  每组状态 */
 @property (nonatomic, strong)NSMutableArray *sectionState;
 /** *  分组名 */
 @property (nonatomic, copy) NSArray *sectionNameArray;
+/** *  要删除的服务器数据 */
+@property (nonatomic, strong) NSMutableArray *needDeleteData;
 
 @end
 
 @implementation XHDDOnlineChatContactsTableView
+
+- (NSMutableArray *)needDeleteData{
+
+    if (_needDeleteData == nil) {
+        
+        _needDeleteData = [NSMutableArray new];
+    }
+    return _needDeleteData;
+}
 - (NSMutableArray *)sectionState{
 
     if (_sectionState == nil) {
@@ -49,6 +61,8 @@
 + (instancetype)chatContactsTableView{
     
     XHDDOnlineChatContactsTableView *contactsTableView = [[XHDDOnlineChatContactsTableView alloc] initWithFrame:CGRectMake(JScreenWidth, 0, JScreenWidth, JScreenHeight - JTopSpace - JTabBarHeight) style:UITableViewStylePlain];
+    
+    contactsTableView.sectionHeaderHeight = 50;
     
     contactsTableView.delegate = contactsTableView;
     contactsTableView.dataSource = contactsTableView;
@@ -129,7 +143,6 @@
         
         [self.sectionState addObject:@(NO)];
     }
-    
     //刷新数据
     [self reloadData];
 }
@@ -158,7 +171,6 @@
             return 0;
         }
     }
-    
     return [_tempDataArray[section] count];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -182,9 +194,7 @@
     //1一个可点击的Btn
     UIButton *headBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     headBtn.frame = CGRectMake(0, 0, JScreenWidth, 30);
-    
     headBtn.backgroundColor = [UIColor colorWithRed:0.000 green:0.502 blue:1.000 alpha:1.000];
-    
     [headBtn addTarget:self action:@selector(headClick:) forControlEvents:UIControlEventTouchUpInside];
     
     headBtn.tag = section + 1;
@@ -199,11 +209,8 @@
 //    }else{
 //        headBtn.imageView.transform = CGAffineTransformMakeRotation(-M_2_PI);
 //    }
-    
     [headView addSubview:headBtn];
-    
     return headView;
-    
 }
 - (void)headClick:(UIButton *)headBtn{
     
@@ -212,13 +219,10 @@
     [self.sectionState replaceObjectAtIndex:headBtn.tag - 1 withObject:@(!ret)];
     [self reloadData];
 }
-#pragma mark - 组头与表头高度的设置
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    
-    return 50;
-}
 #pragma mark - 删除相关
 - (void)deleteContacts{
+    
+    [self.needDeleteData removeAllObjects];
     
     NSArray *indexPaths = self.indexPathsForSelectedRows;
     //这个数组里的顺序是按照选中顺序排列的
@@ -226,34 +230,31 @@
     //要先对数组进行排序 //返回一个排序好的数组, 原数组不变
     NSArray *orderedArray = [indexPaths sortedArrayUsingSelector:@selector(compare:)];
     
-    
     //获取当前数据源
-    NSMutableArray *dataSource = [NSMutableArray arrayWithArray:self.contactsArray];
-    
+    NSMutableArray *leftDataArray = [NSMutableArray arrayWithArray:self.contactsArray];
+
     //先删除数据源
     for (NSInteger i = orderedArray.count - 1; i >= 0; i --) {//每次先删除最后一个, 防止越界删除
         
         NSIndexPath *indexPath = orderedArray[i];
+        
+        NSString *deleteName = leftDataArray[indexPath.section][indexPath.row];
+        
+        [self.needDeleteData addObject:deleteName];
+        
         //找到选中行
-        
-        JLog(@"%@",indexPath);
-        
         //1.从数据源中删除
-        [dataSource[indexPath.section] removeObjectAtIndex:indexPath.row];
+        [leftDataArray[indexPath.section] removeObjectAtIndex:indexPath.row];
+
     }
     
-    _tempDataArray = dataSource;
+    _tempDataArray = leftDataArray;
+    
     //刷新tableView
     [self reloadData];
     self.enterEditting = NO;
-    
-    JLog(@"%d",orderedArray.count);
-    JLog(@"%d",self.contactsArray.count);
-    
-    
-    [self deleteFromNet:orderedArray];
-    
 
+    [self deleteFromNet:orderedArray];
 
 }
 #pragma mark -服务器删除好友
@@ -268,9 +269,8 @@
             
             NSIndexPath *indexPath = indexPaths[i];
           
-            
             //找到删除的名字
-            NSString *userName = self.contactsArray[indexPath.section][indexPath.row];
+            NSString *userName = self.needDeleteData[indexPaths.count - i - 1];
             
             //删除
             if (indexPath.section == 1) {//黑名单删除

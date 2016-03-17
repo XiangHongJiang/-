@@ -448,6 +448,8 @@
 		BCA4FE061C9945AF0047FEBE /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BCA4FE051C9945AF0047FEBE /* libstdc++.6.0.9.tbd */; };
 		BCA4FFCD1C99BD6D0047FEBE /* XHDDOnlineChatFunctionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA4FFCC1C99BD6D0047FEBE /* XHDDOnlineChatFunctionView.m */; };
 		BCA4FFD11C99BD9F0047FEBE /* XHDDOnlineChatFunctionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCA4FFD01C99BD9F0047FEBE /* XHDDOnlineChatFunctionView.xib */; };
+		BCA4FFD41C9AF0120047FEBE /* XHDDOnlineChatAddFriendController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA4FFD31C9AF0120047FEBE /* XHDDOnlineChatAddFriendController.m */; };
+		BCA4FFDB1C9AF6500047FEBE /* XHDDOnlineChatAddFriendController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCA4FFDA1C9AF6500047FEBE /* XHDDOnlineChatAddFriendController.xib */; };
 		BCBBEF2D1C8D206800485428 /* XHDDOnlineFunPlayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBBEF2C1C8D206800485428 /* XHDDOnlineFunPlayModel.m */; };
 		BCC58FCB1C97E7700071FC55 /* UIImageView+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC58FAD1C97E7700071FC55 /* UIImageView+Addition.m */; };
 		BCC58FCC1C97E7700071FC55 /* UIImageView+BetterFace.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC58FAF1C97E7700071FC55 /* UIImageView+BetterFace.m */; };
@@ -1402,6 +1404,9 @@
 		BCA4FFCB1C99BD6D0047FEBE /* XHDDOnlineChatFunctionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHDDOnlineChatFunctionView.h; sourceTree = "<group>"; };
 		BCA4FFCC1C99BD6D0047FEBE /* XHDDOnlineChatFunctionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHDDOnlineChatFunctionView.m; sourceTree = "<group>"; };
 		BCA4FFD01C99BD9F0047FEBE /* XHDDOnlineChatFunctionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHDDOnlineChatFunctionView.xib; sourceTree = "<group>"; };
+		BCA4FFD21C9AF0120047FEBE /* XHDDOnlineChatAddFriendController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHDDOnlineChatAddFriendController.h; sourceTree = "<group>"; };
+		BCA4FFD31C9AF0120047FEBE /* XHDDOnlineChatAddFriendController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHDDOnlineChatAddFriendController.m; sourceTree = "<group>"; };
+		BCA4FFDA1C9AF6500047FEBE /* XHDDOnlineChatAddFriendController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHDDOnlineChatAddFriendController.xib; sourceTree = "<group>"; };
 		BCBBEF2B1C8D206800485428 /* XHDDOnlineFunPlayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHDDOnlineFunPlayModel.h; sourceTree = "<group>"; };
 		BCBBEF2C1C8D206800485428 /* XHDDOnlineFunPlayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHDDOnlineFunPlayModel.m; sourceTree = "<group>"; };
 		BCC58FAC1C97E7700071FC55 /* UIImageView+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Addition.h"; sourceTree = "<group>"; };
@@ -1822,6 +1827,9 @@
 			children = (
 				BC014A0E1C8B05F900AA4C45 /* XHDDOnlineChatController.h */,
 				BC014A0F1C8B05F900AA4C45 /* XHDDOnlineChatController.m */,
+				BCA4FFD21C9AF0120047FEBE /* XHDDOnlineChatAddFriendController.h */,
+				BCA4FFD31C9AF0120047FEBE /* XHDDOnlineChatAddFriendController.m */,
+				BCA4FFDA1C9AF6500047FEBE /* XHDDOnlineChatAddFriendController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -4320,6 +4328,7 @@
 				BC1AB03D1C8C0BE40007EDF4 /* 015@2x.png in Resources */,
 				BC1AB0691C8C0BE40007EDF4 /* 059@2x.png in Resources */,
 				BCF1E31C1C9298E600CA3338 /* Contents.json in Resources */,
+				BCA4FFDB1C9AF6500047FEBE /* XHDDOnlineChatAddFriendController.xib in Resources */,
 				BCF1E3951C92994700CA3338 /* login_sina_icon@3x.png in Resources */,
 				BCF1E22F1C91E16400CA3338 /* XHDDOnlineJokeCell.xib in Resources */,
 				BC1AB05A1C8C0BE40007EDF4 /* 044@2x.png in Resources */,
@@ -4422,6 +4431,7 @@
 				BC370F441C9548FD00D7A81C /* NSObject+RACSelectorSignal.m in Sources */,
 				BCC58FF41C97F2580071FC55 /* UIImage+FileName.m in Sources */,
 				BCC58FF71C97F2580071FC55 /* UIImage+RoundedCorner.m in Sources */,
+				BCA4FFD41C9AF0120047FEBE /* XHDDOnlineChatAddFriendController.m in Sources */,
 				BC370D481C950FFF00D7A81C /* UIView+Extension.m in Sources */,
 				BC370FA21C959DE600D7A81C /* XHDDOnlineJokeDetailController.m in Sources */,
 				BC370F8A1C9548FD00D7A81C /* UIStepper+RACSignalSupport.m in Sources */,

@@ -14,7 +14,7 @@
 #import "XHDDOnlineChatFunctionView.h"
 #import "XHDDOnlineChatAddFriendController.h"
 
-@interface XHDDOnlineChatController ()<UIScrollViewDelegate>
+@interface XHDDOnlineChatController ()<UIScrollViewDelegate,EMContactManagerDelegate,UIAlertViewDelegate>
 /** *  消息btn */
 @property (nonatomic, weak) UIButton *leftBtn;
 /** *  联系人btn */
@@ -64,13 +64,24 @@
     //    self.navigationController.navigationBar.backgroundColor = [UIColor blueColor];
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0.000 green:0.502 blue:1.000 alpha:1.000];
     
-    //请求数据
+    //监听好友回调
+    [self addFriendDelegate];
+    
+    //请求联系人数据
     [self requestContactsDataArray];
+    
+    //请求消息数据
     
     //添加下拉刷新
     [self addRefresh];
     
 }
+
+- (void)addFriendDelegate{
+    //注册好友回调
+    [[EMClient sharedClient].contactManager addDelegate:self delegateQueue:nil];
+}
+
 #pragma mark - 添加刷新
 /** *  添加刷新 */
 - (void)addRefresh{
@@ -239,6 +250,8 @@
         self.rightBtn.selected = NO;
         self.leftBtn.selected = YES;
     }
+    
+    [self.view endEditing:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -288,10 +301,68 @@
 
         });
         
-        
-
     });
     
+}
+#pragma mark - 监听好友申请信息
+/*!
+ *  用户A发送加用户B为好友的申请，用户B会收到这个回调
+ *
+ *  @param aUsername   用户名
+ *  @param aMessage    附属信息
+ */
+- (void)didReceiveFriendInvitationFromUsername:(NSString *)aUsername
+                                       message:(NSString *)aMessage{
+
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:aUsername message:[NSString stringWithFormat:@"申请添加你为好友:\n%@",aMessage] delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"同意", @"拒绝",nil];
+    
+    [alertView show];
     
 }
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+
+    if (buttonIndex == 1) {
+        
+        EMError *error = [[EMClient sharedClient].contactManager acceptInvitationForUsername:alertView.title];
+        if (!error) {
+            NSLog(@"同意添加");
+
+            [self.contactsDataArray[0] removeObject:alertView.title];
+            [self.contactsDataArray[0] addObject:alertView.title];
+            
+            self.contactsTableView.contactsArray = self.contactsDataArray;
+            
+        }
+    }
+    else
+    {
+        EMError *error = [[EMClient sharedClient].contactManager declineInvitationForUsername:alertView.title];
+        if (!error) {
+            NSLog(@"拒绝添加");
+        }
+        
+    }
+}
+/*!
+ @method
+ @brief 用户A发送加用户B为好友的申请，用户B同意后，用户A会收到这个回调
+ */
+- (void)didReceiveAgreedFromUsername:(NSString *)aUsername{
+
+    [SVProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"%@ 同意了好友请求",aUsername]];
+    
+    [self.contactsDataArray[0] removeObject:aUsername];
+    [self.contactsDataArray[0] addObject:aUsername];
+    self.contactsTableView.contactsArray = self.contactsDataArray;
+}
+
+/*!
+ @method
+ @brief 用户A发送加用户B为好友的申请，用户B拒绝后，用户A会收到这个回调
+ */
+- (void)didReceiveDeclinedFromUsername:(NSString *)aUsername{
+
+        [SVProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"%@ 拒绝了好友请求",aUsername]];
+}
+
 @end

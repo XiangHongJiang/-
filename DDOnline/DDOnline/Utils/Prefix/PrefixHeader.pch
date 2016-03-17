@@ -56,4 +56,7 @@
 //
 #import "ReactiveCocoa.h"
 
+//
+#import "SVProgressHUD.h"
+
 #endif /* PrefixHeader_pch */

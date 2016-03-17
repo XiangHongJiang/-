@@ -18,7 +18,9 @@
 #import "iflyMSC/IFlyMSC.h"
 #import "JPUSHService.h"
 
-@interface AppDelegate ()
+#import "EMSDKFull.h"
+
+@interface AppDelegate ()<EMClientDelegate/*回调*/>
 
 @end
 
@@ -27,16 +29,19 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
    
-    //1.设置根视图控制器
-    [self setRootViewController];
-
-     //2.语音识别设置
+    //1.语音识别设置
     [self speechRecognizeServiceInit];
     
-    //3.添加极光推送
+    //2.添加极光推送
     [self configJPushService:launchOptions];
   
-
+    //3.环信通信
+    [self configEMob:launchOptions];//appKey
+    [self registEMAccount];//注册
+    [self signInEM];//登录
+    
+    //4.设置根视图控制器
+    [self setRootViewController];
     
     return YES;
 }
@@ -185,35 +190,122 @@
       [JPUSHService showLocalNotificationAtFront:notification identifierKey:nil];
 
 }
-#pragma mark - other
+#pragma mark - 环信相关
+//4.0.1//配置
+- (void)configEMob:(NSDictionary *)launchOptions{
 
-- (void)applicationWillResignActive:(UIApplication *)application {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+    //1.注册appKey
+    //AppKey:注册的appKey，详细见下面注释。
+    //apnsCertName:推送证书名(不需要加后缀)，详细见下面注释。
+    EMOptions *options = [EMOptions optionsWithAppkey:EM_AppKey];
+    options.apnsCertName = EM_ApnsCertName;
+    [[EMClient sharedClient] initializeSDKWithOptions:options];
+    
 }
+//4.0.2//注册环信
+- (void)registEMAccount{
+    
+    EMError *error = [[EMClient sharedClient] registerWithUsername:@"xianghongjiang" password:@"123456"];
+    if (error==nil) {
+        NSLog(@"注册成功");
+    }else{
+    
+        JLog(@"%@",error.errorDescription);
+    }
 
+}
+//4.0.3登录环信
+- (void)signInEM{
+    
+    //需要登录时判断是否自动登录
+//    BOOL isAutoLogin = [EMClient sharedClient].options.isAutoLogin;
+//    if (isAutoLogin) {//如果自动登录直接返回
+//        return;
+//    }
+    //否则登录
+    EMError *error = [[EMClient sharedClient] loginWithUsername:@"xianghongjiang" password:@"123456"];
+    if (!error) {//成功设置下次自动登录
+        JLog(@"登陆成功");
+        //设置下次自动登录
+//        [[EMClient sharedClient].options setIsAutoLogin:YES];
+        //设置自动登录代理
+//        [[EMClient sharedClient] addDelegate:self delegateQueue:nil];
+    }
+}
+//自动登录结果回调
+- (void)didAutoLoginWithError:(EMError *)aError{
+    JLog(@"%@",aError);
+    
+}
+//掉线重连
+- (void)didConnectionStateChanged:(EMConnectionState)aConnectionState{
+    /*
+     *  SDK连接服务器的状态变化时会接收到该回调
+     *
+     *  有以下几种情况, 会引起该方法的调用:
+     *  1. 登录成功后, 手机无法上网时, 会调用该回调
+     *  2. 登录成功后, 网络状态变化时, 会调用该回调
+     *
+     *  @param aConnectionState 当前状态
+     */
+    if (aConnectionState == EMConnectionConnected) {//已连接
+        JLog(@"已连接");
+        return;
+    }
+    if (aConnectionState == EMConnectionDisconnected)//未连接
+    {
+        JLog(@"未连接");
+        
+        //连接
+    
+    }
+    
+}
+//退出登录
+- (void)signOutEM{
+    EMError *error = [[EMClient sharedClient] logout:YES];
+    if (!error) {
+        NSLog(@"退出成功");
+    }
+}
+//被动退出（被挤下线）
+- (void)didLoginFromOtherDevice{
+    
+    JLog(@"被挤下线");
+}
+- (void)didRemovedFromServer{
+    JLog(@"当前登录账号已经被从服务器端删除时会收到该回调");
+}
+#pragma mark - other
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     
     //进入后台，让上标为0;
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
-
+    
+    //4.0.2
+    [[EMClient sharedClient] applicationDidEnterBackground:application];
 }
-
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     //进入前台，让上标为0;
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
-
+    
+    [[EMClient sharedClient] applicationWillEnterForeground:application];
+    
 }
-
+- (void)applicationWillResignActive:(UIApplication *)application {
+    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
+    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+}
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    
+    //退出登录
+    [self signOutEM];
 }
 
 @end

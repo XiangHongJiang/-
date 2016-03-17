@@ -9,6 +9,10 @@
 #ifndef Const_h
 #define Const_h
 
+#pragma mark - 环信通信
+#define EM_AppKey @"mryel#supermryel"
+#define EM_ApnsCertName @"DDOnlinePushDev"
+
 #pragma mark - 极光推送
 
 #define JPushAppKey @"b83d9e909e58142cb5c5d6d0"

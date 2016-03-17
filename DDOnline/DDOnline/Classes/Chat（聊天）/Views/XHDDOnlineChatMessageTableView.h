@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface XHDDOnlineChatMessageTableView : UITableView
+/**
+ *  消息数组
+ */
+@property (nonatomic, copy) NSArray *messageArray;
 
 + (instancetype)chatMessageTableView;
 

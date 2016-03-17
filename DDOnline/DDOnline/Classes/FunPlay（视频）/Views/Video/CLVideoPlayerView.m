@@ -108,6 +108,10 @@
     [self.player replaceCurrentItemWithPlayerItem:item];
     
     //开始播放
+    if(urlString.length == 0){
+        return;
+    }
+    
     [self.player play];
     
     

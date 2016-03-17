@@ -32,13 +32,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *playcountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *videotimeLabel;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
-
 /**
  *  playView
  */
 @property (nonatomic, weak) CLVideoPlayerView *playView;
-
-
 
 @end
 
@@ -51,10 +48,6 @@
         CLVideoPlayerView *view = [CLVideoPlayerView videoPlayerView];
         view.frame = CGRectMake(0, 0, JScreenWidth - 20, 200);
         self.playView = view;
-        
-        UILongPressGestureRecognizer *lpGR  = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(playend:)];
-        lpGR.minimumPressDuration = 1.5;
-        [view addGestureRecognizer:lpGR];
         
         [self.gifImageView addSubview:view];
     }
@@ -75,31 +68,24 @@
 - (IBAction)playVideoAction:(UIButton *)sender {
     
     JLog(@"播放");
+    [self bringSubviewToFront:self.playView];
     
-    [self sendSubviewToBack:sender];
+    self.selected = !self.selected;
+    if (self.selected == NO) {
+        [self.playView.player pause];
+        [self sendSubviewToBack:self.playView];
+        return;
+    }
+    else if (self.playView.urlString.length >0){
+    
+        [self.playView.player play];
+        return;
+    }
     
     self.playView.urlString = [self.videoDetailModel.video.video firstObject];
     
 }
 
-- (void)playend:(UILongPressGestureRecognizer *)lpGR{
-    
- 
-    if (lpGR.state == UIGestureRecognizerStateBegan) {
-        
-        [self bringSubviewToFront:self.playVideoBtn];
-
-        
-        [self.playView.player pause];
-        [self.playView.playerLayer removeFromSuperlayer];
-        self.playView.player = nil;
-        self.playView.playerLayer = nil;
-        [self.playView removeFromSuperview];
-        
-    }
-
-
-}
 
 - (void)setVideoDetailModel:(JokeBase_List *)videoDetailModel{
 

@@ -56,14 +56,13 @@
 }
 
 + (id)jokeVideoCellWithTableView:(UITableView *)tableView{
-
+    
     NSString * className = NSStringFromClass([self class]);
     UINib * nib = [UINib nibWithNibName:className bundle:nil];
     [tableView registerNib:nib forCellReuseIdentifier:className];
     return [tableView dequeueReusableCellWithIdentifier:className];
 
 }
-
 //点击播放
 - (IBAction)playVideoAction:(UIButton *)sender {
     

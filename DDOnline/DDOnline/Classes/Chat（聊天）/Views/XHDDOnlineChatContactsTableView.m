@@ -7,6 +7,7 @@
 //
 
 #import "XHDDOnlineChatContactsTableView.h"
+#import "EMSDKFull.h"
 
 @interface XHDDOnlineChatContactsTableView()<UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate>
 {
@@ -154,7 +155,6 @@
        
         //判断是否展开
         if ([self.sectionState[section] boolValue]== YES) {//判断是否展开
-            
             return 0;
         }
     }
@@ -222,9 +222,10 @@
     
     NSArray *indexPaths = self.indexPathsForSelectedRows;
     //这个数组里的顺序是按照选中顺序排列的
-    
+ 
     //要先对数组进行排序 //返回一个排序好的数组, 原数组不变
     NSArray *orderedArray = [indexPaths sortedArrayUsingSelector:@selector(compare:)];
+    
     
     //获取当前数据源
     NSMutableArray *dataSource = [NSMutableArray arrayWithArray:self.contactsArray];
@@ -232,19 +233,88 @@
     //先删除数据源
     for (NSInteger i = orderedArray.count - 1; i >= 0; i --) {//每次先删除最后一个, 防止越界删除
         
-        NSIndexPath *indexPath = indexPaths[i];
+        NSIndexPath *indexPath = orderedArray[i];
         //找到选中行
         
-        //从数据源中删除
-        [dataSource[indexPath.section] removeObjectAtIndex:indexPath.row];
+        JLog(@"%@",indexPath);
         
+        //1.从数据源中删除
+        [dataSource[indexPath.section] removeObjectAtIndex:indexPath.row];
     }
     
     _tempDataArray = dataSource;
     //刷新tableView
     [self reloadData];
-    
     self.enterEditting = NO;
     
+    JLog(@"%d",orderedArray.count);
+    JLog(@"%d",self.contactsArray.count);
+    
+    
+    [self deleteFromNet:orderedArray];
+    
+
+
 }
+#pragma mark -服务器删除好友
+- (void)deleteFromNet:(NSArray *)indexPaths{
+
+    //如果删除成功：则不用刷新tableView了，因为已经刷新过
+    dispatch_async(JGlobalQueue, ^{
+       
+        BOOL haveDelFail = NO;
+        
+        for (NSInteger i = indexPaths.count - 1; i >= 0; i --) {//每次先删除最后一个, 防止越界删除
+            
+            NSIndexPath *indexPath = indexPaths[i];
+          
+            
+            //找到删除的名字
+            NSString *userName = self.contactsArray[indexPath.section][indexPath.row];
+            
+            //删除
+            if (indexPath.section == 1) {//黑名单删除
+                
+                EMError *error = [[EMClient sharedClient].contactManager removeUserFromBlackList:userName];
+                if (!error) {
+                    NSLog(@"删除成功");
+                }
+                else{
+                    
+                    haveDelFail = YES;
+                    JLog(@"删除失败");
+                }
+                
+            }
+            else{//好友删除
+                    // 删除好友
+                    EMError *error = [[EMClient sharedClient].contactManager deleteContact:userName];
+                    if (!error) {
+                        NSLog(@"删除成功");
+                    }
+                    else{
+                    
+                        haveDelFail = YES;
+                        JLog(@"删除失败");
+                    }
+                
+                }
+        }
+        
+        //所有的删除都执行完毕后判定是否有删除没成功的，如果有没成功的，则从服务器重新刷新拉取
+        if (haveDelFail) {
+
+            //1.到主线程所在的队列
+            dispatch_async(dispatch_get_main_queue(), ^{
+   
+                [self.mj_header beginRefreshing];
+                
+            });
+
+        }
+        
+    });
+
+}
+
 @end

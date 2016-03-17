@@ -106,9 +106,7 @@
     [XHNetHelp getDataWithPath:[NSString stringWithFormat:self.jokeUrlStr,_requestCount] andParams:nil andComplete:^(BOOL succeed, id result) {
         
         if (succeed) {
-            
             NSDictionary *modelDict = [NSJSONSerialization JSONObjectWithData:result options:NSJSONReadingMutableContainers error:nil];
-            
             
             //存储数据模型
             XHDDOnlineJokeBaseModel *jokeBaseModel = [XHDDOnlineJokeBaseModel mj_objectWithKeyValues:modelDict];
@@ -123,13 +121,10 @@
             
         }
         else{
-            
             JLog(@"请求失败：%@",result);
         }
     }];
-    
 }
-
 #pragma mark - tableView dataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     

@@ -247,36 +247,49 @@
 
     [self.contactsDataArray removeAllObjects];
     
-    //获取好友列表
-    EMError *error = nil;
-    NSArray *userList = [[EMClient sharedClient].contactManager getContactsFromServerWithError:&error];
-    if (!error) {
-     NSLog(@"获取好友成功 -- %@",userList);
-    }
-    else{
-        JLog(@"获取联系人失败");
-    }
-    
-    //获取黑名单列表
-    EMError *error1 = nil;
-    NSArray *blackList = [[EMClient sharedClient].contactManager getBlackListFromServerWithError:&error1];
-    if (!error1) {
-        NSLog(@"获取黑名单成功 -- %@",blackList);
-    }
-    else{
-        JLog(@"获取黑名单失败");
-    }
-    
-    if (userList != nil && blackList != nil) {
-        //添加好友与黑名单列表
-        [self.contactsDataArray addObject:userList];
-        [self.contactsDataArray addObject:blackList];
-    }
-    
-    [self.contactsTableView.mj_header endRefreshing];
+    dispatch_async(JGlobalQueue, ^{
+        
+        //获取好友列表
+        EMError *error = nil;
+        NSArray *userList = [[EMClient sharedClient].contactManager getContactsFromServerWithError:&error];
+        if (!error) {
+            NSLog(@"获取好友成功 -- %@",userList);
+        }
+        else{
+            JLog(@"获取联系人失败");
+        }
+        
+        //获取黑名单列表
+        EMError *error1 = nil;
+        NSArray *blackList = [[EMClient sharedClient].contactManager getBlackListFromServerWithError:&error1];
+        if (!error1) {
+            NSLog(@"获取黑名单成功 -- %@",blackList);
+        }
+        else{
+            JLog(@"获取黑名单失败");
+        }
+        
+        if (userList != nil && blackList != nil) {
+            //添加好友与黑名单列表
+            [self.contactsDataArray addObject:userList];
+            [self.contactsDataArray addObject:blackList];
+        }
+        
+        
+        //回主线程
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            [self.contactsTableView.mj_header endRefreshing];
 
-    //赋值联系人tableView
-    self.contactsTableView.contactsArray = self.contactsDataArray;
+            //赋值联系人tableView
+            self.contactsTableView.contactsArray = self.contactsDataArray;
+
+        });
+        
+        
+
+    });
+    
     
 }
 @end

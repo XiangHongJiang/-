@@ -145,6 +145,10 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 #else
 #define XHLog(...)
 #endif
+
+//系统globalQueue
+#define JGlobalQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+
 #pragma mark -- 链接和 key
 
 /**标识*/

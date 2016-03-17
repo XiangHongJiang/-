@@ -205,7 +205,7 @@
 //4.0.2//注册环信
 - (void)registEMAccount{
     
-    EMError *error = [[EMClient sharedClient] registerWithUsername:@"xiachenglong" password:@"123456"];
+    EMError *error = [[EMClient sharedClient] registerWithUsername:@"jiangxianghong" password:@"123456"];
     if (error==nil) {
         NSLog(@"注册成功");
     }else{
@@ -223,7 +223,7 @@
 //        return;
 //    }
     //否则登录
-    EMError *error = [[EMClient sharedClient] loginWithUsername:@"xiachenglong" password:@"123456"];
+    EMError *error = [[EMClient sharedClient] loginWithUsername:@"jiangxianghong" password:@"123456"];
     
     if (!error) {//成功设置下次自动登录
         JLog(@"登陆成功");

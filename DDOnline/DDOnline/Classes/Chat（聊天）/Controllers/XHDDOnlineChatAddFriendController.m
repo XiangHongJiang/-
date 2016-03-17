@@ -50,7 +50,7 @@
     EMError *error = [[EMClient sharedClient].contactManager addContact:self.userNameTF.text message:self.beizhuTextView.text];
     if (!error) {
         NSLog(@"发送添加请求成功");        
-        [SVProgressHUD showWithStatus:@"发送添加请求成功"];
+        [SVProgressHUD showSuccessWithStatus:@"发送添加请求成功"];
     }
     self.userNameTF.text = @"";
     self.beizhuTextView.text = @"";

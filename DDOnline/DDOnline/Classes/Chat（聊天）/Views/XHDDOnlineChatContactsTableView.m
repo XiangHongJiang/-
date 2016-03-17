@@ -8,6 +8,7 @@
 
 #import "XHDDOnlineChatContactsTableView.h"
 #import "EMSDKFull.h"
+#import "XHDDOnlineChatDetailController.h"
 
 @interface XHDDOnlineChatContactsTableView()<UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate>
 {
@@ -185,6 +186,14 @@
     cell.textLabel.text = _tempDataArray[indexPath.section][indexPath.row];
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    XHDDOnlineChatDetailController *chatCtrl = [[XHDDOnlineChatDetailController alloc] init];
+    
+    chatCtrl.navigationItem.title = self.contactsArray[indexPath.section][indexPath.row];
+    [self.viewController.navigationController pushViewController:chatCtrl animated:YES];
 }
 #pragma mark - 返回组头
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{

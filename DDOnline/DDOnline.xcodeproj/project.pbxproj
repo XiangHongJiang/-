@@ -11,7 +11,6 @@
 		BC0147C51C8AFCAF00AA4C45 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = BC0147C41C8AFCAF00AA4C45 /* AppDelegate.mm */; };
 		BC0147C81C8AFCAF00AA4C45 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0147C71C8AFCAF00AA4C45 /* ViewController.m */; };
 		BC0147CB1C8AFCAF00AA4C45 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC0147C91C8AFCAF00AA4C45 /* Main.storyboard */; };
-		BC0147CD1C8AFCAF00AA4C45 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC0147CC1C8AFCAF00AA4C45 /* Assets.xcassets */; };
 		BC0147DB1C8AFCAF00AA4C45 /* DDOnlineTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0147DA1C8AFCAF00AA4C45 /* DDOnlineTests.m */; };
 		BC01481C1C8AFED600AA4C45 /* NSObject+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = BC01480F1C8AFED600AA4C45 /* NSObject+Extension.m */; };
 		BC01481D1C8AFED600AA4C45 /* UINavigationController+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0148111C8AFED600AA4C45 /* UINavigationController+Extension.m */; };
@@ -450,6 +449,9 @@
 		BCA4FFD11C99BD9F0047FEBE /* XHDDOnlineChatFunctionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCA4FFD01C99BD9F0047FEBE /* XHDDOnlineChatFunctionView.xib */; };
 		BCA4FFE41C9B00FE0047FEBE /* XHDDOnlineChatAddFriendController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA4FFE21C9B00FE0047FEBE /* XHDDOnlineChatAddFriendController.m */; };
 		BCA4FFE51C9B00FE0047FEBE /* XHDDOnlineChatAddFriendController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCA4FFE31C9B00FE0047FEBE /* XHDDOnlineChatAddFriendController.xib */; };
+		BCA4FFE91C9B1BF30047FEBE /* XHDDOnlineChatDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA4FFE71C9B1BF30047FEBE /* XHDDOnlineChatDetailController.m */; };
+		BCA4FFEA1C9B1BF30047FEBE /* XHDDOnlineChatDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCA4FFE81C9B1BF30047FEBE /* XHDDOnlineChatDetailController.xib */; };
+		BCA4FFEC1C9B1FCF0047FEBE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCA4FFEB1C9B1FCF0047FEBE /* Assets.xcassets */; };
 		BCBBEF2D1C8D206800485428 /* XHDDOnlineFunPlayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBBEF2C1C8D206800485428 /* XHDDOnlineFunPlayModel.m */; };
 		BCC58FCB1C97E7700071FC55 /* UIImageView+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC58FAD1C97E7700071FC55 /* UIImageView+Addition.m */; };
 		BCC58FCC1C97E7700071FC55 /* UIImageView+BetterFace.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC58FAF1C97E7700071FC55 /* UIImageView+BetterFace.m */; };
@@ -695,7 +697,6 @@
 		BC0147C61C8AFCAF00AA4C45 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		BC0147C71C8AFCAF00AA4C45 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		BC0147CA1C8AFCAF00AA4C45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		BC0147CC1C8AFCAF00AA4C45 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BC0147D11C8AFCAF00AA4C45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC0147D61C8AFCAF00AA4C45 /* DDOnlineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DDOnlineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC0147DA1C8AFCAF00AA4C45 /* DDOnlineTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDOnlineTests.m; sourceTree = "<group>"; };
@@ -1407,6 +1408,10 @@
 		BCA4FFE11C9B00FE0047FEBE /* XHDDOnlineChatAddFriendController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHDDOnlineChatAddFriendController.h; sourceTree = "<group>"; };
 		BCA4FFE21C9B00FE0047FEBE /* XHDDOnlineChatAddFriendController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHDDOnlineChatAddFriendController.m; sourceTree = "<group>"; };
 		BCA4FFE31C9B00FE0047FEBE /* XHDDOnlineChatAddFriendController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHDDOnlineChatAddFriendController.xib; sourceTree = "<group>"; };
+		BCA4FFE61C9B1BF30047FEBE /* XHDDOnlineChatDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHDDOnlineChatDetailController.h; sourceTree = "<group>"; };
+		BCA4FFE71C9B1BF30047FEBE /* XHDDOnlineChatDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHDDOnlineChatDetailController.m; sourceTree = "<group>"; };
+		BCA4FFE81C9B1BF30047FEBE /* XHDDOnlineChatDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHDDOnlineChatDetailController.xib; sourceTree = "<group>"; };
+		BCA4FFEB1C9B1FCF0047FEBE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BCBBEF2B1C8D206800485428 /* XHDDOnlineFunPlayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHDDOnlineFunPlayModel.h; sourceTree = "<group>"; };
 		BCBBEF2C1C8D206800485428 /* XHDDOnlineFunPlayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHDDOnlineFunPlayModel.m; sourceTree = "<group>"; };
 		BCC58FAC1C97E7700071FC55 /* UIImageView+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Addition.h"; sourceTree = "<group>"; };
@@ -1782,8 +1787,8 @@
 				BC0147C41C8AFCAF00AA4C45 /* AppDelegate.mm */,
 				BC0147C61C8AFCAF00AA4C45 /* ViewController.h */,
 				BC0147C71C8AFCAF00AA4C45 /* ViewController.m */,
+				BCA4FFEB1C9B1FCF0047FEBE /* Assets.xcassets */,
 				BC0147C91C8AFCAF00AA4C45 /* Main.storyboard */,
-				BC0147CC1C8AFCAF00AA4C45 /* Assets.xcassets */,
 				BC0147D11C8AFCAF00AA4C45 /* Info.plist */,
 			);
 			name = Application;
@@ -1830,6 +1835,9 @@
 				BCA4FFE11C9B00FE0047FEBE /* XHDDOnlineChatAddFriendController.h */,
 				BCA4FFE21C9B00FE0047FEBE /* XHDDOnlineChatAddFriendController.m */,
 				BCA4FFE31C9B00FE0047FEBE /* XHDDOnlineChatAddFriendController.xib */,
+				BCA4FFE61C9B1BF30047FEBE /* XHDDOnlineChatDetailController.h */,
+				BCA4FFE71C9B1BF30047FEBE /* XHDDOnlineChatDetailController.m */,
+				BCA4FFE81C9B1BF30047FEBE /* XHDDOnlineChatDetailController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -4077,7 +4085,6 @@
 				BCF1E2CC1C9298E600CA3338 /* Contents.json in Resources */,
 				BC50CA2C1C94354C00DEF3CC /* XHSearchCtrlView.xib in Resources */,
 				BC1AB03C1C8C0BE40007EDF4 /* 014@2x.png in Resources */,
-				BC0147CD1C8AFCAF00AA4C45 /* Assets.xcassets in Resources */,
 				BCF1E3771C92994700CA3338 /* login_QQ_icon.png in Resources */,
 				BC1AB0981C8C0BE40007EDF4 /* bowtie@2x.png in Resources */,
 				BC1AB0591C8C0BE40007EDF4 /* 043@2x.png in Resources */,
@@ -4267,6 +4274,7 @@
 				BCF1E3101C9298E600CA3338 /* playButtonPlay@3x.png in Resources */,
 				BCF1E2D51C9298E600CA3338 /* cellmorebtnclick.png in Resources */,
 				BCF1E2191C91C2A700CA3338 /* navicon-40@3x.png in Resources */,
+				BCA4FFEC1C9B1FCF0047FEBE /* Assets.xcassets in Resources */,
 				BC1AAFB01C8C0BD40007EDF4 /* userinfo_icon_male.png in Resources */,
 				BCF1E2F51C9298E600CA3338 /* Contents.json in Resources */,
 				BCF1E2F41C9298E600CA3338 /* mainCellCommentClick@2x.png in Resources */,
@@ -4281,6 +4289,7 @@
 				BC014A851C8B242400AA4C45 /* TabBar_Client_2_p.png in Resources */,
 				BCF1E3931C92994700CA3338 /* login_sina_icon.png in Resources */,
 				BCF1E3041C9298E600CA3338 /* playButton@3x.png in Resources */,
+				BCA4FFEA1C9B1BF30047FEBE /* XHDDOnlineChatDetailController.xib in Resources */,
 				BC1AAFA21C8C0BC40007EDF4 /* sidemenu-day@3x.png in Resources */,
 				BCF1E31A1C9298E600CA3338 /* see-big-picture-background.png in Resources */,
 				BCF1E2211C91C45F00CA3338 /* favoicon-40@3x.png in Resources */,
@@ -4479,6 +4488,7 @@
 				BCC58FF21C97F2580071FC55 /* UIImage+Capture.m in Sources */,
 				BC370F421C9548FD00D7A81C /* NSObject+RACLifting.m in Sources */,
 				BC370F741C9548FD00D7A81C /* RACSubscriptingAssignmentTrampoline.m in Sources */,
+				BCA4FFE91C9B1BF30047FEBE /* XHDDOnlineChatDetailController.m in Sources */,
 				BC50CA341C94527700DEF3CC /* IATConfig.m in Sources */,
 				BC01499A1C8B014A00AA4C45 /* UIView+MJExtension.m in Sources */,
 				BC0149881C8B014A00AA4C45 /* MJRefreshAutoFooter.m in Sources */,

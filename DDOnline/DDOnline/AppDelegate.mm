@@ -223,7 +223,7 @@
 //        return;
 //    }
     //否则登录
-    EMError *error = [[EMClient sharedClient] loginWithUsername:@"jiangxianghong" password:@"123456"];
+    EMError *error = [[EMClient sharedClient] loginWithUsername:@"xianghongjiang" password:@"123456"];
     
     if (!error) {//成功设置下次自动登录
         JLog(@"登陆成功");

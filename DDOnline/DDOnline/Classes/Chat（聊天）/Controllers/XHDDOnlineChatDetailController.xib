@@ -70,7 +70,7 @@
                             </connections>
                         </button>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="yFj-b1-Xt5">
-                            <rect key="frame" x="49" y="7" width="215" height="30"/>
+                            <rect key="frame" x="44" y="7" width="225" height="30"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="pkZ-Pq-WOv"/>
@@ -89,8 +89,8 @@
                         <constraint firstAttribute="bottom" secondItem="xEj-Nd-fqv" secondAttribute="bottom" constant="5" id="jce-tE-7gO"/>
                         <constraint firstAttribute="trailing" secondItem="xEj-Nd-fqv" secondAttribute="trailing" constant="10" id="kda-xG-m3b"/>
                         <constraint firstAttribute="bottom" secondItem="j4G-C8-c9A" secondAttribute="bottom" constant="5" id="nZJ-bl-jrR"/>
-                        <constraint firstItem="yFj-b1-Xt5" firstAttribute="leading" secondItem="CgO-ja-K6I" secondAttribute="trailing" constant="10" id="nls-Tb-OeR"/>
-                        <constraint firstItem="j4G-C8-c9A" firstAttribute="leading" secondItem="yFj-b1-Xt5" secondAttribute="trailing" constant="10" id="s3l-6w-tPT"/>
+                        <constraint firstItem="yFj-b1-Xt5" firstAttribute="leading" secondItem="CgO-ja-K6I" secondAttribute="trailing" constant="5" id="nls-Tb-OeR"/>
+                        <constraint firstItem="j4G-C8-c9A" firstAttribute="leading" secondItem="yFj-b1-Xt5" secondAttribute="trailing" constant="5" id="s3l-6w-tPT"/>
                         <constraint firstItem="yFj-b1-Xt5" firstAttribute="top" secondItem="u7w-UB-Wqu" secondAttribute="top" constant="7" id="xMP-qY-iqp"/>
                     </constraints>
                 </view>

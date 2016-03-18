@@ -10,6 +10,7 @@
 #import "XHUIFactory.h"
 #import "KeyBoardFrame.h"
 @interface XHSearchCtrlView()<UITableViewDataSource,UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomSoundViewBottomLayout;
 /** *  管理的底部语言输入视图 */
 @property (weak, nonatomic) IBOutlet UIView *bottomSoundView;
 /** *  管理的scrollView，用于添加热门搜索数据 */
@@ -39,9 +40,11 @@
     self.clearHistoryBtn.layer.borderWidth = 1;
     self.clearHistoryBtn.layer.cornerRadius = 3;
     //添加键盘弹起收回监听
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeSoundViewFrame:) name:UIKeyboardDidChangeFrameNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeSoundViewFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
   
+    //添加手势，取消输入
 }
+
 /**
  *  设置热门搜索数组
  */
@@ -180,19 +183,18 @@
     
     NSDictionary * info = notification.userInfo;
     CGRect rect =  [info[UIKeyboardFrameEndUserInfoKey] CGRectValue];//结束时键盘的frame位置
-    self.historySearchTableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+   
+    self.bottomSoundViewBottomLayout.constant = JScreenHeight - rect.origin.y;
     
-        self.bottomSoundView.y = rect.origin.y - 40 - JTopSpace;
-
-
-    if (rect.origin.y < JScreenHeight) {
-     self.historySearchTableView.contentInset = UIEdgeInsetsMake(0, 0, 20 + rect.size.height, 0);
-    }
-
+    [UIView animateWithDuration:0.25 animations:^{
+       
+        [self.bottomSoundView layoutIfNeeded];
+        [self.historySearchTableView layoutIfNeeded];
+    }];
+    
 }
 - (void)dealloc{
     //移除通知
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
-
 @end

@@ -46,13 +46,13 @@
 //        viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:<#(nonnull UIView *)#>]
     }
     
+//    viewController.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:nil action:nil];
+    
     //设置多层推出时隐藏TabBar
     if (self.childViewControllers.count > 0) {
-        
         viewController.hidesBottomBarWhenPushed= YES;
     }
-    
-    
+
     [super pushViewController:viewController animated:animated];
     
 }

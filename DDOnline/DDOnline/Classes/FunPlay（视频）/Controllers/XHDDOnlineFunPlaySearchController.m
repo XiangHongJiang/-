@@ -157,12 +157,14 @@
 /**搜索栏*/
 - (void)setupSearchBar{
     //creat
-    UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width - 10, 44)];
+    UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width - 100, 44)];
     //set
     searchBar.delegate = self;
     searchBar.showsCancelButton = YES;
     searchBar.placeholder = @"搜索你感兴趣的";
     self.searchBar = searchBar;
+    searchBar.returnKeyType = UIReturnKeyDone;
+    
     //add
     self.navigationItem.titleView = searchBar;
     
@@ -202,7 +204,9 @@
 }
 /**点击了键盘搜索*/
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
-    [self searchAction];
+   
+    [searchBar resignFirstResponder];
+    
 }
 /**点击了搜索按钮*/
 - (void)searchAction{
@@ -212,6 +216,8 @@
         
         JLog(@"搜索%@",self.searchBar.text);
     }
+    
+    //推出搜索结果控制器。pop当前控制器
     
 
 }

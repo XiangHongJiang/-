@@ -250,7 +250,6 @@
         self.rightBtn.selected = NO;
         self.leftBtn.selected = YES;
     }
-    
     [self.view endEditing:YES];
 }
 - (void)didReceiveMemoryWarning {
@@ -289,7 +288,6 @@
             [self.contactsDataArray addObject:userList];
             [self.contactsDataArray addObject:blackList];
         }
-        
         
         //回主线程
         dispatch_async(dispatch_get_main_queue(), ^{

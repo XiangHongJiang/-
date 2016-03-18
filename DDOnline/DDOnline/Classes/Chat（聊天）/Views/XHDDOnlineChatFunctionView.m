@@ -76,7 +76,6 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
-
     [self removeFromSuperview];
 #warning 这里可能会有问题。。。对象销毁。回调失败
     //进入相应的功能

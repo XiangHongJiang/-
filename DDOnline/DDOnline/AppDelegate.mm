@@ -26,7 +26,6 @@
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
    
     //1.语音识别设置
@@ -37,8 +36,6 @@
   
     //3.环信通信
     [self configEMob:launchOptions];//appKey
-    [self registEMAccount];//注册
-    [self signInEM];//登录
     
     //4.设置根视图控制器
     [self setRootViewController];
@@ -75,12 +72,11 @@
 }
 #pragma mark - 极光推送相关
 - (void)setJPushAlias{
-
 //    [JPUSHService setTags:@"1520" alias:@"150114" callbackSelector:<#(SEL)#> object:<#(id)#>]
-    
-    [JPUSHService setTags:nil alias:@"150114" fetchCompletionHandle:^(int iResCode, NSSet *iTags, NSString *iAlias) {
+
+    [JPUSHService setTags:nil alias:@"120" fetchCompletionHandle:^(int iResCode, NSSet *iTags, NSString *iAlias) {
         
-        // iResCode 为0 表示设置成功，6002 表示超时
+       	 // iResCode 为0 表示设置成功，6002 表示超时
         // 当设置别名失败的时候，重新调用此方法，继续设置，直到设置成功。
         
         if (iResCode != 0) {
@@ -213,30 +209,6 @@
         JLog(@"%@",error.errorDescription);
     }
 
-}
-//4.0.3登录环信
-- (void)signInEM{
-    
-    //需要登录时判断是否自动登录
-//    BOOL isAutoLogin = [EMClient sharedClient].options.isAutoLogin;
-//    if (isAutoLogin) {//如果自动登录直接返回
-//        return;
-//    }
-    //否则登录
-    EMError *error = [[EMClient sharedClient] loginWithUsername:@"xianghongjiang" password:@"123456"];
-    
-    if (!error) {//成功设置下次自动登录
-        JLog(@"登陆成功");
-        //设置下次自动登录
-//        [[EMClient sharedClient].options setIsAutoLogin:YES];
-        //设置自动登录代理
-//        [[EMClient sharedClient] addDelegate:self delegateQueue:nil];
-    }
-}
-//自动登录结果回调
-- (void)didAutoLoginWithError:(EMError *)aError{
-    JLog(@"%@",aError);
-    
 }
 //掉线重连
 - (void)didConnectionStateChanged:(EMConnectionState)aConnectionState{

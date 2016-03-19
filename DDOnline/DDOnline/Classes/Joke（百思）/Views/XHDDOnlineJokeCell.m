@@ -63,7 +63,7 @@
         default:
             break;
     }
-    //请求数据
+    
     [self requestData];
 }
 #pragma mark - 请求数据,下拉刷新

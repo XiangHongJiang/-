@@ -47,11 +47,11 @@
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    //请求数据
-    [self requestFunPlayData];
-    
     //添加下拉刷新
     [self addRefresh];
+    
+    //开始刷新
+    [self.funPlayTableView.mj_header beginRefreshing];
 
 }
 

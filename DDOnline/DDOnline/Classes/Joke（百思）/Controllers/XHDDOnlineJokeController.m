@@ -32,9 +32,6 @@
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    NSLog(@"%@",NSStringFromCGRect(self.view.bounds));
-    
-    
 }
 #pragma mark - lazyLoad
 - (NSArray *)quickNavNameArray{
@@ -48,7 +45,6 @@
 }
 
 #pragma mark - setupUI
-
 /**添加快速导航视图*/
 - (void)addQuickNavView{
 

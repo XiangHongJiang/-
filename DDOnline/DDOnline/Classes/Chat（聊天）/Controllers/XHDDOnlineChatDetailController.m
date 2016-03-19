@@ -13,6 +13,11 @@
 @interface XHDDOnlineChatDetailController ()<UITableViewDataSource,UITableViewDelegate,EMChatManagerDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomViewLayoutBottom;
 
+/**
+ *  当前会话
+ */
+@property (nonatomic, strong) EMConversation *currentConversation;
+
 @property (weak, nonatomic) IBOutlet UITableView *chatContentTableView;
 @property (weak, nonatomic) IBOutlet UITextView *inputMessageTextView;
 @property (weak, nonatomic) IBOutlet UIButton *soundInputView;
@@ -27,6 +32,14 @@
 @end
 
 @implementation XHDDOnlineChatDetailController
+- (EMConversation *)currentConversation{
+    
+    if (_currentConversation == nil) {
+        
+       self.currentConversation = [[EMClient sharedClient].chatManager getConversation:self.navigationItem.title type:EMConversationTypeChat createIfNotExist:YES];
+    }
+    return _currentConversation;
+}
 - (NSMutableArray *)messagesArray{
 
     if (_messagesArray == nil) {
@@ -41,12 +54,18 @@
     self.view.backgroundColor = JRandomColor;
     self.chatContentTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    self.inputMessageTextView.layer.cornerRadius = 4;
+    self.inputMessageTextView.layer.masksToBounds = YES;
 
     //1.添加键盘监听
      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardChange:) name:UIKeyboardWillChangeFrameNotification object:nil];
     
     //2.添加点击监听
     [self.chatContentTableView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resignInput)]];
+    
+    //3.获取当前会话的历史
+    [self getLastMessageFromDB];
     
 }
 - (void)resignInput{
@@ -104,15 +123,18 @@
 
 }
 #pragma mark - 发送消息给对方
-- (void)sendMessageToFriend:(XHDDOnlineChatMessageModel *)messageText{
+- (void)sendMessageToFriend:(XHDDOnlineChatMessageModel *)messageModel{
 
     //1.包装消息
-    EMTextMessageBody *body = [[EMTextMessageBody alloc] initWithText:messageText.text];
+    EMTextMessageBody *body = [[EMTextMessageBody alloc] initWithText:messageModel.text];
     NSString *from = [[EMClient sharedClient] currentUsername];//自己的账号
     NSString *friendID = self.navigationItem.title;
     
+    NSDictionary *messageDict = @{@"text":messageModel.text,@"time":messageModel.time,@"type":@(messageModel.type)};
+    
     //生成Message
-    EMMessage *message = [[EMMessage alloc] initWithConversationID:friendID from:from to:friendID body:body ext:nil];
+    EMMessage *message = [[EMMessage alloc] initWithConversationID:friendID from:from to:friendID body:body ext:messageDict];
+    
     message.chatType = EMChatTypeChat;// 设置为单聊消息
     
     //2.发送消息:异步
@@ -125,13 +147,19 @@
         if (!error) {
             
             JLog(@"发送消息成功");
+            //添加到会话历史中
+            [self.currentConversation insertMessage:messageBody];
+            BOOL ret =  [self.currentConversation updateConversationExtToDB];
+            JLog(@"%d",ret);
         }
         else {
             
             EMTextMessageBody *textBody = (EMTextMessageBody *)messageBody.body;
             [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"消息：%@ 发送失败",textBody.text]];
+            
+            XHDDOnlineChatMessageModel *model = [self createMessageWithMessageText:messageDict[@"text"] andIsFromOther:NO];
             //从本地删除
-            [self.messagesArray removeObject:messageText];
+            [self.messagesArray removeObject:model];
             //刷新tableView
             [self.chatContentTableView reloadData];
         }
@@ -201,45 +229,57 @@
 - (void)viewWillDisappear:(BOOL)animated{
 
     [super viewWillDisappear:animated];
+    
+
+    
     //移除消息回调
     [[EMClient sharedClient].chatManager removeDelegate:self];
 }
 #pragma mark - 解析消息回调
-- (void)didReceiveCmdMessages:(NSArray *)aCmdMessages{
-    for (EMMessage *message in aCmdMessages) {
+- (void)didReceiveMessages:(NSArray *)aMessages{
+   
+    for (EMMessage *message in aMessages) {
         // cmd消息中的扩展属性
         NSDictionary *ext = message.ext;
-        NSLog(@"cmd消息中的扩展属性是 -- %@",ext);
-    }
-}
-// 收到消息回调@brief 接收到一条及以上非cmd消息
-- (void)didReceiveMessages:(NSArray *)aMessages{
-    for (EMMessage *message in aMessages) {
-        EMMessageBody *msgBody = message.body;
         
-        switch (msgBody.type) {
-            case EMMessageBodyTypeText:
-            {
-                // 收到的文字消息
-                EMTextMessageBody *textBody = (EMTextMessageBody *)msgBody;
-                NSString *txt = textBody.text;
-
-                XHDDOnlineChatMessageModel *model = [self createMessageWithMessageText:txt andIsFromOther:YES];
-                
-                [self.messagesArray addObject:model];
-                [self.chatContentTableView reloadData];
-                //设置滚动到底部
-                [self setSendOrReceiveMessageTableViewScroll];
-            
-            }
-                break;
-                
-            default:
-                break;
-                
+        //接收到消息插入到当前会话历史中
+        BOOL ret = [self.currentConversation insertMessage:message];
+        [self.currentConversation updateConversationExtToDB];
+        if (!ret) {
+            JLog(@"插入到本地失败");
         }
+        
+        XHDDOnlineChatMessageModel *model = [self createMessageWithMessageText:ext[@"text"] andIsFromOther:YES];
+       
+        [self.messagesArray addObject:model];
+        [self.chatContentTableView reloadData];
+        //设置滚动到底部
+        [self setSendOrReceiveMessageTableViewScroll];
+        
     }
 }
+#pragma mark - 首次进入，本地数据库取出最新20条数据
+//- (EMMessage *)loadMessageWithId:(NSString *)aMessageId{
+//
+//    
+//}
+- (void)getLastMessageFromDB{
 
+    NSArray *historyMessageArray = [self.currentConversation loadMoreMessagesFromId:self.navigationItem.title limit:10];
+    
+    for (EMMessage *message in historyMessageArray) {//0x00007fdc10e18f20  //0x00007fdc13a4f130
+        // cmd消息中的扩展属性
+        NSDictionary *ext = message.ext;
+        XHDDOnlineChatMessageModel *model = [XHDDOnlineChatMessageModel messageWithDict:ext];
+        [self.messagesArray addObject:model];
+    }
+    //如果有历史数据
+    if (self.messagesArray.count > 0) {
+        [self.chatContentTableView reloadData];
+        //设置滚动到底部
+        [self setSendOrReceiveMessageTableViewScroll];
+    }
+    
+}
 
 @end

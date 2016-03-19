@@ -42,8 +42,8 @@
     //2.headerImageView
     CGFloat headerX = margin;
     CGFloat headerY = CGRectGetMaxY(_timeFrame);
-    CGFloat headerW = 50;
-    CGFloat headerH = 50;
+    CGFloat headerW = 40;
+    CGFloat headerH = 40;
     if (self.type == MessageTypeMe) {
         
         headerX = screenW - margin - headerW;
@@ -53,7 +53,7 @@
     
     //3.contentButton
     CGSize size = CGSizeMake(JScreenWidth - headerW * 2 - 20, CGFLOAT_MAX);
-    size = [self.text boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15]} context:nil].size;
+    size = [self.text boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]} context:nil].size;
     
     CGFloat contentX = CGRectGetMaxX(_headerFrame);
     CGFloat contentY = CGRectGetMaxY(_timeFrame);

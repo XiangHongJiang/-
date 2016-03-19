@@ -59,7 +59,7 @@
         
         [contentButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         contentButton.titleLabel.numberOfLines = 0;
-        contentButton.titleLabel.font = [UIFont systemFontOfSize:15];
+        contentButton.titleLabel.font = [UIFont systemFontOfSize:14];
         contentButton.contentEdgeInsets = UIEdgeInsetsMake(20, 20, 20, 20);
         
         
@@ -73,7 +73,9 @@
     //1.更新数据；
     self.timeLabel.text = message.time;
     
-    self.headerImageView.image = [UIImage imageNamed:@"other"];
+    
+    
+    self.headerImageView.image = [XHUtils circleImage:[UIImage imageNamed:@"otherHeaderImage"]];
     
     if (message.type == MessageTypeMe) {
         
@@ -83,7 +85,7 @@
         
         [self.contentButton setBackgroundImage:image forState:UIControlStateNormal];
         
-        self.headerImageView.image = [UIImage imageNamed:@"me"];
+        self.headerImageView.image = [XHUtils circleImage:[UIImage imageNamed:@"selfHeaderImage"]];
         
     }
     else{
@@ -95,7 +97,6 @@
         [self.contentButton setBackgroundImage:image forState:UIControlStateNormal];
         
     }
-    
     
     [self.contentButton setTitle:message.text forState:UIControlStateNormal];
     //2.更新frame；

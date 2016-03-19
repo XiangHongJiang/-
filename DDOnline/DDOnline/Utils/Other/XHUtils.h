@@ -17,10 +17,14 @@
 
 + (UILabel *)createLabelFrame:(CGRect)frame text:(NSString *)text font:(UIFont *)font;
 + (UIButton *)createBtnFrame:(CGRect)frame imageName:(NSString *)imageName bgColor:(UIColor *)bgColor radius:(CGFloat)radius target:(id)target action:(SEL)action;
-
 /**
  *  创建Btn的方法
  */
 + (UIButton *)creatBtnWithFrame:(CGRect)frame title:(NSString *)title target:(id)target action:(SEL)action;
+
+/**
+ * 裁剪圆图
+ */
++ (UIImage *)circleImage:(UIImage *)image;
 @end
 

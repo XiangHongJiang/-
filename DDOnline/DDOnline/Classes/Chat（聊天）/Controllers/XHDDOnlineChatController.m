@@ -14,7 +14,7 @@
 #import "XHDDOnlineChatFunctionView.h"
 #import "XHDDOnlineChatAddFriendController.h"
 
-@interface XHDDOnlineChatController ()<UIScrollViewDelegate,EMContactManagerDelegate,UIAlertViewDelegate>
+@interface XHDDOnlineChatController ()<UIScrollViewDelegate,EMContactManagerDelegate,UIAlertViewDelegate,EMClientDelegate>
 /** *  消息btn */
 @property (nonatomic, weak) UIButton *leftBtn;
 /** *  联系人btn */
@@ -42,7 +42,7 @@
     
     return _contactsDataArray;
 }
-
+/** 部署子视图*/
 - (void)loadView{
 
     [super loadView];
@@ -64,24 +64,20 @@
     //    self.navigationController.navigationBar.backgroundColor = [UIColor blueColor];
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0.000 green:0.502 blue:1.000 alpha:1.000];
     
-    //监听好友回调
-    [self addFriendDelegate];
-    
-    //请求联系人数据
-    [self requestContactsDataArray];
-    
-    //请求消息数据
-    
     //添加下拉刷新
     [self addRefresh];
     
+    //添加自动登录监听代理
+    [[EMClient sharedClient] addDelegate:self delegateQueue:nil];
+    
+    //添加通知监听
+    [self setNotificationCentenr];
+    
 }
-
-- (void)addFriendDelegate{
-    //注册好友回调
-    [[EMClient sharedClient].contactManager addDelegate:self delegateQueue:nil];
+#pragma mark - 通知中心监听通知
+- (void)setNotificationCentenr{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(isLoginOrNot) name:@"isLogin" object:nil];
 }
-
 #pragma mark - 添加刷新
 /** *  添加刷新 */
 - (void)addRefresh{
@@ -363,4 +359,37 @@
         [SVProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"%@ 拒绝了好友请求",aUsername]];
 }
 
+
+//    [self registEMAccount];//注册
+#pragma mark - 消息界面相关
+//1.获取会话列表
+
+//2.监听在线消息
+#pragma mark - 登录成功相关
+//自动登录结果回调
+- (void)didAutoLoginWithError:(EMError *)aError{
+    JLog(@"%@",aError);
+    
+    [SVProgressHUD showWithStatus:aError.errorDescription];
+    
+}
+//手动登录状态判断
+- (void)isLoginOrNot{
+
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];//
+    BOOL isLogin = [[ud objectForKey:@"isLogin"] boolValue];
+    if (isLogin) {//如果已经登录，则请求数据
+    
+        [self.contactsTableView.mj_header beginRefreshing];
+        //监听好友回调
+        [self addFriendDelegate];
+    }
+}
+- (void)addFriendDelegate{
+    //注册好友回调
+    [[EMClient sharedClient].contactManager addDelegate:self delegateQueue:nil];
+}
+- (void)dealloc{//移除通知
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 @end

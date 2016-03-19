@@ -428,6 +428,10 @@
 		BC513D401C99101A00530B1F /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BC513D3F1C99101A00530B1F /* libiconv.dylib */; };
 		BC513D421C99102600530B1F /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BC513D411C99102600530B1F /* libsqlite3.dylib */; };
 		BC513DE21C99442700530B1F /* libHyphenateFullSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC513DE11C99442700530B1F /* libHyphenateFullSDK.a */; };
+		BC87940E1C9D2E840060757E /* XHDDOnlineRegistController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC87940C1C9D2E840060757E /* XHDDOnlineRegistController.m */; };
+		BC87940F1C9D2E840060757E /* XHDDOnlineRegistController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC87940D1C9D2E840060757E /* XHDDOnlineRegistController.xib */; };
+		BC8794131C9D46FF0060757E /* XHDDOnlineSignInController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8794111C9D46FF0060757E /* XHDDOnlineSignInController.m */; };
+		BC8794141C9D46FF0060757E /* XHDDOnlineSignInController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC8794121C9D46FF0060757E /* XHDDOnlineSignInController.xib */; };
 		BC8D615C1C8D794A0043F18F /* MJDictionaryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8D61461C8D794A0043F18F /* MJDictionaryCache.m */; };
 		BC8D615D1C8D794A0043F18F /* MJExtensionConst.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8D61491C8D794A0043F18F /* MJExtensionConst.m */; };
 		BC8D615E1C8D794A0043F18F /* MJFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8D614B1C8D794A0043F18F /* MJFoundation.m */; };
@@ -1599,6 +1603,12 @@
 		BC513DD61C991F9600530B1F /* IEMGroupManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IEMGroupManager.h; sourceTree = "<group>"; };
 		BC513DD71C991F9600530B1F /* OpenGLView20.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenGLView20.h; sourceTree = "<group>"; };
 		BC513DE11C99442700530B1F /* libHyphenateFullSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libHyphenateFullSDK.a; sourceTree = "<group>"; };
+		BC87940B1C9D2E840060757E /* XHDDOnlineRegistController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHDDOnlineRegistController.h; sourceTree = "<group>"; };
+		BC87940C1C9D2E840060757E /* XHDDOnlineRegistController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHDDOnlineRegistController.m; sourceTree = "<group>"; };
+		BC87940D1C9D2E840060757E /* XHDDOnlineRegistController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHDDOnlineRegistController.xib; sourceTree = "<group>"; };
+		BC8794101C9D46FF0060757E /* XHDDOnlineSignInController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHDDOnlineSignInController.h; sourceTree = "<group>"; };
+		BC8794111C9D46FF0060757E /* XHDDOnlineSignInController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHDDOnlineSignInController.m; sourceTree = "<group>"; };
+		BC8794121C9D46FF0060757E /* XHDDOnlineSignInController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHDDOnlineSignInController.xib; sourceTree = "<group>"; };
 		BC8D61451C8D794A0043F18F /* MJDictionaryCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJDictionaryCache.h; sourceTree = "<group>"; };
 		BC8D61461C8D794A0043F18F /* MJDictionaryCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJDictionaryCache.m; sourceTree = "<group>"; };
 		BC8D61471C8D794A0043F18F /* MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJExtension.h; sourceTree = "<group>"; };
@@ -2415,9 +2425,8 @@
 		BC0148021C8AFED600AA4C45 /* Main（主框架） */ = {
 			isa = PBXGroup;
 			children = (
-				BC0148031C8AFED600AA4C45 /* Controllers */,
-				BC0148041C8AFED600AA4C45 /* Models */,
-				BC0148051C8AFED600AA4C45 /* Views */,
+				BC8793FE1C9C5FE40060757E /* Main */,
+				BC8793FA1C9C5FC20060757E /* 登录与注册 */,
 			);
 			path = "Main（主框架）";
 			sourceTree = "<group>";
@@ -3586,6 +3595,53 @@
 				BC513DE11C99442700530B1F /* libHyphenateFullSDK.a */,
 			);
 			path = lib;
+			sourceTree = "<group>";
+		};
+		BC8793FA1C9C5FC20060757E /* 登录与注册 */ = {
+			isa = PBXGroup;
+			children = (
+				BC8793FB1C9C5FDF0060757E /* Controllers */,
+				BC8793FC1C9C5FDF0060757E /* Models */,
+				BC8793FD1C9C5FDF0060757E /* Views */,
+			);
+			path = "登录与注册";
+			sourceTree = "<group>";
+		};
+		BC8793FB1C9C5FDF0060757E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BC8794101C9D46FF0060757E /* XHDDOnlineSignInController.h */,
+				BC8794111C9D46FF0060757E /* XHDDOnlineSignInController.m */,
+				BC8794121C9D46FF0060757E /* XHDDOnlineSignInController.xib */,
+				BC87940B1C9D2E840060757E /* XHDDOnlineRegistController.h */,
+				BC87940C1C9D2E840060757E /* XHDDOnlineRegistController.m */,
+				BC87940D1C9D2E840060757E /* XHDDOnlineRegistController.xib */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		BC8793FC1C9C5FDF0060757E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		BC8793FD1C9C5FDF0060757E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		BC8793FE1C9C5FE40060757E /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				BC0148031C8AFED600AA4C45 /* Controllers */,
+				BC0148041C8AFED600AA4C45 /* Models */,
+				BC0148051C8AFED600AA4C45 /* Views */,
+			);
+			name = Main;
 			sourceTree = "<group>";
 		};
 		BC8D61441C8D794A0043F18F /* MJExtension */ = {
@@ -4942,6 +4998,7 @@
 				BC014A1A1C8B0EE400AA4C45 /* ic_filter_0_n@2x.png in Resources */,
 				BCF1E2C31C9298E600CA3338 /* cell-button-line.png in Resources */,
 				BC50CA051C93B87600DEF3CC /* LICENSE.txt in Resources */,
+				BC8794141C9D46FF0060757E /* XHDDOnlineSignInController.xib in Resources */,
 				BCF1E2FC1C9298E600CA3338 /* mainCellShare.png in Resources */,
 				BC1AB0871C8C0BE40007EDF4 /* 089@2x.png in Resources */,
 				BC0147CB1C8AFCAF00AA4C45 /* Main.storyboard in Resources */,
@@ -5021,6 +5078,7 @@
 				BCA401611C9B94A80047FEBE /* lxh_jiujie.gif in Resources */,
 				BCA401281C9B94A80047FEBE /* o_lvsidai@2x.png in Resources */,
 				BCA401181C9B94A80047FEBE /* h_haha@2x.png in Resources */,
+				BC87940F1C9D2E840060757E /* XHDDOnlineRegistController.xib in Resources */,
 				BCF1E3751C92994700CA3338 /* login_close_icon@3x.png in Resources */,
 				BCA400DF1C9B94A80047FEBE /* d_guzhang@2x.png in Resources */,
 				BCA4011E1C9B94A80047FEBE /* defalutinfo.plist in Resources */,
@@ -5342,6 +5400,7 @@
 				BCBBEF2D1C8D206800485428 /* XHDDOnlineFunPlayModel.m in Sources */,
 				BC370F361C9548FD00D7A81C /* MKAnnotationView+RACSignalSupport.m in Sources */,
 				BCF1E1CD1C90827200CA3338 /* XHDDOnlineFunPlayCategoryDetailController.m in Sources */,
+				BC87940E1C9D2E840060757E /* XHDDOnlineRegistController.m in Sources */,
 				BC370F681C9548FD00D7A81C /* RACScheduler.m in Sources */,
 				BC370F3D1C9548FD00D7A81C /* NSInvocation+RACTypeParsing.m in Sources */,
 				BC0148911C8B013300AA4C45 /* View+MASAdditions.m in Sources */,
@@ -5384,6 +5443,7 @@
 				BC370F8A1C9548FD00D7A81C /* UIStepper+RACSignalSupport.m in Sources */,
 				BCA4FFCD1C99BD6D0047FEBE /* XHDDOnlineChatFunctionView.m in Sources */,
 				BC370F411C9548FD00D7A81C /* NSObject+RACKVOWrapper.m in Sources */,
+				BC8794131C9D46FF0060757E /* XHDDOnlineSignInController.m in Sources */,
 				BC0F645F1C8DC62C005F599C /* SDWebImagePrefetcher.m in Sources */,
 				BC0149991C8B014A00AA4C45 /* UIScrollView+MJRefresh.m in Sources */,
 				BCC58FF61C97F2580071FC55 /* UIImage+Resize.m in Sources */,

@@ -100,4 +100,32 @@
     [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
     return button;
 }
++ (UIImage *)circleImage:(UIImage *)image{
+    //开启image绘制
+    UIGraphicsBeginImageContextWithOptions(image.size, NO, 0.0);
+    
+    //获取上下文
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    
+    //做一个圆
+    CGRect circleRect = (CGRect){
+        (CGPoint){0,0},
+        image.size
+    };
+    //画圆
+    CGContextAddEllipseInRect(ctx, circleRect);
+    //设置裁剪图片
+    CGContextClip(ctx);
+    //画上iamge
+    [image drawInRect:circleRect];
+    
+    //获取画后的圆的image
+    UIImage *circleImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    //结束image绘制
+    UIGraphicsEndImageContext();
+    
+    return circleImage;
+    
+}
 @end

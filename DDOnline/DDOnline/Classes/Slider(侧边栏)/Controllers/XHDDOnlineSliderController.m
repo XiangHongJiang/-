@@ -8,6 +8,8 @@
 
 #import "XHDDOnlineSliderController.h"
 #import "RESideMenu.h"
+#import "XHDDOnlineSignInController.h"
+#import "XHDDOnlineRootTabBarController.h"
 
 @interface XHDDOnlineSliderController ()<UITableViewDelegate, UITableViewDataSource>
 /** *  cellImageNameArray */
@@ -121,8 +123,14 @@
     NSLog(@"%@",self.cellTitleArray[indexPath.row]);
 }
 - (void)taped{
-
     JLog(@"点击了头像");
+    
+    XHDDOnlineSignInController *signCtrl = [[XHDDOnlineSignInController alloc] init];
+    XHDDOnlineRootTabBarController *rootTbc = self.sideMenuViewController.contentViewController.childViewControllers[0];
+    UINavigationController *nav = rootTbc.selectedViewController;
+    
+    [nav pushViewController:signCtrl animated:YES];
+    [self.sideMenuViewController hideMenuViewController];
     
 }
 @end

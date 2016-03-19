@@ -15,6 +15,9 @@
 #import "XHDDOnlineChatAddFriendController.h"
 
 @interface XHDDOnlineChatController ()<UIScrollViewDelegate,EMContactManagerDelegate,UIAlertViewDelegate,EMClientDelegate>
+{
+    BOOL firstTimeEnter;
+}
 /** *  消息btn */
 @property (nonatomic, weak) UIButton *leftBtn;
 /** *  联系人btn */
@@ -39,35 +42,26 @@
         
         _contactsDataArray = [NSMutableArray new];
     }
-    
     return _contactsDataArray;
 }
 /** 部署子视图*/
 - (void)loadView{
-
     [super loadView];
-    
     //添加scrollView
     [self addScrollView];
-    
     //添加导航切换
     [self loadNavTitileView];
-    
     //添加右btn
     [self addRightBarBtn];
 }
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
-    //    self.navigationController.navigationBar.tintColor = [UIColor blueColor];
-    //    self.navigationController.navigationBar.backgroundColor = [UIColor blueColor];
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0.000 green:0.502 blue:1.000 alpha:1.000];
     
     //添加下拉刷新
     [self addRefresh];
     
-    //添加自动登录监听代理
     [[EMClient sharedClient] addDelegate:self delegateQueue:nil];
     
     //添加通知监听
@@ -76,22 +70,19 @@
 }
 #pragma mark - 通知中心监听通知
 - (void)setNotificationCentenr{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(isLoginOrNot) name:@"isLogin" object:nil];
+    //监听登录成功
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(isLoginOrNot) name:@"loginSucceed" object:nil];
 }
 #pragma mark - 添加刷新
 /** *  添加刷新 */
 - (void)addRefresh{
-    
     self.contactsTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(requestContactsDataArray)];
 }
-
 #pragma mark - 建立子视图
 //右btn
 - (void)addRightBarBtn{
 
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"right_menu_nor"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(rightBarBtnAction)];
-    
-//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(rightBarBtnAction)];
 }
 //导航头
 - (void)loadNavTitileView{
@@ -129,7 +120,7 @@
     //scrollView
     UIScrollView *contentScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64, JScreenWidth, JScreenHeight - JTopSpace - JTabBarHeight)];
     [self.view addSubview:contentScrollView];
-    contentScrollView.backgroundColor = [UIColor orangeColor];
+    contentScrollView.backgroundColor = [UIColor whiteColor];
     contentScrollView.contentSize = CGSizeMake(JScreenWidth * 2, 0);
     contentScrollView.showsHorizontalScrollIndicator = NO;
     contentScrollView.showsVerticalScrollIndicator = NO;
@@ -206,7 +197,6 @@
             default:
                 break;
         }
-        
     };
     
 }
@@ -218,7 +208,6 @@
 }
 #pragma mark -  编辑确认
 - (void)sureAction{
-    
     //判断
     //判断当前进入的是哪一页的编辑状态，（联系人还是消息）
     if (self.contentScrollView.contentOffset.x == JScreenWidth) {
@@ -233,7 +222,6 @@
     [self addRightBarBtn];
 
 }
-
 /**滚动换页*/
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     //开始滚动，动态更新快速导航视图状态
@@ -247,10 +235,6 @@
         self.leftBtn.selected = YES;
     }
     [self.view endEditing:YES];
-}
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    
 }
 #pragma mark - 请求数据
 - (void)requestContactsDataArray{
@@ -301,7 +285,6 @@
 #pragma mark - 监听好友申请信息
 /*!
  *  用户A发送加用户B为好友的申请，用户B会收到这个回调
- *
  *  @param aUsername   用户名
  *  @param aMessage    附属信息
  */
@@ -358,21 +341,11 @@
 
         [SVProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"%@ 拒绝了好友请求",aUsername]];
 }
-
-
-//    [self registEMAccount];//注册
 #pragma mark - 消息界面相关
 //1.获取会话列表
 
 //2.监听在线消息
 #pragma mark - 登录成功相关
-//自动登录结果回调
-- (void)didAutoLoginWithError:(EMError *)aError{
-    JLog(@"%@",aError);
-    
-    [SVProgressHUD showWithStatus:aError.errorDescription];
-    
-}
 //手动登录状态判断
 - (void)isLoginOrNot{
 
@@ -391,5 +364,66 @@
 }
 - (void)dealloc{//移除通知
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+- (void)didAutoLoginWithError:(EMError *)aError{
+    JLog(@"%@",aError);
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];//
+    if (aError) {
+        [SVProgressHUD showErrorWithStatus:aError.errorDescription];
+        [ud setObject:@(NO) forKey:@"isLogin"];
+    }
+    else{
+        [SVProgressHUD showSuccessWithStatus:@"自动登录成功"];
+       
+        //沙盒存登录状态
+        [ud setObject:@(YES) forKey:@"isLogin"];
+
+        //发送登录成功通知
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"isLoginSucceed" object:nil];
+    }
+  [ud synchronize];
+    
+}
+//掉线重连
+- (void)didConnectionStateChanged:(EMConnectionState)aConnectionState{
+    /*
+     *  SDK连接服务器的状态变化时会接收到该回调
+     *
+     *  有以下几种情况, 会引起该方法的调用:
+     *  1. 登录成功后, 手机无法上网时, 会调用该回调
+     *  2. 登录成功后, 网络状态变化时, 会调用该回调
+     *
+     *  @param aConnectionState 当前状态
+     */
+    if (aConnectionState == EMConnectionConnected) {//已连接
+        JLog(@"已连接");
+        
+        return;
+    }
+    if (aConnectionState == EMConnectionDisconnected)//未连接
+    {
+        JLog(@"未连接");
+        //连接
+    }
+    
+}
+//被动退出（被挤下线）
+- (void)didLoginFromOtherDevice{
+    
+    JLog(@"被挤下线");
+}
+- (void)didRemovedFromServer{
+    JLog(@"当前登录账号已经被从服务器端删除时会收到该回调");
+}
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];//
+    BOOL isLogin = [[ud objectForKey:@"isLogin"] boolValue];
+    if (!isLogin && !firstTimeEnter) {//未登录，并且是第一次进入该界面
+        firstTimeEnter = YES;
+        
+        [SVProgressHUD showSuccessWithStatus:@"当前为本地模式"];
+    }
 }
 @end

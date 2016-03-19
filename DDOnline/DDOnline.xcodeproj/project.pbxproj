@@ -432,6 +432,7 @@
 		BC87940F1C9D2E840060757E /* XHDDOnlineRegistController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC87940D1C9D2E840060757E /* XHDDOnlineRegistController.xib */; };
 		BC8794131C9D46FF0060757E /* XHDDOnlineSignInController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8794111C9D46FF0060757E /* XHDDOnlineSignInController.m */; };
 		BC8794141C9D46FF0060757E /* XHDDOnlineSignInController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC8794121C9D46FF0060757E /* XHDDOnlineSignInController.xib */; };
+		BC8794171C9D67520060757E /* XHTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8794161C9D67520060757E /* XHTextField.m */; };
 		BC8D615C1C8D794A0043F18F /* MJDictionaryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8D61461C8D794A0043F18F /* MJDictionaryCache.m */; };
 		BC8D615D1C8D794A0043F18F /* MJExtensionConst.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8D61491C8D794A0043F18F /* MJExtensionConst.m */; };
 		BC8D615E1C8D794A0043F18F /* MJFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8D614B1C8D794A0043F18F /* MJFoundation.m */; };
@@ -1609,6 +1610,8 @@
 		BC8794101C9D46FF0060757E /* XHDDOnlineSignInController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHDDOnlineSignInController.h; sourceTree = "<group>"; };
 		BC8794111C9D46FF0060757E /* XHDDOnlineSignInController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHDDOnlineSignInController.m; sourceTree = "<group>"; };
 		BC8794121C9D46FF0060757E /* XHDDOnlineSignInController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHDDOnlineSignInController.xib; sourceTree = "<group>"; };
+		BC8794151C9D67520060757E /* XHTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHTextField.h; sourceTree = "<group>"; };
+		BC8794161C9D67520060757E /* XHTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHTextField.m; sourceTree = "<group>"; };
 		BC8D61451C8D794A0043F18F /* MJDictionaryCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJDictionaryCache.h; sourceTree = "<group>"; };
 		BC8D61461C8D794A0043F18F /* MJDictionaryCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJDictionaryCache.m; sourceTree = "<group>"; };
 		BC8D61471C8D794A0043F18F /* MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJExtension.h; sourceTree = "<group>"; };
@@ -3630,6 +3633,8 @@
 		BC8793FD1C9C5FDF0060757E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BC8794151C9D67520060757E /* XHTextField.h */,
+				BC8794161C9D67520060757E /* XHTextField.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -5472,6 +5477,7 @@
 				BC0148921C8B013300AA4C45 /* ViewController+MASAdditions.m in Sources */,
 				BCF1E2061C91719300CA3338 /* XHDDOnlineFunPlayUrlModel.m in Sources */,
 				BC01481C1C8AFED600AA4C45 /* NSObject+Extension.m in Sources */,
+				BC8794171C9D67520060757E /* XHTextField.m in Sources */,
 				BC370F6A1C9548FD00D7A81C /* RACSequence.m in Sources */,
 				BC8D61621C8D794A0043F18F /* NSObject+MJClass.m in Sources */,
 				BC01498D1C8B014A00AA4C45 /* MJRefreshAutoGifFooter.m in Sources */,

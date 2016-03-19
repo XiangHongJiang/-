@@ -230,8 +230,6 @@
 
     [super viewWillDisappear:animated];
     
-
-    
     //移除消息回调
     [[EMClient sharedClient].chatManager removeDelegate:self];
 }

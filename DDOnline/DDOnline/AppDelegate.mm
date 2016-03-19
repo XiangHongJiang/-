@@ -28,18 +28,23 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
    
+    //每次启动都先设置未登录
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];//
+    [ud setObject:@(NO) forKey:@"isLogin"];
+    [ud synchronize];
+    
     //1.语音识别设置
     [self speechRecognizeServiceInit];
     
     //2.添加极光推送
     [self configJPushService:launchOptions];
   
-    //3.环信通信
-    [self configEMob:launchOptions];//appKey
-    
     //4.设置根视图控制器
     [self setRootViewController];
-    
+   
+    //3.环信通信：因为存在自动登录，所以应该放在后面
+    [self configEMob:launchOptions];//appKey
+   
     return YES;
 }
 //1.设置根视图控制器
@@ -138,13 +143,11 @@
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{
     //接收到推送消息后的处理在此进行 //ios7之后
     
-    
     // 都需要先把推送消息用 极光推送处理。
     [JPUSHService handleRemoteNotification:userInfo];
     // 清空通知栏通知，清除应用 icon 上面的角标
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 
-    
     //处理推送消息
     //1.获取推送消息
     JLog(@"%@",userInfo);
@@ -152,10 +155,8 @@
     //2.取出通知类型
 //    NSString *notiType = userInfo[@"noti_type"];
 
-    
     //3.获取通知内容
     NSString *message = apsInfo[@"alert"];
-    
 //    if ([notiType isEqualToString:@"alert"]) {
     
         // 这个枚举类型代表当前应用所处的状态，是在激活状态（前台），还是后台。
@@ -166,16 +167,12 @@
            
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"通知" message:message delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
             [alertView show];
-            
         }
 //    }
     // 当应用点击通知栏进入的时候，跳转到相应的 viewController;
     // 根据应用不同的状态和通知的不同类型，做不同的处理。
     else{
-        
         JLog(@"处理推送");
-    
-    
     }
     completionHandler(UIBackgroundFetchResultNewData);
     
@@ -189,7 +186,6 @@
 #pragma mark - 环信相关
 //4.0.1//配置
 - (void)configEMob:(NSDictionary *)launchOptions{
-
     //1.注册appKey
     //AppKey:注册的appKey，详细见下面注释。
     //apnsCertName:推送证书名(不需要加后缀)，详细见下面注释。
@@ -198,54 +194,13 @@
     [[EMClient sharedClient] initializeSDKWithOptions:options];
     
 }
-//4.0.2//注册环信
-- (void)registEMAccount{
-    
-    EMError *error = [[EMClient sharedClient] registerWithUsername:@"jiangxianghong" password:@"123456"];
-    if (error==nil) {
-        NSLog(@"注册成功");
-    }else{
-    
-        JLog(@"%@",error.errorDescription);
-    }
-
-}
-//掉线重连
-- (void)didConnectionStateChanged:(EMConnectionState)aConnectionState{
-    /*
-     *  SDK连接服务器的状态变化时会接收到该回调
-     *
-     *  有以下几种情况, 会引起该方法的调用:
-     *  1. 登录成功后, 手机无法上网时, 会调用该回调
-     *  2. 登录成功后, 网络状态变化时, 会调用该回调
-     *
-     *  @param aConnectionState 当前状态
-     */
-    if (aConnectionState == EMConnectionConnected) {//已连接
-        JLog(@"已连接");
-        return;
-    }
-    if (aConnectionState == EMConnectionDisconnected)//未连接
-    {
-        JLog(@"未连接");
-        //连接
-    }
-    
-}
 //退出登录
 - (void)signOutEM{
+    
     EMError *error = [[EMClient sharedClient] logout:YES];
     if (!error) {
         NSLog(@"退出成功");
     }
-}
-//被动退出（被挤下线）
-- (void)didLoginFromOtherDevice{
-    
-    JLog(@"被挤下线");
-}
-- (void)didRemovedFromServer{
-    JLog(@"当前登录账号已经被从服务器端删除时会收到该回调");
 }
 #pragma mark - other
 - (void)applicationDidEnterBackground:(UIApplication *)application {
@@ -278,5 +233,4 @@
     //退出登录
     [self signOutEM];
 }
-
 @end

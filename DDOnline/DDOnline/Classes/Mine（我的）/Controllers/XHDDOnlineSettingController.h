@@ -8,6 +8,6 @@
 
 #import "ViewController.h"
 
-@interface XHDDOnlineSettingController : ViewController
+@interface XHDDOnlineSettingController : UITableViewController
 
 @end

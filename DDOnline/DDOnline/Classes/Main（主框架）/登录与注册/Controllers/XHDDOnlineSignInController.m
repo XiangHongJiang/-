@@ -19,8 +19,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *registBtn;
 @property (weak, nonatomic) IBOutlet UIButton *autoLoginBtn;
 
-@property (weak, nonatomic) IBOutlet UISwitch *autoLoginSwitch;
-
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
 @property (weak, nonatomic) IBOutlet UIButton *forgotPasswordBtn;
 @end
@@ -121,7 +119,7 @@
         if (!error) {//成功设置下次自动登录
             
             //设置下次是否自动登录
-            [[EMClient sharedClient].options setIsAutoLogin:self.autoLoginSwitch.isOn];
+            [[EMClient sharedClient].options setIsAutoLogin:self.autoLoginBtn.selected];
             
             [SVProgressHUD showSuccessWithStatus:@"登录成功"];
             
@@ -146,7 +144,7 @@
     });
     
 }
-#warning 当前可能会出问题
+
 
 
 @end

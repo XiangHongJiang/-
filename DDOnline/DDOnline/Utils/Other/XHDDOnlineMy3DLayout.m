@@ -53,7 +53,7 @@
     CGFloat radius = attributes.size.width / 2 /tanf(arc / 2.0f / numberOfItemInSection);//固定平移距离,使得每个图片的无缝衔接，若要有缝隙，可以适当增大//沿着X轴翻转与height相关，沿着Y轴翻转与width相关,平移距离，实质与法向量方向相关//（平均每个允许平移距离的相对上一个的最大平移距离）
     
     transform = CATransform3DRotate(transform, angle * 1, 0.0f, 1.0f, 0.0f);//旋转X,Y,Z,近大远小效果，实现突起与缩小，可以加大旋转的弧度
-    transform = CATransform3DTranslate(transform, 0.0f, 0.0f, radius + 20);//平移，上一次的位置，X增加，Y增加，Z增加：实质为改变图层相对屏幕位置（可以理解为图层的层次）
+    transform = CATransform3DTranslate(transform, 0.0f, 0.0f, radius + 30);//平移，上一次的位置，X增加，Y增加，Z增加：实质为改变图层相对屏幕位置（可以理解为图层的层次）
     
     //    transform = CATransform3DTranslate(transform, 0, 0, 300);//
     

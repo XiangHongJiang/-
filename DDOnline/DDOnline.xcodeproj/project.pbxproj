@@ -711,7 +711,6 @@
 		BCCED7011C96A07C00DFF451 /* XHDDOnlineJokeBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCED6FF1C96A07C00DFF451 /* XHDDOnlineJokeBaseCell.m */; };
 		BCCED7021C96A07C00DFF451 /* XHDDOnlineJokeBaseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCED7001C96A07C00DFF451 /* XHDDOnlineJokeBaseCell.xib */; };
 		BCE86A4F1C9EBDD100A40B4C /* XHDDOnlineSettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE86A4D1C9EBDD100A40B4C /* XHDDOnlineSettingController.m */; };
-		BCE86A501C9EBDD100A40B4C /* XHDDOnlineSettingController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE86A4E1C9EBDD100A40B4C /* XHDDOnlineSettingController.xib */; };
 		BCE86A5A1C9EBED000A40B4C /* XHDDOnlineMineSkinController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE86A581C9EBED000A40B4C /* XHDDOnlineMineSkinController.m */; };
 		BCE86A5D1C9EC14100A40B4C /* teamTheme in Resources */ = {isa = PBXBuildFile; fileRef = BCE86A5C1C9EC14100A40B4C /* teamTheme */; };
 		BCE86A651C9EC28900A40B4C /* Theme.plist in Resources */ = {isa = PBXBuildFile; fileRef = BCE86A641C9EC28900A40B4C /* Theme.plist */; };
@@ -719,6 +718,8 @@
 		BCE86A6A1C9EC46500A40B4C /* XHDDOnlineMineSkinCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE86A681C9EC46500A40B4C /* XHDDOnlineMineSkinCell.xib */; };
 		BCE86A6D1C9ED55600A40B4C /* XHDDOnlineMineSkinModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE86A6C1C9ED55600A40B4C /* XHDDOnlineMineSkinModel.m */; };
 		BCE86A701C9FF1B500A40B4C /* XHButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE86A6F1C9FF1B500A40B4C /* XHButton.m */; };
+		BCE86A7E1CA031B400A40B4C /* XHDDOnlineFixCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE86A7C1CA031B400A40B4C /* XHDDOnlineFixCell.m */; };
+		BCE86A7F1CA031B400A40B4C /* XHDDOnlineFixCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE86A7D1CA031B400A40B4C /* XHDDOnlineFixCell.xib */; };
 		BCF1E1CD1C90827200CA3338 /* XHDDOnlineFunPlayCategoryDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF1E1CC1C90827200CA3338 /* XHDDOnlineFunPlayCategoryDetailController.m */; };
 		BCF1E1D01C90867D00CA3338 /* XHDDOnlineCategoryDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF1E1CF1C90867D00CA3338 /* XHDDOnlineCategoryDetailModel.m */; };
 		BCF1E1D41C90883B00CA3338 /* XHDDOnlineCategorysDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF1E1D21C90883B00CA3338 /* XHDDOnlineCategorysDetailCell.m */; };
@@ -1942,7 +1943,6 @@
 		BCCED7001C96A07C00DFF451 /* XHDDOnlineJokeBaseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHDDOnlineJokeBaseCell.xib; sourceTree = "<group>"; };
 		BCE86A4C1C9EBDD100A40B4C /* XHDDOnlineSettingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHDDOnlineSettingController.h; sourceTree = "<group>"; };
 		BCE86A4D1C9EBDD100A40B4C /* XHDDOnlineSettingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHDDOnlineSettingController.m; sourceTree = "<group>"; };
-		BCE86A4E1C9EBDD100A40B4C /* XHDDOnlineSettingController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHDDOnlineSettingController.xib; sourceTree = "<group>"; };
 		BCE86A571C9EBED000A40B4C /* XHDDOnlineMineSkinController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHDDOnlineMineSkinController.h; sourceTree = "<group>"; };
 		BCE86A581C9EBED000A40B4C /* XHDDOnlineMineSkinController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHDDOnlineMineSkinController.m; sourceTree = "<group>"; };
 		BCE86A5C1C9EC14100A40B4C /* teamTheme */ = {isa = PBXFileReference; lastKnownFileType = folder; path = teamTheme; sourceTree = "<group>"; };
@@ -1954,6 +1954,9 @@
 		BCE86A6C1C9ED55600A40B4C /* XHDDOnlineMineSkinModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHDDOnlineMineSkinModel.m; sourceTree = "<group>"; };
 		BCE86A6E1C9FF1B500A40B4C /* XHButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHButton.h; sourceTree = "<group>"; };
 		BCE86A6F1C9FF1B500A40B4C /* XHButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHButton.m; sourceTree = "<group>"; };
+		BCE86A7B1CA031B400A40B4C /* XHDDOnlineFixCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHDDOnlineFixCell.h; sourceTree = "<group>"; };
+		BCE86A7C1CA031B400A40B4C /* XHDDOnlineFixCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHDDOnlineFixCell.m; sourceTree = "<group>"; };
+		BCE86A7D1CA031B400A40B4C /* XHDDOnlineFixCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHDDOnlineFixCell.xib; sourceTree = "<group>"; };
 		BCF1E1CB1C90827200CA3338 /* XHDDOnlineFunPlayCategoryDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHDDOnlineFunPlayCategoryDetailController.h; sourceTree = "<group>"; };
 		BCF1E1CC1C90827200CA3338 /* XHDDOnlineFunPlayCategoryDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHDDOnlineFunPlayCategoryDetailController.m; sourceTree = "<group>"; };
 		BCF1E1CE1C90867D00CA3338 /* XHDDOnlineCategoryDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHDDOnlineCategoryDetailModel.h; sourceTree = "<group>"; };
@@ -2519,6 +2522,9 @@
 				BCE86A661C9EC46500A40B4C /* XHDDOnlineMineSkinCell.h */,
 				BCE86A671C9EC46500A40B4C /* XHDDOnlineMineSkinCell.m */,
 				BCE86A681C9EC46500A40B4C /* XHDDOnlineMineSkinCell.xib */,
+				BCE86A7B1CA031B400A40B4C /* XHDDOnlineFixCell.h */,
+				BCE86A7C1CA031B400A40B4C /* XHDDOnlineFixCell.m */,
+				BCE86A7D1CA031B400A40B4C /* XHDDOnlineFixCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -4069,7 +4075,6 @@
 			children = (
 				BCE86A4C1C9EBDD100A40B4C /* XHDDOnlineSettingController.h */,
 				BCE86A4D1C9EBDD100A40B4C /* XHDDOnlineSettingController.m */,
-				BCE86A4E1C9EBDD100A40B4C /* XHDDOnlineSettingController.xib */,
 			);
 			name = "设置";
 			sourceTree = "<group>";
@@ -5018,6 +5023,7 @@
 				BC1AB0971C8C0BE40007EDF4 /* 105@2x.png in Resources */,
 				BC014A811C8B242400AA4C45 /* TabBar_Client_1_p@3x.png in Resources */,
 				BC1AAFAB1C8C0BC40007EDF4 /* sidemenu_setting@2x.png in Resources */,
+				BCE86A7F1CA031B400A40B4C /* XHDDOnlineFixCell.xib in Resources */,
 				BCA4016C1C9B94A80047FEBE /* lxh_kunsile@2x.png in Resources */,
 				BCA4019E1C9B94A80047FEBE /* lxh_xiudada@2x.png in Resources */,
 				BCF1E31F1C9298E600CA3338 /* see-big-picture@3x.png in Resources */,
@@ -5137,7 +5143,6 @@
 				BC1AB0891C8C0BE40007EDF4 /* 091@2x.png in Resources */,
 				BCA4017E1C9B94A80047FEBE /* lxh_qiaoqiao.gif in Resources */,
 				BCA401611C9B94A80047FEBE /* lxh_jiujie.gif in Resources */,
-				BCE86A501C9EBDD100A40B4C /* XHDDOnlineSettingController.xib in Resources */,
 				BCA401281C9B94A80047FEBE /* o_lvsidai@2x.png in Resources */,
 				BCA401181C9B94A80047FEBE /* h_haha@2x.png in Resources */,
 				BC87940F1C9D2E840060757E /* XHDDOnlineRegistController.xib in Resources */,
@@ -5583,6 +5588,7 @@
 				BC370F561C9548FD00D7A81C /* RACDynamicSignal.m in Sources */,
 				BC01481E1C8AFED600AA4C45 /* UIViewController+SpliteView.m in Sources */,
 				BC370F761C9548FD00D7A81C /* RACTargetQueueScheduler.m in Sources */,
+				BCE86A7E1CA031B400A40B4C /* XHDDOnlineFixCell.m in Sources */,
 				BCFCCB751C97F6D5003B4308 /* XHDDOnlineChatMessageTableView.m in Sources */,
 				BC39659D1C8E928400BC23EF /* XHDDOnlineMy3DLayout.m in Sources */,
 				BC370F511C9548FD00D7A81C /* RACCompoundDisposable.m in Sources */,

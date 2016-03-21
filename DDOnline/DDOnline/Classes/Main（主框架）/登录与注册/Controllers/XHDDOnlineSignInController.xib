@@ -8,7 +8,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="XHDDOnlineSignInController">
             <connections>
                 <outlet property="autoLoginBtn" destination="i3e-bb-j4J" id="hQd-fi-PUY"/>
-                <outlet property="autoLoginSwitch" destination="75M-ct-dXP" id="qfp-UK-EB5"/>
                 <outlet property="forgotPasswordBtn" destination="Toe-ec-EMC" id="hsg-cs-qL6"/>
                 <outlet property="loginBtn" destination="nwu-gf-g8A" id="hpV-9U-Jt5"/>
                 <outlet property="passwordTF" destination="Yat-h9-kAk" id="Waq-lY-hvB"/>
@@ -48,7 +47,7 @@
                         <action selector="loginBtn:" destination="-1" eventType="touchUpInside" id="Cx6-mP-ESZ"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i3e-bb-j4J">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i3e-bb-j4J">
                     <rect key="frame" x="245" y="194" width="100" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="dKA-vd-rnt"/>
@@ -90,13 +89,6 @@
                         <action selector="forgotPasswordBtn:" destination="-1" eventType="touchUpInside" id="3qA-fh-ZWe"/>
                     </connections>
                 </button>
-                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="75M-ct-dXP">
-                    <rect key="frame" x="243" y="194" width="34" height="20"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="20" id="QAJ-92-V01"/>
-                        <constraint firstAttribute="width" constant="32" id="pok-aR-vos"/>
-                    </constraints>
-                </switch>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -107,14 +99,12 @@
                 <constraint firstItem="i3e-bb-j4J" firstAttribute="trailing" secondItem="Yat-h9-kAk" secondAttribute="trailing" id="ICf-iS-v2I"/>
                 <constraint firstItem="Yat-h9-kAk" firstAttribute="leading" secondItem="7L3-kC-gdC" secondAttribute="leading" id="PWR-8A-CUx"/>
                 <constraint firstItem="i3e-bb-j4J" firstAttribute="top" secondItem="Yat-h9-kAk" secondAttribute="bottom" constant="10" id="Rd2-Ye-V2R"/>
-                <constraint firstAttribute="trailing" secondItem="75M-ct-dXP" secondAttribute="trailing" constant="100" id="YfL-a8-97Z"/>
                 <constraint firstItem="Toe-ec-EMC" firstAttribute="top" secondItem="nwu-gf-g8A" secondAttribute="bottom" constant="10" id="cSB-UI-DMe"/>
                 <constraint firstItem="7L3-kC-gdC" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="fFQ-Ul-JaM"/>
                 <constraint firstItem="7L3-kC-gdC" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="94" id="nXq-IH-av1"/>
                 <constraint firstItem="nwu-gf-g8A" firstAttribute="leading" secondItem="Yat-h9-kAk" secondAttribute="leading" id="oxl-dC-9tO"/>
                 <constraint firstItem="ZXC-gY-9f6" firstAttribute="top" secondItem="Yat-h9-kAk" secondAttribute="bottom" constant="10" id="qPY-uy-XVj"/>
                 <constraint firstItem="Toe-ec-EMC" firstAttribute="trailing" secondItem="nwu-gf-g8A" secondAttribute="trailing" id="tY0-qt-l2Y"/>
-                <constraint firstItem="75M-ct-dXP" firstAttribute="centerY" secondItem="i3e-bb-j4J" secondAttribute="centerY" id="xf2-13-EYh"/>
                 <constraint firstItem="ZXC-gY-9f6" firstAttribute="leading" secondItem="Yat-h9-kAk" secondAttribute="leading" id="yML-EH-ddW"/>
                 <constraint firstAttribute="trailing" secondItem="7L3-kC-gdC" secondAttribute="trailing" constant="30" id="zIF-0r-EFK"/>
             </constraints>

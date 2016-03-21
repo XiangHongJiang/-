@@ -11,6 +11,7 @@
 #import "EMSDKFull.h"
 #import "XHDDOnlineMineSkinController.h"
 #import "XHDDOnlineSliderController.h"
+#import "XHDDOnlineSettingController.h"
 
 @interface XHDDOnlineMineController ()<UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 @property (weak, nonatomic)  UIButton *headerBtn;
@@ -96,13 +97,15 @@
     UIViewController *ctrl = nil;
     //创建
     switch (indexPath.row) {
-        case 0:
+        case 0://我的皮肤
             
             ctrl = [[XHDDOnlineMineSkinController alloc] init];
             break;
-            case 1:
+            case 1://我的收藏
             break;
-            case 2:
+            
+            case 2://设置
+            ctrl = [[XHDDOnlineSettingController alloc] init];
             break;
             
         default:

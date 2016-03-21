@@ -57,11 +57,32 @@
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"sliderCellID"];
     //去掉分割线
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    //修改背景颜色
-    self.view.backgroundColor = [UIColor colorWithWhite:218.0f/255.0f alpha:1.0f];
     
     self.tableView.rowHeight = 50;
     self.tableView.sectionHeaderHeight = JAdsViewHeight;
+    //设置启动皮肤
+    [self changeSkin];
+    //添加换肤监听
+    [self addNotificationCenter];
+    
+}
+
+- (void)addNotificationCenter{
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeSkin) name:@"changeSkin" object:nil];
+}
+- (void)changeSkin{
+    
+    NSString *addressPre =  [[NSUserDefaults standardUserDefaults] objectForKey:@"skinAddress"];
+    
+    NSString *skinPath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@/themeColor.plist",addressPre] ofType:nil];
+    
+    NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:skinPath];
+    
+    NSArray *rgbArray = [dict[@"navigationColor"] componentsSeparatedByString:@","];
+    
+    self.tableView.backgroundColor = JColorRGBA([rgbArray[0] floatValue], [rgbArray[1]floatValue], [rgbArray[2]floatValue],0.6);
+    
 }
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -79,10 +100,11 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"sliderCellID" forIndexPath:indexPath];
     
     //修改背景颜色
-    cell.backgroundColor = [UIColor colorWithWhite:218.0f/255.0f alpha:1.0f];
     // Configure the cell...
     cell.imageView.image = [UIImage imageNamed:self.cellImageNameArray[indexPath.row]];
     cell.textLabel.text = self.cellTitleArray[indexPath.row];
+    
+    cell.backgroundColor = [UIColor colorWithWhite:1.000 alpha:0.000];
     
     return cell;
 
@@ -127,6 +149,8 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 #warning 跳转事件
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
     [self.sideMenuViewController hideMenuViewController];
     

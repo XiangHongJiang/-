@@ -9,7 +9,10 @@
 #import "CLFullLeftViewController.h"
 
 @interface CLFullLeftViewController ()
-
+/**
+ *  <#Description#>
+ */
+@property (nonatomic, assign) BOOL isHidenBar;
 @end
 
 @implementation CLFullLeftViewController
@@ -46,6 +49,21 @@
 -(BOOL)prefersStatusBarHidden{
     
     return YES;
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+
+    [super viewWillAppear:animated];
+    self.isHidenBar = self.navigationController.navigationBarHidden;
+    
+    self.navigationController.navigationBarHidden = YES;
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+
+    [super viewWillDisappear:animated];
+    
+    self.navigationController.navigationBarHidden = self.isHidenBar;
 }
 
 @end

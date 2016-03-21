@@ -426,6 +426,9 @@
 		BC513D401C99101A00530B1F /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BC513D3F1C99101A00530B1F /* libiconv.dylib */; };
 		BC513D421C99102600530B1F /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BC513D411C99102600530B1F /* libsqlite3.dylib */; };
 		BC513DE21C99442700530B1F /* libHyphenateFullSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC513DE11C99442700530B1F /* libHyphenateFullSDK.a */; };
+		BC6F4E021CA0789C00CAB0B0 /* HistoryMessageModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BC6F4E001CA0789C00CAB0B0 /* HistoryMessageModel.xcdatamodeld */; };
+		BC6F4E5B1CA0856E00CAB0B0 /* Entity+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6F4E581CA0856E00CAB0B0 /* Entity+CoreDataProperties.m */; };
+		BC6F4E5C1CA0856E00CAB0B0 /* Entity.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6F4E5A1CA0856E00CAB0B0 /* Entity.m */; };
 		BC87940E1C9D2E840060757E /* XHDDOnlineRegistController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC87940C1C9D2E840060757E /* XHDDOnlineRegistController.m */; };
 		BC87940F1C9D2E840060757E /* XHDDOnlineRegistController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC87940D1C9D2E840060757E /* XHDDOnlineRegistController.xib */; };
 		BC8794131C9D46FF0060757E /* XHDDOnlineSignInController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8794111C9D46FF0060757E /* XHDDOnlineSignInController.m */; };
@@ -1610,6 +1613,11 @@
 		BC513DD61C991F9600530B1F /* IEMGroupManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IEMGroupManager.h; sourceTree = "<group>"; };
 		BC513DD71C991F9600530B1F /* OpenGLView20.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenGLView20.h; sourceTree = "<group>"; };
 		BC513DE11C99442700530B1F /* libHyphenateFullSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libHyphenateFullSDK.a; sourceTree = "<group>"; };
+		BC6F4E011CA0789C00CAB0B0 /* HistoryMessageModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HistoryMessageModel.xcdatamodel; sourceTree = "<group>"; };
+		BC6F4E571CA0856E00CAB0B0 /* Entity+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Entity+CoreDataProperties.h"; sourceTree = "<group>"; };
+		BC6F4E581CA0856E00CAB0B0 /* Entity+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Entity+CoreDataProperties.m"; sourceTree = "<group>"; };
+		BC6F4E591CA0856E00CAB0B0 /* Entity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entity.h; sourceTree = "<group>"; };
+		BC6F4E5A1CA0856E00CAB0B0 /* Entity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entity.m; sourceTree = "<group>"; };
 		BC87940B1C9D2E840060757E /* XHDDOnlineRegistController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHDDOnlineRegistController.h; sourceTree = "<group>"; };
 		BC87940C1C9D2E840060757E /* XHDDOnlineRegistController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHDDOnlineRegistController.m; sourceTree = "<group>"; };
 		BC87940D1C9D2E840060757E /* XHDDOnlineRegistController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHDDOnlineRegistController.xib; sourceTree = "<group>"; };
@@ -2235,6 +2243,7 @@
 		BC0147BF1C8AFCAF00AA4C45 /* DDOnline */ = {
 			isa = PBXGroup;
 			children = (
+				BC6F4E5D1CA08FA500CAB0B0 /* CoreData */,
 				BC01480C1C8AFED600AA4C45 /* Utils */,
 				BC01480A1C8AFED600AA4C45 /* Resource */,
 				BC0147F51C8AFED600AA4C45 /* Classes */,
@@ -3640,6 +3649,19 @@
 			children = (
 			);
 			name = "下载";
+			sourceTree = "<group>";
+		};
+		BC6F4E5D1CA08FA500CAB0B0 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				BC6F4E571CA0856E00CAB0B0 /* Entity+CoreDataProperties.h */,
+				BC6F4E581CA0856E00CAB0B0 /* Entity+CoreDataProperties.m */,
+				BC6F4E591CA0856E00CAB0B0 /* Entity.h */,
+				BC6F4E5A1CA0856E00CAB0B0 /* Entity.m */,
+				BC6F4E001CA0789C00CAB0B0 /* HistoryMessageModel.xcdatamodeld */,
+			);
+			name = CoreData;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		BC8793FA1C9C5FC20060757E /* 登录与注册 */ = {
@@ -5597,6 +5619,7 @@
 				BC01481E1C8AFED600AA4C45 /* UIViewController+SpliteView.m in Sources */,
 				BC370F761C9548FD00D7A81C /* RACTargetQueueScheduler.m in Sources */,
 				BCE86A7E1CA031B400A40B4C /* XHDDOnlineFixCell.m in Sources */,
+				BC6F4E021CA0789C00CAB0B0 /* HistoryMessageModel.xcdatamodeld in Sources */,
 				BCFCCB751C97F6D5003B4308 /* XHDDOnlineChatMessageTableView.m in Sources */,
 				BC39659D1C8E928400BC23EF /* XHDDOnlineMy3DLayout.m in Sources */,
 				BC370F511C9548FD00D7A81C /* RACCompoundDisposable.m in Sources */,
@@ -5617,6 +5640,7 @@
 				BC8D61611C8D794A0043F18F /* MJPropertyType.m in Sources */,
 				BC50CA1D1C93B88700DEF3CC /* README.md in Sources */,
 				BC370F6D1C9548FD00D7A81C /* RACSignal.m in Sources */,
+				BC6F4E5B1CA0856E00CAB0B0 /* Entity+CoreDataProperties.m in Sources */,
 				BC370F621C9548FD00D7A81C /* RACMulticastConnection.m in Sources */,
 				BC3965A11C8E92FD00BC23EF /* XHDDOnlineRecommendCategoryDetailCell.m in Sources */,
 				BC3965CB1C8EBB2900BC23EF /* AFHTTPSessionManager.m in Sources */,
@@ -5692,6 +5716,7 @@
 				BC50CA1A1C93B88700DEF3CC /* DACircularProgressView.m in Sources */,
 				BCC58FD01C97E7700071FC55 /* UIView+Animation.m in Sources */,
 				BC370F5C1C9548FD00D7A81C /* RACGroupedSignal.m in Sources */,
+				BC6F4E5C1CA0856E00CAB0B0 /* Entity.m in Sources */,
 				BCC58FF51C97F2580071FC55 /* UIImage+FX.m in Sources */,
 				BC370F5D1C9548FD00D7A81C /* RACImmediateScheduler.m in Sources */,
 				BCCED7011C96A07C00DFF451 /* XHDDOnlineJokeBaseCell.m in Sources */,
@@ -5938,6 +5963,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		BC6F4E001CA0789C00CAB0B0 /* HistoryMessageModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				BC6F4E011CA0789C00CAB0B0 /* HistoryMessageModel.xcdatamodel */,
+			);
+			currentVersion = BC6F4E011CA0789C00CAB0B0 /* HistoryMessageModel.xcdatamodel */;
+			path = HistoryMessageModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = BC0147B51C8AFCAF00AA4C45 /* Project object */;
 }

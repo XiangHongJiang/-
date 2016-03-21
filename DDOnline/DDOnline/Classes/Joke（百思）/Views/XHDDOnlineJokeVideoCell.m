@@ -67,7 +67,11 @@
 //点击播放
 - (IBAction)playVideoAction:(UIButton *)sender {
     
+    self.playView.hidden = NO;
+    
     JLog(@"播放");
+    sender.hidden = YES;
+    
     [self.contentView bringSubviewToFront:self.playView];
     
     self.selected = !self.selected;
@@ -90,6 +94,10 @@
 - (void)setVideoDetailModel:(JokeBase_List *)videoDetailModel{
 
     _videoDetailModel = videoDetailModel;
+    
+    self.playVideoBtn.hidden = NO;
+    self.playView.hidden = YES;
+    self.playView.frame = CGRectMake(0, 0, JScreenWidth - 20, videoDetailModel.videoImageHeight);
     
 //    JLog(@"%@",videoDetailModel);
     
@@ -125,7 +133,6 @@
     [self setupButtonTitle:self.pinglunBtn count:[videoDetailModel.comment integerValue] placeholder:@"评论"];
     
 }
-
 /**
  * 设置底部按钮文字
  */
@@ -148,10 +155,16 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
+
+    
     // Configure the view for the selected state
 }
 + (CGFloat)rowHeightWithvideoDetailModel:(JokeBase_List *)videoDetailModel{
 
     return videoDetailModel.textHeight + 110 + videoDetailModel.videoImageHeight;
 }
+
+//@property (nonatomic, nullable) SEL               editAction NS_DEPRECATED_IOS(2_0, 3_0) __TVOS_PROHIBITED;                  // action to call on insert/delete call. set by UITableView
+
+
 @end

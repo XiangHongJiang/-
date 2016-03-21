@@ -10,27 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DDOnline/Classes/Chat&#xff08;&#x804a;&#x5929;&#xff09;/Controllers/XHDDOnlineChatDetailController.m"
-            timestampString = "480063583.259776"
+            timestampString = "480285488.943661"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "152"
-            endingLineNumber = "152"
-            landmarkName = "-sendMessageToFriend:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DDOnline/Classes/Chat&#xff08;&#x804a;&#x5929;&#xff09;/Controllers/XHDDOnlineChatDetailController.m"
-            timestampString = "480081816.301831"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "246"
-            endingLineNumber = "246"
+            startingLineNumber = "329"
+            endingLineNumber = "329"
             landmarkName = "-didReceiveMessages:"
             landmarkType = "5">
          </BreakpointContent>
@@ -42,12 +26,60 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DDOnline/Classes/Chat&#xff08;&#x804a;&#x5929;&#xff09;/Controllers/XHDDOnlineChatDetailController.m"
-            timestampString = "480081816.301831"
+            timestampString = "480285488.943661"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "241"
-            endingLineNumber = "241"
+            startingLineNumber = "324"
+            endingLineNumber = "324"
             landmarkName = "-didReceiveMessages:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DDOnline/Classes/FunPlay&#xff08;&#x89c6;&#x9891;&#xff09;/Views/Video/CLVideoPlayerView.m"
+            timestampString = "480276800.358231"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "238"
+            endingLineNumber = "238"
+            landmarkName = "-tapGesure:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DDOnline/Classes/Chat&#xff08;&#x804a;&#x5929;&#xff09;/Controllers/XHDDOnlineChatDetailController.m"
+            timestampString = "480285599.697006"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
+            landmarkName = "-setSendOrReceiveMessageTableViewScroll"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DDOnline/Classes/Chat&#xff08;&#x804a;&#x5929;&#xff09;/Controllers/XHDDOnlineChatDetailController.m"
+            timestampString = "480285926.130335"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "369"
+            endingLineNumber = "369"
+            landmarkName = "-getLastMessageFromDB"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

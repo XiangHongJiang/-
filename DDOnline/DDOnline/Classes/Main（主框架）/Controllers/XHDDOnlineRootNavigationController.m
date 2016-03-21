@@ -42,7 +42,6 @@
         return;
     }
     
-    
      ctrl.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageWithData:data] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(splite)];
    
     

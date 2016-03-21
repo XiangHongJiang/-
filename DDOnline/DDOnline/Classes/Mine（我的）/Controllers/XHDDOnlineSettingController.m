@@ -116,12 +116,18 @@
         //退出原账号
         if ([EMClient sharedClient].currentUsername.length >0) {
             EMError *error1 = [[EMClient sharedClient] logout:YES];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
             if (error1) {
-                dispatch_async(dispatch_get_main_queue(), ^{
+                
                     [SVProgressHUD showErrorWithStatus:error1.errorDescription];
-                });
+               
  
             }
+            else{
+            [SVProgressHUD showSuccessWithStatus:@"退出成功！"];
+            }
+                 });
         }
     });
   

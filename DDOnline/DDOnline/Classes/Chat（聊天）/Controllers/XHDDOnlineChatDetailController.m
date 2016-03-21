@@ -1,4 +1,4 @@
-//
+ //
 //  XHDDOnlineChatDetailController.m
 //  DDOnline
 //
@@ -9,8 +9,14 @@
 #import "XHDDOnlineChatDetailController.h"
 #import "XHDDOnlineChatMessageCell.h"
 #import "EMSDKFull.h"
+#import "Entity+CoreDataProperties.h"
 
 @interface XHDDOnlineChatDetailController ()<UITableViewDataSource,UITableViewDelegate,EMChatManagerDelegate>
+{
+    //CoreDada中管理数据的上下文，做增删改查需要使用到
+    NSManagedObjectContext *_managedObjectContext;
+
+}
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomViewLayoutBottom;
 
 /**
@@ -58,6 +64,9 @@
     self.inputMessageTextView.layer.cornerRadius = 4;
     self.inputMessageTextView.layer.masksToBounds = YES;
 
+    //0.配置环境
+    [self configEnvironment];
+    
     //1.添加键盘监听
      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardChange:) name:UIKeyboardWillChangeFrameNotification object:nil];
     
@@ -74,6 +83,61 @@
         
         [self.view endEditing:YES];
     }
+}
+#pragma mark - coreData
+- (void)configEnvironment{
+    
+    //1.获取路径;编译后类型会变成mode; 根据路径加载文件中所有的模型
+    NSString *momdPath = [[NSBundle mainBundle] pathForResource:@"HistoryMessageModel" ofType:@"momd"];
+    NSManagedObjectModel *managedModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:[NSURL fileURLWithPath:momdPath]];
+    
+    //2.创建持久化存储协调器（相当于数据库和文件的连接器）
+    NSPersistentStoreCoordinator *coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:managedModel];
+    
+    //3.指定数据库的存储路径
+    NSString *savaPath = [NSHomeDirectory() stringByAppendingString:@"/Documents/historyMessageInfo.sqlist"];
+    
+    //4.设置路径
+    NSPersistentStore *sotre = [coordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:[NSURL fileURLWithPath:savaPath] options:nil error:nil];
+    
+    //5.创建托管上下文
+    _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+    
+    //6.关联协调器
+    _managedObjectContext.persistentStoreCoordinator = coordinator;
+    
+    //创建保存数据的数组
+    
+    //执行一次查询，取出之前的本地化数据
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"HistoryMessageEntity"];
+    NSArray *results = [_managedObjectContext executeFetchRequest:fetchRequest error:nil];
+   
+#warning 第一次如何查找并显示历史。
+    for (int i = 0; i < results.count; i ++) {
+       
+        Entity *entityModel = results[i];
+        
+        NSString *name = entityModel.name;
+        
+        if (![name isEqualToString:[NSString stringWithFormat:@"%@/%@",self.navigationItem.title,[EMClient sharedClient].currentUsername]]) {
+            continue;
+        }
+        NSString *time = entityModel.time;
+        NSString *text = entityModel.message;
+        BOOL type =  [entityModel.type boolValue];
+        
+        NSDictionary *dict = @{@"text":text,@"time":time,@"type":@(type)};
+       
+        XHDDOnlineChatMessageModel *model = [XHDDOnlineChatMessageModel messageWithDict:dict];
+        
+        [self.messagesArray addObject:model];
+        
+    }
+//    [self.messagesArray addObjectsFromArray:results];
+    
+    //刷新数据
+    [self.chatContentTableView reloadData];
+    [self setSendOrReceiveMessageTableViewScroll];
 }
 #pragma mark - 发送消息处理
 //获取当前对话时间字符串
@@ -118,9 +182,10 @@
 //设置滚动到底部
 - (void)setSendOrReceiveMessageTableViewScroll{
    
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.messagesArray.count - 1 inSection:0];
-    [self.chatContentTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
-
+    if (self.messagesArray.count > 0) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.messagesArray.count - 1 inSection:0];
+        [self.chatContentTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    }
 }
 #pragma mark - 发送消息给对方
 - (void)sendMessageToFriend:(XHDDOnlineChatMessageModel *)messageModel{
@@ -151,6 +216,25 @@
             [self.currentConversation insertMessage:messageBody];
             BOOL ret =  [self.currentConversation updateConversationExtToDB];
             JLog(@"%d",ret);
+            
+            //添加到数据库
+            
+            //创建一个实体
+            Entity *messageEntity = (Entity *)[NSEntityDescription insertNewObjectForEntityForName:@"HistoryMessageEntity" inManagedObjectContext:_managedObjectContext];
+            
+            //实体赋值
+            messageEntity.name = [NSString stringWithFormat:@"%@/%@",self.navigationItem.title,[EMClient sharedClient].currentUsername];
+            messageEntity.message = messageModel.text;
+            messageEntity.time = messageModel.time;
+            messageEntity.type = @(messageModel.type);
+          
+            //实体保存
+            if ([_managedObjectContext save:nil]){
+            
+                NSLog(@"保存实体成功");
+            }
+            
+            
         }
         else {
             
@@ -247,7 +331,23 @@
             JLog(@"插入到本地失败");
         }
         
-        XHDDOnlineChatMessageModel *model = [self createMessageWithMessageText:ext[@"text"] andIsFromOther:YES];
+       XHDDOnlineChatMessageModel *model = [self createMessageWithMessageText:ext[@"text"] andIsFromOther:YES];
+        
+        //创建一个实体
+        Entity *messageEntity = (Entity *)[NSEntityDescription insertNewObjectForEntityForName:@"HistoryMessageEntity" inManagedObjectContext:_managedObjectContext];
+        
+        //实体赋值
+        messageEntity.name = [NSString stringWithFormat:@"%@/%@",self.navigationItem.title,[EMClient sharedClient].currentUsername];
+        messageEntity.message = model.text;
+        messageEntity.time = model.time;
+        messageEntity.type = @(YES);
+        
+        //实体保存
+        if ([_managedObjectContext save:nil]){
+            
+            NSLog(@"保存实体成功");
+        }
+        
        
         [self.messagesArray addObject:model];
         [self.chatContentTableView reloadData];

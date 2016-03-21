@@ -161,7 +161,7 @@
                                     <constraint firstItem="wtK-pd-pYY" firstAttribute="top" secondItem="8vI-Mx-rCb" secondAttribute="top" id="zqo-oM-cYm"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tKN-fe-fhd" userLabel="gifImage View">
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tKN-fe-fhd" userLabel="gifImage View">
                                 <rect key="frame" x="10" y="88" width="356" height="190"/>
                                 <gestureRecognizers/>
                                 <constraints>

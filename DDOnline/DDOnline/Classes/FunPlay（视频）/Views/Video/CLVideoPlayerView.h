@@ -11,8 +11,11 @@
 @interface CLVideoPlayerView : UIView
 @property (nonatomic,strong)AVPlayer *player;
 @property (nonatomic,strong)AVPlayerLayer *playerLayer;
-
 @property (nonatomic,copy)NSString *urlString;
+/**
+ *  是否在导航栏下
+ */
+@property (nonatomic, assign) BOOL bottomNav;
 
 +(instancetype)videoPlayerView;
 

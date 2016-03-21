@@ -32,6 +32,8 @@
 
     CLVideoPlayerView *videoView = [CLVideoPlayerView videoPlayerView];
     
+    videoView.bottomNav = YES;
+    
     videoView.frame = CGRectMake(0, 64, JScreenWidth, JScreenWidth * 9 / 16.0);
     [self.view addSubview:videoView];
     self.videoView = videoView;

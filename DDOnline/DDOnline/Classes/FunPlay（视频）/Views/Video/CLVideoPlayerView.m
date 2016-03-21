@@ -11,7 +11,10 @@
 
 @interface CLVideoPlayerView ()
 
-
+/**
+ *  <#Description#>
+ */
+@property (nonatomic, assign) CGRect preFrame;
 
 @property (weak, nonatomic) IBOutlet UIButton *playBtn;
 @property (weak, nonatomic) IBOutlet UISlider *slider;
@@ -33,6 +36,10 @@
 /*显示正在加载的label*/
 @property (weak, nonatomic) IBOutlet UILabel *loadingLabel;
 
+/**
+ *  <#Description#>
+ */
+@property (nonatomic, weak) UIView * lastSuperView;
 
 /**
  *  当前的视图的frame值
@@ -202,33 +209,58 @@
 
 //imageView的点击事件，点一次显示工具栏，两次隐藏工具栏
 - (IBAction)tapGesure:(UITapGestureRecognizer *)sender {
+   
     
     //设置工具栏的显示隐藏
     [UIView animateWithDuration:0.5 animations:^{
         
         self.isHiddenToolView = !self.isHiddenToolView;
         
-       
         UINavigationController *nav = self.viewController.navigationController;
    
-        nav.navigationBarHidden = !nav.navigationBarHidden;
+        
         if (self.isHiddenToolView) {
+            
             self.toolView.alpha = 0;
             
             if (self.fullLeft != nil) {
                 nav.navigationBar.hidden = YES;
                 return ;
             }
-        self.frame = CGRectMake(0, 64, self.frame.size.width , self.frame.size.height);
+            
+            if (self.bottomNav) {
+                nav.navigationBarHidden = !nav.navigationBarHidden;
+                
+                self.frame = CGRectMake(0, 64, self.frame.size.width , self.frame.size.height);
+            }
+            else{
+                
+                self.frame = CGRectMake(0, 0, self.frame.size.width , self.frame.size.height);
+            }
+            
             
         }else{
-            
             self.toolView.alpha = 1;
+         
+            if (self.fullLeft != nil) {
+                return;
+            }
+            
+            if (self.bottomNav) {
+                nav.navigationBarHidden = !nav.navigationBarHidden;
+            }
+            else{
+                nav.navigationBarHidden = NO;
+            }
+            
             self.frame = CGRectMake(0, 0, self.frame.size.width , self.frame.size.height);
             
         }
     }];
-}
+     
+
+    
+   }
 
 - (IBAction)playOrPauseBtn:(UIButton *)sender {
     
@@ -255,16 +287,22 @@
 //设置全屏
 - (IBAction)switchOrientation:(UIButton *)sender {
  
+    
+    
     sender.selected = !sender.selected;
 
     UINavigationController *nav = self.viewController.navigationController;
     
     if (sender.selected) {
         
+        self.preFrame = self.frame;
+        
         //创建一个横屏的控制器用于横屏
         CLFullLeftViewController * fullLeft = [[CLFullLeftViewController alloc]init];
        //推出满屏控制器
         self.fullLeft = fullLeft;
+        
+        self.lastSuperView = self.superview;
         
         [nav pushViewController:self.fullLeft animated:NO];
         //保存当前视图的fame值
@@ -277,20 +315,21 @@
 
      
     }else{
-        
+
         UIViewController *vc =  nav.viewControllers[nav.viewControllers.count - 2];
         //将视图添加到顶部控制器View上
         [vc.view addSubview:self];
 
+        [self.lastSuperView addSubview:self];
+        
         //让满屏控制器消失
         [nav popViewControllerAnimated:NO];
 
         //将视图的大小设置为原来的大小
-        self.frame = self.rectFrame;
-
-//        self.fullLeft = nil;
-
+        self.frame = self.preFrame;
+        self.lastSuperView = nil;
     }
+    
 }
 
 
@@ -359,6 +398,38 @@
     self.playerLayer = nil;
     
 }
+//-(void)dealloc{
+//    
+//    [self.player pause];
+//    self.player = nil;
+//    self.indicatorView = nil;
+//    self.timer = nil;
+//    self.lastSuperView = nil;
+//    self.loadingLabel = nil;
+//    self.slider = nil;
+//    self.playBtn = nil;
+//    self.imageView = nil;
+//    self.toolView = nil;
+//    self.OrientationBtn = nil;
+//    self.timeLabel = nil;
+//}
+//
+//
+//-(void)removeFromSuperview{
+//    
+//    [self.player pause];
+//    self.player = nil;
+//    self.indicatorView = nil;
+//    self.timer = nil;
+//    self.lastSuperView = nil;
+//    self.loadingLabel = nil;
+//    self.slider = nil;
+//    self.playBtn = nil;
+//    self.imageView = nil;
+//    self.toolView = nil;
+//    self.OrientationBtn = nil;
+//    self.timeLabel = nil;
+//}
 
 
 @end

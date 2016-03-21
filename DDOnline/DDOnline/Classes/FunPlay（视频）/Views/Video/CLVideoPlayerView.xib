@@ -42,7 +42,7 @@
                                 <action selector="switchOrientation:" destination="hka-xg-1q7" eventType="touchUpInside" id="Bv4-5F-AGW"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="02:08/10:08" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cel-8A-TiT">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00/00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cel-8A-TiT">
                             <rect key="frame" x="236" y="13" width="81" height="15"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="81" id="hBD-pt-ELR"/>

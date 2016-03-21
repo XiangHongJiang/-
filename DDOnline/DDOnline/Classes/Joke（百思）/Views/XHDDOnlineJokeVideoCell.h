@@ -10,9 +10,7 @@
 #import "XHDDOnlineJokeBaseModel.h"
 
 @interface XHDDOnlineJokeVideoCell : UITableViewCell
-/**
- *  JokeVideo_List
- */
+/** *  JokeVideo_List */
 @property (nonatomic, strong) JokeBase_List *videoDetailModel;
 
 +(id)jokeVideoCellWithTableView:(UITableView *)tableView;

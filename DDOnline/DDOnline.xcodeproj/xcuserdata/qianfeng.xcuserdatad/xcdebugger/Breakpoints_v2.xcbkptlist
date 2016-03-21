@@ -10,38 +10,6 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DDOnline/Classes/Chat&#xff08;&#x804a;&#x5929;&#xff09;/Controllers/XHDDOnlineChatDetailController.m"
-            timestampString = "480013778.766587"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
-            landmarkName = "-viewDidLoad"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DDOnline/Classes/Chat&#xff08;&#x804a;&#x5929;&#xff09;/Controllers/XHDDOnlineChatDetailController.m"
-            timestampString = "480081816.301831"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "267"
-            endingLineNumber = "267"
-            landmarkName = "-getLastMessageFromDB"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DDOnline/Classes/Chat&#xff08;&#x804a;&#x5929;&#xff09;/Controllers/XHDDOnlineChatDetailController.m"
             timestampString = "480063583.259776"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"

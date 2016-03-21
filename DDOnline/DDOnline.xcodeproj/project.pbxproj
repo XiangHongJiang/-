@@ -373,8 +373,6 @@
 		BC370F901C9548FD00D7A81C /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = BC370F331C9548FD00D7A81C /* README.md */; };
 		BC370F991C95664900D7A81C /* XHSoundInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC370F971C95664900D7A81C /* XHSoundInputView.m */; };
 		BC370F9A1C95664900D7A81C /* XHSoundInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC370F981C95664900D7A81C /* XHSoundInputView.xib */; };
-		BC370F9D1C95854500D7A81C /* XHDDOnlineSliderHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC370F9C1C95854500D7A81C /* XHDDOnlineSliderHeaderView.m */; };
-		BC370F9F1C95855100D7A81C /* XHDDOnlineSliderHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC370F9E1C95855000D7A81C /* XHDDOnlineSliderHeaderView.xib */; };
 		BC370FA21C959DE600D7A81C /* XHDDOnlineJokeDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC370FA11C959DE600D7A81C /* XHDDOnlineJokeDetailController.m */; };
 		BC370FC41C95BFE400D7A81C /* XHDDOnlineJokeBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC370FC31C95BFE400D7A81C /* XHDDOnlineJokeBaseModel.m */; };
 		BC3965941C8E687700BC23EF /* XHDDOnlineCategoryDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3965921C8E687700BC23EF /* XHDDOnlineCategoryDetailCell.m */; };
@@ -433,6 +431,7 @@
 		BC8794131C9D46FF0060757E /* XHDDOnlineSignInController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8794111C9D46FF0060757E /* XHDDOnlineSignInController.m */; };
 		BC8794141C9D46FF0060757E /* XHDDOnlineSignInController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC8794121C9D46FF0060757E /* XHDDOnlineSignInController.xib */; };
 		BC8794171C9D67520060757E /* XHTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8794161C9D67520060757E /* XHTextField.m */; };
+		BC8794191C9D9B0C0060757E /* XHDDOnlineMineController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC8794181C9D9B0C0060757E /* XHDDOnlineMineController.xib */; };
 		BC8D615C1C8D794A0043F18F /* MJDictionaryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8D61461C8D794A0043F18F /* MJDictionaryCache.m */; };
 		BC8D615D1C8D794A0043F18F /* MJExtensionConst.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8D61491C8D794A0043F18F /* MJExtensionConst.m */; };
 		BC8D615E1C8D794A0043F18F /* MJFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8D614B1C8D794A0043F18F /* MJFoundation.m */; };
@@ -711,6 +710,15 @@
 		BCC58FF81C97F2580071FC55 /* UIImage+Tint.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC58FEE1C97F2580071FC55 /* UIImage+Tint.m */; };
 		BCCED7011C96A07C00DFF451 /* XHDDOnlineJokeBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCED6FF1C96A07C00DFF451 /* XHDDOnlineJokeBaseCell.m */; };
 		BCCED7021C96A07C00DFF451 /* XHDDOnlineJokeBaseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCED7001C96A07C00DFF451 /* XHDDOnlineJokeBaseCell.xib */; };
+		BCE86A4F1C9EBDD100A40B4C /* XHDDOnlineSettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE86A4D1C9EBDD100A40B4C /* XHDDOnlineSettingController.m */; };
+		BCE86A501C9EBDD100A40B4C /* XHDDOnlineSettingController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE86A4E1C9EBDD100A40B4C /* XHDDOnlineSettingController.xib */; };
+		BCE86A5A1C9EBED000A40B4C /* XHDDOnlineMineSkinController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE86A581C9EBED000A40B4C /* XHDDOnlineMineSkinController.m */; };
+		BCE86A5D1C9EC14100A40B4C /* teamTheme in Resources */ = {isa = PBXBuildFile; fileRef = BCE86A5C1C9EC14100A40B4C /* teamTheme */; };
+		BCE86A651C9EC28900A40B4C /* Theme.plist in Resources */ = {isa = PBXBuildFile; fileRef = BCE86A641C9EC28900A40B4C /* Theme.plist */; };
+		BCE86A691C9EC46500A40B4C /* XHDDOnlineMineSkinCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE86A671C9EC46500A40B4C /* XHDDOnlineMineSkinCell.m */; };
+		BCE86A6A1C9EC46500A40B4C /* XHDDOnlineMineSkinCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE86A681C9EC46500A40B4C /* XHDDOnlineMineSkinCell.xib */; };
+		BCE86A6D1C9ED55600A40B4C /* XHDDOnlineMineSkinModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE86A6C1C9ED55600A40B4C /* XHDDOnlineMineSkinModel.m */; };
+		BCE86A701C9FF1B500A40B4C /* XHButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE86A6F1C9FF1B500A40B4C /* XHButton.m */; };
 		BCF1E1CD1C90827200CA3338 /* XHDDOnlineFunPlayCategoryDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF1E1CC1C90827200CA3338 /* XHDDOnlineFunPlayCategoryDetailController.m */; };
 		BCF1E1D01C90867D00CA3338 /* XHDDOnlineCategoryDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF1E1CF1C90867D00CA3338 /* XHDDOnlineCategoryDetailModel.m */; };
 		BCF1E1D41C90883B00CA3338 /* XHDDOnlineCategorysDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF1E1D21C90883B00CA3338 /* XHDDOnlineCategorysDetailCell.m */; };
@@ -1476,9 +1484,6 @@
 		BC370F961C95664900D7A81C /* XHSoundInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHSoundInputView.h; sourceTree = "<group>"; };
 		BC370F971C95664900D7A81C /* XHSoundInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHSoundInputView.m; sourceTree = "<group>"; };
 		BC370F981C95664900D7A81C /* XHSoundInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHSoundInputView.xib; sourceTree = "<group>"; };
-		BC370F9B1C95854500D7A81C /* XHDDOnlineSliderHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHDDOnlineSliderHeaderView.h; sourceTree = "<group>"; };
-		BC370F9C1C95854500D7A81C /* XHDDOnlineSliderHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHDDOnlineSliderHeaderView.m; sourceTree = "<group>"; };
-		BC370F9E1C95855000D7A81C /* XHDDOnlineSliderHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHDDOnlineSliderHeaderView.xib; sourceTree = "<group>"; };
 		BC370FA01C959DE600D7A81C /* XHDDOnlineJokeDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHDDOnlineJokeDetailController.h; sourceTree = "<group>"; };
 		BC370FA11C959DE600D7A81C /* XHDDOnlineJokeDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHDDOnlineJokeDetailController.m; sourceTree = "<group>"; };
 		BC370FC21C95BFE400D7A81C /* XHDDOnlineJokeBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHDDOnlineJokeBaseModel.h; sourceTree = "<group>"; };
@@ -1612,6 +1617,7 @@
 		BC8794121C9D46FF0060757E /* XHDDOnlineSignInController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHDDOnlineSignInController.xib; sourceTree = "<group>"; };
 		BC8794151C9D67520060757E /* XHTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHTextField.h; sourceTree = "<group>"; };
 		BC8794161C9D67520060757E /* XHTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHTextField.m; sourceTree = "<group>"; };
+		BC8794181C9D9B0C0060757E /* XHDDOnlineMineController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHDDOnlineMineController.xib; sourceTree = "<group>"; };
 		BC8D61451C8D794A0043F18F /* MJDictionaryCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJDictionaryCache.h; sourceTree = "<group>"; };
 		BC8D61461C8D794A0043F18F /* MJDictionaryCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJDictionaryCache.m; sourceTree = "<group>"; };
 		BC8D61471C8D794A0043F18F /* MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJExtension.h; sourceTree = "<group>"; };
@@ -1934,6 +1940,20 @@
 		BCCED6FE1C96A07C00DFF451 /* XHDDOnlineJokeBaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHDDOnlineJokeBaseCell.h; sourceTree = "<group>"; };
 		BCCED6FF1C96A07C00DFF451 /* XHDDOnlineJokeBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHDDOnlineJokeBaseCell.m; sourceTree = "<group>"; };
 		BCCED7001C96A07C00DFF451 /* XHDDOnlineJokeBaseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHDDOnlineJokeBaseCell.xib; sourceTree = "<group>"; };
+		BCE86A4C1C9EBDD100A40B4C /* XHDDOnlineSettingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHDDOnlineSettingController.h; sourceTree = "<group>"; };
+		BCE86A4D1C9EBDD100A40B4C /* XHDDOnlineSettingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHDDOnlineSettingController.m; sourceTree = "<group>"; };
+		BCE86A4E1C9EBDD100A40B4C /* XHDDOnlineSettingController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHDDOnlineSettingController.xib; sourceTree = "<group>"; };
+		BCE86A571C9EBED000A40B4C /* XHDDOnlineMineSkinController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHDDOnlineMineSkinController.h; sourceTree = "<group>"; };
+		BCE86A581C9EBED000A40B4C /* XHDDOnlineMineSkinController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHDDOnlineMineSkinController.m; sourceTree = "<group>"; };
+		BCE86A5C1C9EC14100A40B4C /* teamTheme */ = {isa = PBXFileReference; lastKnownFileType = folder; path = teamTheme; sourceTree = "<group>"; };
+		BCE86A641C9EC28900A40B4C /* Theme.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Theme.plist; sourceTree = "<group>"; };
+		BCE86A661C9EC46500A40B4C /* XHDDOnlineMineSkinCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHDDOnlineMineSkinCell.h; sourceTree = "<group>"; };
+		BCE86A671C9EC46500A40B4C /* XHDDOnlineMineSkinCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHDDOnlineMineSkinCell.m; sourceTree = "<group>"; };
+		BCE86A681C9EC46500A40B4C /* XHDDOnlineMineSkinCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHDDOnlineMineSkinCell.xib; sourceTree = "<group>"; };
+		BCE86A6B1C9ED55600A40B4C /* XHDDOnlineMineSkinModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHDDOnlineMineSkinModel.h; sourceTree = "<group>"; };
+		BCE86A6C1C9ED55600A40B4C /* XHDDOnlineMineSkinModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHDDOnlineMineSkinModel.m; sourceTree = "<group>"; };
+		BCE86A6E1C9FF1B500A40B4C /* XHButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHButton.h; sourceTree = "<group>"; };
+		BCE86A6F1C9FF1B500A40B4C /* XHButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHButton.m; sourceTree = "<group>"; };
 		BCF1E1CB1C90827200CA3338 /* XHDDOnlineFunPlayCategoryDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHDDOnlineFunPlayCategoryDetailController.h; sourceTree = "<group>"; };
 		BCF1E1CC1C90827200CA3338 /* XHDDOnlineFunPlayCategoryDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHDDOnlineFunPlayCategoryDetailController.m; sourceTree = "<group>"; };
 		BCF1E1CE1C90867D00CA3338 /* XHDDOnlineCategoryDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHDDOnlineCategoryDetailModel.h; sourceTree = "<group>"; };
@@ -2476,6 +2496,10 @@
 			children = (
 				BC014A111C8B060300AA4C45 /* XHDDOnlineMineController.h */,
 				BC014A121C8B060300AA4C45 /* XHDDOnlineMineController.m */,
+				BC8794181C9D9B0C0060757E /* XHDDOnlineMineController.xib */,
+				BCE86A541C9EBE4A00A40B4C /* 皮肤 */,
+				BCE86A561C9EBE9200A40B4C /* 收藏 */,
+				BCE86A551C9EBE6900A40B4C /* 设置 */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -2483,6 +2507,8 @@
 		BC0148081C8AFED600AA4C45 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				BCE86A6B1C9ED55600A40B4C /* XHDDOnlineMineSkinModel.h */,
+				BCE86A6C1C9ED55600A40B4C /* XHDDOnlineMineSkinModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2490,6 +2516,9 @@
 		BC0148091C8AFED600AA4C45 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BCE86A661C9EC46500A40B4C /* XHDDOnlineMineSkinCell.h */,
+				BCE86A671C9EC46500A40B4C /* XHDDOnlineMineSkinCell.m */,
+				BCE86A681C9EC46500A40B4C /* XHDDOnlineMineSkinCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2497,6 +2526,8 @@
 		BC01480A1C8AFED600AA4C45 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				BCE86A641C9EC28900A40B4C /* Theme.plist */,
+				BCE86A5C1C9EC14100A40B4C /* teamTheme */,
 				BC01480B1C8AFED600AA4C45 /* Images */,
 			);
 			path = Resource;
@@ -2616,9 +2647,6 @@
 		BC0148231C8AFF0300AA4C45 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				BC370F9B1C95854500D7A81C /* XHDDOnlineSliderHeaderView.h */,
-				BC370F9C1C95854500D7A81C /* XHDDOnlineSliderHeaderView.m */,
-				BC370F9E1C95855000D7A81C /* XHDDOnlineSliderHeaderView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -3822,6 +3850,8 @@
 			children = (
 				BCFCCB761C97F6ED003B4308 /* XHDDOnlineChatContactsTableView.h */,
 				BCFCCB771C97F6ED003B4308 /* XHDDOnlineChatContactsTableView.m */,
+				BCE86A6E1C9FF1B500A40B4C /* XHButton.h */,
+				BCE86A6F1C9FF1B500A40B4C /* XHButton.m */,
 			);
 			name = "联系人";
 			sourceTree = "<group>";
@@ -4023,6 +4053,32 @@
 				BCC58FEE1C97F2580071FC55 /* UIImage+Tint.m */,
 			);
 			path = UIImage;
+			sourceTree = "<group>";
+		};
+		BCE86A541C9EBE4A00A40B4C /* 皮肤 */ = {
+			isa = PBXGroup;
+			children = (
+				BCE86A571C9EBED000A40B4C /* XHDDOnlineMineSkinController.h */,
+				BCE86A581C9EBED000A40B4C /* XHDDOnlineMineSkinController.m */,
+			);
+			name = "皮肤";
+			sourceTree = "<group>";
+		};
+		BCE86A551C9EBE6900A40B4C /* 设置 */ = {
+			isa = PBXGroup;
+			children = (
+				BCE86A4C1C9EBDD100A40B4C /* XHDDOnlineSettingController.h */,
+				BCE86A4D1C9EBDD100A40B4C /* XHDDOnlineSettingController.m */,
+				BCE86A4E1C9EBDD100A40B4C /* XHDDOnlineSettingController.xib */,
+			);
+			name = "设置";
+			sourceTree = "<group>";
+		};
+		BCE86A561C9EBE9200A40B4C /* 收藏 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "收藏";
 			sourceTree = "<group>";
 		};
 		BCF1E2071C91763100CA3338 /* Video */ = {
@@ -5081,6 +5137,7 @@
 				BC1AB0891C8C0BE40007EDF4 /* 091@2x.png in Resources */,
 				BCA4017E1C9B94A80047FEBE /* lxh_qiaoqiao.gif in Resources */,
 				BCA401611C9B94A80047FEBE /* lxh_jiujie.gif in Resources */,
+				BCE86A501C9EBDD100A40B4C /* XHDDOnlineSettingController.xib in Resources */,
 				BCA401281C9B94A80047FEBE /* o_lvsidai@2x.png in Resources */,
 				BCA401181C9B94A80047FEBE /* h_haha@2x.png in Resources */,
 				BC87940F1C9D2E840060757E /* XHDDOnlineRegistController.xib in Resources */,
@@ -5096,6 +5153,7 @@
 				BCA400E11C9B94A80047FEBE /* d_haixiu@2x.png in Resources */,
 				BC1AB0411C8C0BE40007EDF4 /* 019@2x.png in Resources */,
 				BC1AB09F1C8C0BE40007EDF4 /* neckbeard@2x.png in Resources */,
+				BCE86A651C9EC28900A40B4C /* Theme.plist in Resources */,
 				BCA401521C9B94A80047FEBE /* lxh_haobang.gif in Resources */,
 				BC1AB0A21C8C0BE40007EDF4 /* rage2@2x.png in Resources */,
 				BCF1E3761C92994700CA3338 /* Contents.json in Resources */,
@@ -5130,6 +5188,7 @@
 				BCA401031C9B94A80047FEBE /* d_xixi@2x.png in Resources */,
 				BCA400FD1C9B94A80047FEBE /* d_travel@2x.png in Resources */,
 				BCA4018D1C9B94A80047FEBE /* lxh_toule.gif in Resources */,
+				BC8794191C9D9B0C0060757E /* XHDDOnlineMineController.xib in Resources */,
 				BC3965951C8E687700BC23EF /* XHDDOnlineCategoryDetailCell.xib in Resources */,
 				BCA400D51C9B94A80047FEBE /* d_bishi@2x.png in Resources */,
 				BCF1E3241C9298E600CA3338 /* Contents.json in Resources */,
@@ -5168,6 +5227,7 @@
 				BCA401651C9B94A80047FEBE /* lxh_juhan.png in Resources */,
 				BC1AB0C01C8C1DBB0007EDF4 /* Navi_more_n@2x.png in Resources */,
 				BCF1E21B1C91C3B500CA3338 /* hd_ictab_favourite_selected.png in Resources */,
+				BCE86A5D1C9EC14100A40B4C /* teamTheme in Resources */,
 				BC1AB0A41C8C0BE40007EDF4 /* rage4@2x.png in Resources */,
 				BCA400E51C9B94A80047FEBE /* d_heng@2x.png in Resources */,
 				BCA401311C9B94A80047FEBE /* w_weifeng@2x.png in Resources */,
@@ -5231,7 +5291,6 @@
 				BCA4015F1C9B94A80047FEBE /* lxh_jiekexun.png in Resources */,
 				BCF1E30F1C9298E600CA3338 /* playButtonPlay@2x.png in Resources */,
 				BCF1E3901C92994700CA3338 /* login_rgister_textfield_bg@2x.png in Resources */,
-				BC370F9F1C95855100D7A81C /* XHDDOnlineSliderHeaderView.xib in Resources */,
 				BCF1E3911C92994700CA3338 /* login_rgister_textfield_bg@3x.png in Resources */,
 				BCA401581C9B94A80047FEBE /* lxh_haoxihuan.gif in Resources */,
 				BC1AB0881C8C0BE40007EDF4 /* 090@2x.png in Resources */,
@@ -5293,6 +5352,7 @@
 				BC1AB0391C8C0BE40007EDF4 /* 011@2x.png in Resources */,
 				BCF1E3141C9298E600CA3338 /* post_placeholderImage@3x.png in Resources */,
 				BCF1E37B1C92994700CA3338 /* login_QQ_icon_click.png in Resources */,
+				BCE86A6A1C9EC46500A40B4C /* XHDDOnlineMineSkinCell.xib in Resources */,
 				BCF1E2C61C9298E600CA3338 /* cell-content-line.png in Resources */,
 				BCA401131C9B94A80047FEBE /* f_v5@2x.png in Resources */,
 				BCF1E39B1C92994700CA3338 /* login_tecent_icon.png in Resources */,
@@ -5374,6 +5434,7 @@
 				BC0147C81C8AFCAF00AA4C45 /* ViewController.m in Sources */,
 				BC370F811C9548FD00D7A81C /* UICollectionReusableView+RACSignalSupport.m in Sources */,
 				BC370F471C9548FD00D7A81C /* NSString+RACKeyPathUtilities.m in Sources */,
+				BCE86A5A1C9EBED000A40B4C /* XHDDOnlineMineSkinController.m in Sources */,
 				BC370F8F1C9548FD00D7A81C /* UITextView+RACSignalSupport.m in Sources */,
 				BC0F645D1C8DC62C005F599C /* SDWebImageDownloaderOperation.m in Sources */,
 				BC370F791C9548FD00D7A81C /* RACTupleSequence.m in Sources */,
@@ -5381,7 +5442,6 @@
 				BC370FC41C95BFE400D7A81C /* XHDDOnlineJokeBaseModel.m in Sources */,
 				BCA4FFE41C9B00FE0047FEBE /* XHDDOnlineChatAddFriendController.m in Sources */,
 				BC370F711C9548FD00D7A81C /* RACStringSequence.m in Sources */,
-				BC370F9D1C95854500D7A81C /* XHDDOnlineSliderHeaderView.m in Sources */,
 				BC0148311C8B010800AA4C45 /* RECommonFunctions.m in Sources */,
 				BCC58FD21C97E7700071FC55 /* UIView+Borders.m in Sources */,
 				BC370F341C9548FD00D7A81C /* LICENSE.md in Sources */,
@@ -5549,6 +5609,7 @@
 				BC370F491C9548FD00D7A81C /* NSString+RACSupport.m in Sources */,
 				BC0F645E1C8DC62C005F599C /* SDWebImageManager.m in Sources */,
 				BC370F5E1C9548FD00D7A81C /* RACIndexSetSequence.m in Sources */,
+				BCE86A701C9FF1B500A40B4C /* XHButton.m in Sources */,
 				BC0F645A1C8DC62C005F599C /* SDWebImageCompat.m in Sources */,
 				BC8D61601C8D794A0043F18F /* MJPropertyKey.m in Sources */,
 				BC370F3C1C9548FD00D7A81C /* NSIndexSet+RACSequenceAdditions.m in Sources */,
@@ -5583,6 +5644,7 @@
 				BC370F4A1C9548FD00D7A81C /* NSURLConnection+RACSupport.m in Sources */,
 				BC370F391C9548FD00D7A81C /* NSDictionary+RACSequenceAdditions.m in Sources */,
 				BC370F721C9548FD00D7A81C /* RACSubject.m in Sources */,
+				BCE86A6D1C9ED55600A40B4C /* XHDDOnlineMineSkinModel.m in Sources */,
 				BC8D615C1C8D794A0043F18F /* MJDictionaryCache.m in Sources */,
 				BC370F691C9548FD00D7A81C /* RACScopedDisposable.m in Sources */,
 				BC370F731C9548FD00D7A81C /* RACSubscriber.m in Sources */,
@@ -5628,9 +5690,11 @@
 				BC370F851C9548FD00D7A81C /* UIGestureRecognizer+RACSignalSupport.m in Sources */,
 				BC0F64601C8DC62C005F599C /* UIButton+WebCache.m in Sources */,
 				BCC58FD41C97E7700071FC55 /* UIView+GestureCallback.m in Sources */,
+				BCE86A4F1C9EBDD100A40B4C /* XHDDOnlineSettingController.m in Sources */,
 				BCF1E1D41C90883B00CA3338 /* XHDDOnlineCategorysDetailCell.m in Sources */,
 				BC35F5831C8D9F5E0000FE64 /* XHDDOnlineFunPlayLatestCell.m in Sources */,
 				BC3965D01C8EBB2900BC23EF /* AFURLResponseSerialization.m in Sources */,
+				BCE86A691C9EC46500A40B4C /* XHDDOnlineMineSkinCell.m in Sources */,
 				BC014A0D1C8B05EE00AA4C45 /* XHDDOnlineJokeController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

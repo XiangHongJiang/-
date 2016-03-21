@@ -28,10 +28,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
    
-    //每次启动都先设置未登录
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];//
-    [ud setObject:@(NO) forKey:@"isLogin"];
-    [ud synchronize];
+    //0.启动App设置登录状态与判断沙盒皮肤状态
+    [self configFirstLaunch];
     
     //1.语音识别设置
     [self speechRecognizeServiceInit];
@@ -39,13 +37,27 @@
     //2.添加极光推送
     [self configJPushService:launchOptions];
   
+    //3.环信通信：因为存在自动登录，所以应该放在后面
+    [self configEMob:launchOptions];//appKey
+    
     //4.设置根视图控制器
     [self setRootViewController];
    
-    //3.环信通信：因为存在自动登录，所以应该放在后面
-    [self configEMob:launchOptions];//appKey
-   
     return YES;
+}
+#pragma mark - 登录状态
+- (void)configFirstLaunch{
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    
+    NSString *skinAddress =  [ud objectForKey:@"skinAddress"];
+    
+    if (skinAddress.length == 0) {//未自设置皮肤，设置默认
+        
+        [ud setObject:@"teamTheme/default" forKey:@"skinAddress"];
+    }    
+    [ud setObject:@(NO) forKey:@"isLogin"];
+    [ud synchronize];
+
 }
 //1.设置根视图控制器
 - (void)setRootViewController{

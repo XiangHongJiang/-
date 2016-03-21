@@ -37,6 +37,18 @@
  *  gif
  */
 @property (nonatomic, strong) JokeGF_Gif *gif;
+/**
+ *  textLabelHeight
+ */
+@property (nonatomic, assign) CGFloat textHeight;
+/**
+ *  gifImageHeight
+ */
+@property (nonatomic, assign) CGFloat gifImageHeight;
+/**
+ *  videoImageHeight
+ */
+@property (nonatomic, assign) CGFloat videoImageHeight;
 
 @property (nonatomic, copy) NSString *ID;
 
@@ -51,10 +63,6 @@
 @property (nonatomic, copy) NSString *type;
 
 @property (nonatomic, copy) NSString *text;
-/**
- *  textLabelHeight
- */
-@property (nonatomic, assign) CGFloat textHeight;
 
 @property (nonatomic, assign) NSInteger down;
 
@@ -119,7 +127,6 @@
 @property (nonatomic, strong) NSArray *download_url;
 
 @property (nonatomic, assign) NSInteger height;
-
 @end
 /**
  *  Video

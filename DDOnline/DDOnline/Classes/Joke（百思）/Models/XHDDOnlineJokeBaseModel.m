@@ -38,18 +38,48 @@
 
     _image = image;
     
+    CGFloat rat = image.width * 1.0 / (JScreenWidth - JPedding);
+
+    CGFloat height = image.height / rat;
     
+    if (height > JScreenHeight * 0.8) {
+     
+        height = JScreenHeight * 0.8;
+    }
+    
+    self.gifImageHeight = height;
     
 }
 //gifHeight
 - (void)setGif:(JokeGF_Gif *)gif{
-
     _gif = gif;
+    
+    CGFloat rat = gif.width * 1.0 / (JScreenWidth - JPedding);
+    
+    CGFloat height = gif.height / rat;
+    
+    if (height > JScreenHeight * 0.8) {
+        
+        height = JScreenHeight * 0.8;
+    }
+    
+    self.gifImageHeight = height;
 }
 //videoHeight
 - (void)setVideo:(JokeVideo_Video *)video{
 
     _video = video;
+    
+    CGFloat rat = video.width * 1.0 / (JScreenWidth - JPedding);
+    
+    CGFloat height = video.height / rat;
+    
+    if (height > JScreenHeight * 0.8) {
+        
+        height = JScreenHeight * 0.8;
+    }
+    
+    self.videoImageHeight = height;
 }
 
 @end

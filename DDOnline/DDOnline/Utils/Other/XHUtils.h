@@ -26,5 +26,15 @@
  * 裁剪圆图
  */
 + (UIImage *)circleImage:(UIImage *)image;
+
+/**
+ * 获取tabBar导航CTRL
+ */
++ (UINavigationController *)getCurrentTabBarNavigationCtrl;
+
+/**
+ * 压缩图片
+ */
++(UIImage*)imageWithImageSimple:(UIImage*)image scaledToSize:(CGSize)newSize;
 @end
 

@@ -2,7 +2,8 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "anon_group_chat_bottom_up_nor.png"
     },
     {
       "idiom" : "universal",
@@ -11,7 +12,8 @@
     },
     {
       "idiom" : "universal",
-      "scale" : "3x"
+      "scale" : "3x",
+      "filename" : "anon_group_chat_bottom_up_nor@3x.png"
     }
   ],
   "info" : {

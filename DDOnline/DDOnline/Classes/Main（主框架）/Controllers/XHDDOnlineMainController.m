@@ -21,9 +21,32 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-   
+    
     //添加主TabBar视图控制器
     [self addMainTabBarController];
+
+    //设置启动皮肤
+    [self changeSkin];
+    
+    //添加换肤监听
+    [self addNotificationCenter];
+    
+}
+- (void)addNotificationCenter{
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeSkin) name:@"changeSkin" object:nil];
+}
+- (void)changeSkin{
+    
+    NSString *addressPre =  [[NSUserDefaults standardUserDefaults] objectForKey:@"skinAddress"];
+    
+    NSString *skinPath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@/themeColor.plist",addressPre] ofType:nil];
+    
+    NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:skinPath];
+    
+    NSArray *rgbArray = [dict[@"navigationColor"] componentsSeparatedByString:@","];
+    
+    self.rootTbc.tabBar.barTintColor = JColorRGB([rgbArray[0] floatValue], [rgbArray[1]floatValue], [rgbArray[2]floatValue]);
     
 }
 - (void)addMainTabBarController{
@@ -47,6 +70,7 @@
     return [[(UINavigationController *)self.rootTbc.selectedViewController topViewController] prefersStatusBarHidden];
     
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

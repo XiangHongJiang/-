@@ -17,7 +17,30 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    //设置启动皮肤
+    [self changeSkin];
+
+    //添加换肤监听
+    [self addNotificationCenter];
+
+}
+- (void)addNotificationCenter{
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeSkin) name:@"changeSkin" object:nil];
+}
+- (void)changeSkin{
+
+    NSString *addressPre =  [[NSUserDefaults standardUserDefaults] objectForKey:@"skinAddress"];
+    
+    NSString *skinPath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@/themeColor.plist",addressPre] ofType:nil];
+    
+    NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:skinPath];
+    
+    NSArray *rgbArray = [dict[@"navigationColor"] componentsSeparatedByString:@","];
+    
+    self.navigationBar.barTintColor = JColorRGB([rgbArray[0] floatValue], [rgbArray[1]floatValue], [rgbArray[2]floatValue]);
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -25,11 +48,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-//登录状态视图
-- (void)signInView{
-
-    
-}
 
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated{
     

@@ -248,6 +248,7 @@
                 <outlet property="profile_addv_authen" destination="bPA-bq-BHA" id="bBm-2M-Z3V"/>
                 <outlet property="shareBtn" destination="vyE-jg-Tvc" id="xmL-qV-675"/>
                 <outlet property="timeLabel" destination="w6T-dW-d0j" id="WNx-E6-kR9"/>
+                <outlet property="videoImageViewAutoLayHeight" destination="PuE-69-pLr" id="ceM-Xe-eEG"/>
                 <outlet property="videotimeLabel" destination="6Bp-TG-0xO" id="gwM-te-WTd"/>
             </connections>
             <point key="canvasLocation" x="322" y="230.5"/>

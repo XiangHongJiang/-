@@ -113,7 +113,7 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
 
     XHDDOnlineFunPlayHeaderView *headerView = [XHDDOnlineFunPlayHeaderView headerViewWithTableView:tableView];
-  
+    
     if (section == 0) {
         
         headerView.headerImageView.image = [UIImage imageNamed:@"home_region_icon_33"];
@@ -162,7 +162,11 @@
         
         self.cellCollectionView.scrollEnabled = YES;
     }
-    
+}
+
+- (void)dealloc{
+
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface XHDDOnlineSliderController : UITableViewController
+/** *  headerImageView */
+@property (nonatomic, weak) UIImageView *headerImageView;
 
 @end

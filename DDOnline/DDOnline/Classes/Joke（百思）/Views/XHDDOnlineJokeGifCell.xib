@@ -161,6 +161,13 @@
                                     <constraint firstAttribute="trailing" secondItem="aFs-VW-mK3" secondAttribute="trailing" id="xu5-6X-iir"/>
                                 </constraints>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wVr-AO-Z14" userLabel="gifImage View">
+                                <rect key="frame" x="10" y="88" width="356" height="190"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="190" id="d0M-w3-Qwz"/>
+                                </constraints>
+                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="common-gif" translatesAutoresizingMaskIntoConstraints="NO" id="F6V-52-rww" userLabel="GIF标识">
                                 <rect key="frame" x="10" y="88" width="31" height="31"/>
                                 <constraints>
@@ -168,16 +175,16 @@
                                     <constraint firstAttribute="width" constant="31" id="urZ-Ci-Z1V"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeHolder" translatesAutoresizingMaskIntoConstraints="NO" id="wVr-AO-Z14" userLabel="gifImage View">
-                                <rect key="frame" x="10" y="88" width="356" height="190"/>
-                                <gestureRecognizers/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeHolder" translatesAutoresizingMaskIntoConstraints="NO" id="tUj-La-Cjp" userLabel="loading">
+                                <rect key="frame" x="10" y="123" width="356" height="120"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="190" id="d0M-w3-Qwz"/>
+                                    <constraint firstAttribute="height" constant="120" id="K2H-c6-U2L"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="tUj-La-Cjp" secondAttribute="trailing" constant="10" id="0JG-6I-Zf7"/>
                             <constraint firstItem="F6V-52-rww" firstAttribute="leading" secondItem="MEW-dv-3V4" secondAttribute="leading" constant="10" id="5Sh-Vl-IKs"/>
                             <constraint firstItem="yXv-3W-prN" firstAttribute="leading" secondItem="MEW-dv-3V4" secondAttribute="leading" id="AOP-Pf-14P"/>
                             <constraint firstItem="8qB-Ei-Ruw" firstAttribute="top" secondItem="axn-Ei-XAm" secondAttribute="bottom" constant="10" id="Cer-qT-4uw"/>
@@ -185,6 +192,8 @@
                             <constraint firstItem="k9z-P9-T1G" firstAttribute="leading" secondItem="MEW-dv-3V4" secondAttribute="leading" constant="10" id="HfJ-mC-zhI"/>
                             <constraint firstItem="axn-Ei-XAm" firstAttribute="leading" secondItem="k9z-P9-T1G" secondAttribute="trailing" constant="10" id="JIE-kK-Hth"/>
                             <constraint firstItem="axn-Ei-XAm" firstAttribute="top" secondItem="wYn-Cn-Ujh" secondAttribute="bottom" id="PbA-A5-uYF"/>
+                            <constraint firstItem="tUj-La-Cjp" firstAttribute="leading" secondItem="MEW-dv-3V4" secondAttribute="leading" constant="10" id="T2W-eE-G6I"/>
+                            <constraint firstItem="tUj-La-Cjp" firstAttribute="centerX" secondItem="wVr-AO-Z14" secondAttribute="centerX" id="UFB-d0-kZm"/>
                             <constraint firstItem="wVr-AO-Z14" firstAttribute="leading" secondItem="MEW-dv-3V4" secondAttribute="leading" constant="10" id="ZJn-KA-qL8"/>
                             <constraint firstItem="k9z-P9-T1G" firstAttribute="top" secondItem="MEW-dv-3V4" secondAttribute="top" constant="10" id="g2u-i0-zYr"/>
                             <constraint firstItem="wVr-AO-Z14" firstAttribute="top" secondItem="8qB-Ei-Ruw" secondAttribute="bottom" constant="10" id="hqi-Gf-I9D"/>
@@ -197,6 +206,7 @@
                             <constraint firstAttribute="trailing" secondItem="8qB-Ei-Ruw" secondAttribute="trailing" constant="10" id="x1b-QG-GZ4"/>
                             <constraint firstItem="RZb-30-ViN" firstAttribute="leading" secondItem="MEW-dv-3V4" secondAttribute="leading" constant="30" id="xQ7-T3-poA"/>
                             <constraint firstItem="wYn-Cn-Ujh" firstAttribute="top" secondItem="MEW-dv-3V4" secondAttribute="top" constant="10" id="yUK-gt-AvO"/>
+                            <constraint firstItem="tUj-La-Cjp" firstAttribute="centerY" secondItem="wVr-AO-Z14" secondAttribute="centerY" id="ypg-5Q-Bju"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -213,9 +223,11 @@
                 <outlet property="caiBtn" destination="0ry-Bd-R3y" id="bG7-cK-yUb"/>
                 <outlet property="contentLabel" destination="8qB-Ei-Ruw" id="kgk-AE-BC6"/>
                 <outlet property="dingBtn" destination="dN3-mT-75m" id="dtg-OT-Png"/>
+                <outlet property="gifAutoHeight" destination="d0M-w3-Qwz" id="zcK-6S-mM2"/>
                 <outlet property="gifImageView" destination="wVr-AO-Z14" id="uuE-ZP-4ju"/>
                 <outlet property="headerImageView" destination="k9z-P9-T1G" id="Vvr-0C-eZ7"/>
                 <outlet property="isGifImage" destination="F6V-52-rww" id="pCC-HC-HWU"/>
+                <outlet property="loadingImageView" destination="tUj-La-Cjp" id="auP-QJ-4nD"/>
                 <outlet property="nameLabel" destination="wYn-Cn-Ujh" id="qAo-2h-svJ"/>
                 <outlet property="pinglunBtn" destination="aFs-VW-mK3" id="Ubq-DJ-YeN"/>
                 <outlet property="profile_addv_authen" destination="RZb-30-ViN" id="eBw-SM-wvK"/>

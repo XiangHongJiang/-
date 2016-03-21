@@ -31,8 +31,6 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.navigationItem.title = @"新用户注册";
     
-
-    
     [self configSubViews];
     
     //1.添加监听
@@ -40,6 +38,14 @@
     
 }
 - (void)configSubViews{
+    
+    self.registBtn.layer.cornerRadius = 4;
+    self.registBtn.layer.masksToBounds = YES;
+    
+    [self.registBtn setBackgroundImage:[UIImage imageWithColor:JColorFontDetail] forState:UIControlStateDisabled];
+    [self.registBtn setBackgroundImage:[UIImage imageWithColor:JColorMain] forState:UIControlStateNormal];
+    [self.registBtn setBackgroundImage:[UIImage imageWithColor:JColorDarkGray] forState:UIControlStateHighlighted];
+
     
     [self.phoneNumberTF drawLineWithColor:[UIColor grayColor] locate:WLocateTop andPedding:0];
     [self.phoneNumberTF drawLineWithColor:[UIColor grayColor] locate:WLocateBottom andPedding:0];
@@ -70,7 +76,7 @@
     
     RAC(self.registBtn,enabled) = [RACSignal combineLatest:@[self.phoneNumberTF.rac_textSignal, self.passwordTF.rac_textSignal, self.checkCodeTF.rac_textSignal] reduce:^id(NSString *phoneNumber, NSString *password, NSString *checkCode){
         
-        return @(phoneNumber.length == 11 && password.length >= 6 && checkCode.length == 6);
+        return @(phoneNumber.length >=3 && password.length >= 6);
         
     }];
     
@@ -97,14 +103,21 @@
 //注册环信
 - (void)registEMAccount{
     
-    EMError *error = [[EMClient sharedClient] registerWithUsername:self.phoneNumberTF.text password:self.passwordTF.text];
-    if (error==nil) {
-        [SVProgressHUD showSuccessWithStatus:@"注册成功"];
+    [SVProgressHUD showWithStatus:@"注册中..."];
+    
+    dispatch_async(JGlobalQueue, ^{
         
-    }else{
-        
-        [SVProgressHUD showErrorWithStatus:error.errorDescription];
-    }
+        EMError *error = [[EMClient sharedClient] registerWithUsername:self.phoneNumberTF.text password:self.passwordTF.text];
+       
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (error==nil) {
+                [SVProgressHUD showSuccessWithStatus:@"注册成功"];
+                
+            }else{
+                [SVProgressHUD showErrorWithStatus:error.errorDescription];
+            }
+        });
+    });
 }
 
 

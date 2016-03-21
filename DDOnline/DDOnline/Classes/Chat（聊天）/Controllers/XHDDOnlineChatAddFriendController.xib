@@ -7,7 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="XHDDOnlineChatAddFriendController">
             <connections>
-                <outlet property="addRequestTableView" destination="5VZ-uH-JND" id="V4q-An-lNa"/>
+                <outlet property="addFriendSureBtn" destination="ISU-Yu-M8G" id="oum-v1-41F"/>
                 <outlet property="beizhuTextView" destination="WsD-BR-ZRo" id="pDu-jg-dMe"/>
                 <outlet property="userNameTF" destination="H6H-l0-zsu" id="a8y-Dc-fBo"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -58,38 +58,31 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ISU-Yu-M8G">
-                    <rect key="frame" x="430" y="204" width="120" height="30"/>
+                    <rect key="frame" x="390" y="204" width="200" height="30"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="120" id="7Qt-J9-D8x"/>
                         <constraint firstAttribute="height" constant="30" id="ntp-hA-m6z"/>
                     </constraints>
                     <state key="normal" title="加好友" backgroundImage="header_bg_ios7_blue_ip4">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="addFriendSureBtn:" destination="-1" eventType="touchUpInside" id="PsK-n6-YnX"/>
+                        <action selector="addFriendSureBtn:" destination="-1" eventType="touchUpInside" id="LtZ-VO-ALE"/>
                     </connections>
                 </button>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5VZ-uH-JND">
-                    <rect key="frame" x="0.0" y="254" width="600" height="346"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </tableView>
             </subviews>
-            <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="5VZ-uH-JND" firstAttribute="top" secondItem="ISU-Yu-M8G" secondAttribute="bottom" constant="20" id="9Mt-zF-66R"/>
                 <constraint firstItem="H6H-l0-zsu" firstAttribute="leading" secondItem="Nqm-aK-CQ1" secondAttribute="trailing" constant="10" id="Eoa-PD-xgz"/>
                 <constraint firstItem="2u7-4z-ZLz" firstAttribute="centerY" secondItem="WsD-BR-ZRo" secondAttribute="centerY" id="K1R-ud-sox"/>
                 <constraint firstAttribute="trailing" secondItem="H6H-l0-zsu" secondAttribute="trailing" constant="10" id="LbD-vF-rLo"/>
                 <constraint firstItem="ISU-Yu-M8G" firstAttribute="centerX" secondItem="WsD-BR-ZRo" secondAttribute="centerX" id="O0A-uV-EX6"/>
                 <constraint firstAttribute="trailing" secondItem="WsD-BR-ZRo" secondAttribute="trailing" constant="10" id="YnO-YA-ZEm"/>
-                <constraint firstItem="5VZ-uH-JND" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ZLO-On-QGb"/>
                 <constraint firstItem="H6H-l0-zsu" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="84" id="akm-Dd-0EN"/>
-                <constraint firstAttribute="bottom" secondItem="5VZ-uH-JND" secondAttribute="bottom" id="dCv-uu-fDR"/>
                 <constraint firstItem="Nqm-aK-CQ1" firstAttribute="centerY" secondItem="H6H-l0-zsu" secondAttribute="centerY" id="frL-rO-n5k"/>
+                <constraint firstItem="ISU-Yu-M8G" firstAttribute="trailing" secondItem="WsD-BR-ZRo" secondAttribute="trailing" id="gFP-i1-Jpj"/>
                 <constraint firstItem="WsD-BR-ZRo" firstAttribute="leading" secondItem="2u7-4z-ZLz" secondAttribute="trailing" constant="10" id="hIm-4v-bBk"/>
                 <constraint firstItem="ISU-Yu-M8G" firstAttribute="top" secondItem="WsD-BR-ZRo" secondAttribute="bottom" constant="20" id="iBp-18-7wE"/>
-                <constraint firstAttribute="trailing" secondItem="5VZ-uH-JND" secondAttribute="trailing" id="o6K-bD-igs"/>
+                <constraint firstItem="ISU-Yu-M8G" firstAttribute="leading" secondItem="WsD-BR-ZRo" secondAttribute="leading" id="nsF-21-p13"/>
                 <constraint firstItem="WsD-BR-ZRo" firstAttribute="top" secondItem="H6H-l0-zsu" secondAttribute="bottom" constant="10" id="u06-R5-ZXH"/>
             </constraints>
             <point key="canvasLocation" x="396" y="291"/>

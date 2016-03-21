@@ -19,6 +19,7 @@
  *  图片数组
  */
 @property (nonatomic, copy) NSArray *imageNameArray;
+
 @end
 
 @implementation XHDDOnlineChatFunctionView

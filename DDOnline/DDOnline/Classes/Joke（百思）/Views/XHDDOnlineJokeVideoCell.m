@@ -28,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *gifImageView;
 @property (weak, nonatomic) IBOutlet UIButton *playVideoBtn;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *videoImageViewAutoLayHeight;
 //播放设置
 @property (weak, nonatomic) IBOutlet UILabel *playcountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *videotimeLabel;
@@ -46,7 +47,7 @@
     if (_playView == nil) {
         
         CLVideoPlayerView *view = [CLVideoPlayerView videoPlayerView];
-        view.frame = CGRectMake(0, 0, JScreenWidth - 20, 200);
+        view.frame = CGRectMake(0, 0, JScreenWidth - 20, self.videoDetailModel.videoImageHeight);
         self.playView = view;
         
         [self.gifImageView addSubview:view];
@@ -67,12 +68,12 @@
 - (IBAction)playVideoAction:(UIButton *)sender {
     
     JLog(@"播放");
-    [self bringSubviewToFront:self.playView];
+    [self.contentView bringSubviewToFront:self.playView];
     
     self.selected = !self.selected;
     if (self.selected == NO) {
         [self.playView.player pause];
-        [self sendSubviewToBack:self.playView];
+        [self.contentView sendSubviewToBack:self.playView];
         return;
     }
     else if (self.playView.urlString.length >0){
@@ -103,6 +104,8 @@
     //内容
     self.contentLabel.text = videoDetailModel.text;
 
+    self.videoImageViewAutoLayHeight.constant = videoDetailModel.videoImageHeight;
+    [self.gifImageView layoutIfNeeded];
     
     //播放图片
     [self.gifImageView sd_setImageWithURL:[NSURL URLWithString:videoDetailModel.video.thumbnail[0]]];
@@ -149,6 +152,6 @@
 }
 + (CGFloat)rowHeightWithvideoDetailModel:(JokeBase_List *)videoDetailModel{
 
-    return videoDetailModel.textHeight + 110 + 200;
+    return videoDetailModel.textHeight + 110 + videoDetailModel.videoImageHeight;
 }
 @end

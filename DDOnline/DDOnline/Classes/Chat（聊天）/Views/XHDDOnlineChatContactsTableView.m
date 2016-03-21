@@ -9,6 +9,8 @@
 #import "XHDDOnlineChatContactsTableView.h"
 #import "EMSDKFull.h"
 #import "XHDDOnlineChatDetailController.h"
+#import "XHButton.h"
+#import "UIView+Border.h"
 
 @interface XHDDOnlineChatContactsTableView()<UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate>
 {
@@ -63,12 +65,12 @@
     
     XHDDOnlineChatContactsTableView *contactsTableView = [[XHDDOnlineChatContactsTableView alloc] initWithFrame:CGRectMake(JScreenWidth, 0, JScreenWidth, JScreenHeight - JTopSpace - JTabBarHeight) style:UITableViewStylePlain];
     
-    contactsTableView.sectionHeaderHeight = 50;
+    contactsTableView.sectionHeaderHeight = 45;
     
     contactsTableView.delegate = contactsTableView;
     contactsTableView.dataSource = contactsTableView;
     
-    contactsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+//    contactsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     //添加搜索
     [contactsTableView addSearchBar];
@@ -92,6 +94,8 @@
     self.tableHeaderView = view;
     //搜索数组
     _searchResultsArray = [NSMutableArray new];
+    
+    self.tableFooterView = [[UIView alloc] init];
     
 }
 #pragma mark - 搜索相关
@@ -198,26 +202,29 @@
 #pragma mark - 返回组头
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     
-    UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, JScreenWidth, 50)];
+    UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, JScreenWidth, 45)];
+    
+    [headView drawLineWithColor:[UIColor grayColor] locate:WLocateBottom andPedding:0];
     
     //1一个可点击的Btn
-    UIButton *headBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    headBtn.frame = CGRectMake(0, 0, JScreenWidth, 30);
-    headBtn.backgroundColor = [UIColor colorWithRed:0.000 green:0.502 blue:1.000 alpha:1.000];
+    XHButton *headBtn = [[XHButton alloc] initWithFrame:CGRectMake(0, 5, JScreenWidth, 40)];
+    
     [headBtn addTarget:self action:@selector(headClick:) forControlEvents:UIControlEventTouchUpInside];
     
     headBtn.tag = section + 1;
     [headBtn setTitle:self.sectionNameArray[section] forState:UIControlStateNormal];
-    [headBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    headBtn.titleLabel.textAlignment = NSTextAlignmentLeft;
-//    [headBtn setImage:[UIImage imageNamed:@"tab_c2"] forState:UIControlStateNormal];
+    headBtn.imageView.contentMode = UIViewContentModeCenter;
+    headBtn.imageView.clipsToBounds = NO;
 
     //设置图标旋转, 区分打开与关闭状态
-//    if ([_sectionState[section] boolValue] == NO) {
-//        headBtn.imageView.transform = CGAffineTransformMakeRotation(M_2_PI);
-//    }else{
-//        headBtn.imageView.transform = CGAffineTransformMakeRotation(-M_2_PI);
-//    }
+    if ([_sectionState[section] boolValue] == NO) {
+
+        headBtn.imageView.transform = CGAffineTransformMakeRotation(M_PI_2);
+      
+    }else{
+        headBtn.imageView.transform = CGAffineTransformMakeRotation(0);
+    }
+
     [headView addSubview:headBtn];
     return headView;
 }

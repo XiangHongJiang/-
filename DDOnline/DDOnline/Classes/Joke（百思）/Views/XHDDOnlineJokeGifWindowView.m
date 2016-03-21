@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *gifWindowImageView;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *gifScrollView;
+@property (weak, nonatomic) IBOutlet UIImageView *placeHodelImageView;
 
 @end
 
@@ -34,6 +35,8 @@
 
     _gifDetailModel = gifDetailModel;
     
+    self.placeHodelImageView.hidden = NO;
+
     //动图url与 高度
     CGFloat gifHeight;
     CGFloat gifWidth;
@@ -55,8 +58,11 @@
     CGFloat gifImageViewHeight = gifHeight / ratio;
     //布局
     self.frame = CGRectMake(0, 0, JScreenWidth, JScreenHeight);
-    self.gifScrollView.frame = CGRectMake(0, 0, JScreenWidth, JScreenHeight - 30);
-    self.gifScrollView.contentSize = CGSizeMake(0, gifImageViewHeight - 50);
+    self.gifScrollView.frame = CGRectMake(0, 0, JScreenWidth, JScreenHeight);
+    self.gifScrollView.contentSize = CGSizeMake(0, gifImageViewHeight);
+    
+    self.placeHodelImageView.frame = CGRectMake(0, 0, JScreenWidth - 60, 200);
+    self.placeHodelImageView.center = self.gifScrollView.center;
     
     self.gifWindowImageView.frame = CGRectMake(30, 30, JScreenWidth - 60, gifImageViewHeight);
     
@@ -66,11 +72,13 @@
     }
     
     //设置
-    [self.gifWindowImageView sd_setImageWithPreviousCachedImageWithURL:[NSURL URLWithString:gifUrl] andPlaceholderImage:[UIImage imageNamed:@"placeHolder.jpg"] options:SDWebImageRetryFailed progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+    [self.gifWindowImageView sd_setImageWithPreviousCachedImageWithURL:[NSURL URLWithString:gifUrl] andPlaceholderImage:[UIImage imageNamed:@""] options:SDWebImageRetryFailed progress:^(NSInteger receivedSize, NSInteger expectedSize) {
         
         JLog(@"%f",receivedSize * 1.0 / expectedSize);
         
     } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        
+        self.placeHodelImageView.hidden = YES;
         
     }];
 

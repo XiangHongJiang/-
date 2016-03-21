@@ -13,29 +13,30 @@
 + (instancetype)headerViewWithTableView:(UITableView *)tableView{
 
     XHDDOnlineFunPlayHeaderView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"reuseHeadView"];
+    
     if (header == nil) {
         
         header = [[XHDDOnlineFunPlayHeaderView alloc] initWithReuseIdentifier:@"reuseHeadView"];
     }
-    header.contentView.backgroundColor = [UIColor colorWithRed:1.000 green:0.502 blue:0.000 alpha:1.000];
     
+    //添加监听
+    [[NSNotificationCenter defaultCenter] addObserver:header selector:@selector(changeSkin) name:@"changeSkin" object:nil];
+    
+    //更换颜色
+    [header changeSkin];
     header.layer.cornerRadius = 2;    
     header.layer.masksToBounds = YES;
     return header;
 }
-
 - (instancetype)initWithReuseIdentifier:(NSString *)reuseIdentifier{
 
     if (self = [super initWithReuseIdentifier:reuseIdentifier]) {
-        
         //添加子视图
         [self setupSubViews];
     }
-    
     return self;
 }
 - (void)setupSubViews{
-
     //1.imageView
     UIImageView *imageView = [[UIImageView alloc] init];
     [self.contentView addSubview:imageView];
@@ -62,25 +63,19 @@
         make.left.equalTo(self.headerImageView.mas_right).offset(10);
         make.width.equalTo(150);
     }];
+}
+
+- (void)changeSkin{
+
+    NSString *addressPre =  [[NSUserDefaults standardUserDefaults] objectForKey:@"skinAddress"];
     
-//    self.contentView.backgroundColor = JColorNavBg;
+    NSString *skinPath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@/themeColor.plist",addressPre] ofType:nil];
     
-    //3.进去看看Label
-//    UILabel *label = [[UILabel alloc] init];
-//    label.backgroundColor = JColorGray;
+    NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:skinPath];
     
-//    label.layer.cornerRadius = 4;
-//    label.layer.masksToBounds = YES;
+    NSArray *rgbArray = [dict[@"navigationColor"] componentsSeparatedByString:@","];
     
-//    label.textAlignment = NSTextAlignmentCenter;
-//    label.font = [UIFont systemFontOfSize:13];
-//    label.text = @"进去看看";
-//    [self.contentView addSubview:label];
-//    [label mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.right.equalTo(-10);
-//        make.top.equalTo(2);
-//        make.width.equalTo(60);
-//        make.height.equalTo(25);
-//    }];
+    self.contentView.backgroundColor = JColorRGBA([rgbArray[0] floatValue], [rgbArray[1]floatValue], [rgbArray[2]floatValue],0.6);
+    
 }
 @end

@@ -10,13 +10,15 @@
 #import "RESideMenu.h"
 #import "XHDDOnlineSignInController.h"
 #import "XHDDOnlineRootTabBarController.h"
+#import "EMSDKFull.h"
 
 @interface XHDDOnlineSliderController ()<UITableViewDelegate, UITableViewDataSource>
 /** *  cellImageNameArray */
 @property (nonatomic, copy) NSArray *cellImageNameArray;
 /** *  cellTitleArray */
 @property (nonatomic, copy) NSArray *cellTitleArray;
-
+/** *  userNameLabel */
+@property (nonatomic, weak) UILabel *userNameLabel;
 @end
 
 @implementation XHDDOnlineSliderController
@@ -26,6 +28,9 @@
     
     //1.configTableView
     [self configTableView];
+    
+    //2.监听登录成功状态，改变头像和名字
+    [self configNotifiCationCenter];
     
 }
 #pragma mark - lazyLoad
@@ -60,7 +65,6 @@
 }
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-
     return 1;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -83,6 +87,7 @@
     return cell;
 
 }
+#pragma mark - tableView代理相关
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
 
     //添加表头视图
@@ -104,14 +109,19 @@
     imageView.backgroundColor = [UIColor grayColor];
     imageView.userInteractionEnabled = YES;
     
+    self.headerImageView = imageView;
+    
     UITapGestureRecognizer *tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(taped)];
     [imageView addGestureRecognizer:tapGR];
     
+    //名字label
     UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 80, 200, 30)];
     nameLabel.text = @"点击头像登录";
     nameLabel.textColor = [UIColor whiteColor];
     nameLabel.font = [UIFont systemFontOfSize:15];
     [headView addSubview:nameLabel];
+    
+    self.userNameLabel = nameLabel;
     
     return headView;
 }
@@ -124,6 +134,17 @@
 }
 - (void)taped{
     JLog(@"点击了头像");
+    //如果已经登录，则调到zone， 否则去登录
+    
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"isLogin"] boolValue]) {//已经登录
+        
+      XHDDOnlineRootTabBarController *rootTbc =  self.sideMenuViewController.contentViewController.childViewControllers[0];
+        rootTbc.selectedIndex = rootTbc.childViewControllers.count - 1;
+        
+        [self.sideMenuViewController hideMenuViewController];
+        
+        return;
+    }
     
     XHDDOnlineSignInController *signCtrl = [[XHDDOnlineSignInController alloc] init];
     XHDDOnlineRootTabBarController *rootTbc = self.sideMenuViewController.contentViewController.childViewControllers[0];
@@ -132,5 +153,30 @@
     [nav pushViewController:signCtrl animated:YES];
     [self.sideMenuViewController hideMenuViewController];
     
+}
+#pragma mark - 监听登录
+- (void)configNotifiCationCenter{
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSucceed) name:@"loginSucceed" object:nil];
+}
+- (void)loginSucceed{
+
+    self.userNameLabel.text = [EMClient sharedClient].currentUsername;
+    //存储路径
+    NSArray *paths =NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
+    
+    NSString *filePath = [[paths objectAtIndex:0]stringByAppendingPathComponent:[NSString stringWithFormat:@"userHeaderImage"]];
+    NSData *data = [NSData dataWithContentsOfFile:filePath];
+    
+    if (data == nil) {
+        self.headerImageView.image = [UIImage imageNamed:@"selfHeaderImage"];
+        return;
+
+    }
+    self.headerImageView.image = [UIImage imageWithData:data];
+    
+}
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 @end

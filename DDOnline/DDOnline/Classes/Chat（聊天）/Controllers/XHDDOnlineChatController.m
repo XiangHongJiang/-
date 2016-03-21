@@ -57,12 +57,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0.000 green:0.502 blue:1.000 alpha:1.000];
-    
     //添加下拉刷新
     [self addRefresh];
     
-    [[EMClient sharedClient] addDelegate:self delegateQueue:nil];
+    [[EMClient sharedClient] addDelegate:self delegateQueue:nil];        
+    
+    //监听好友回调
+    [self addFriendDelegate];
     
     //添加通知监听
     [self setNotificationCentenr];
@@ -250,7 +251,7 @@
             NSLog(@"获取好友成功 -- %@",userList);
         }
         else{
-            JLog(@"获取联系人失败");
+            JLog(@"获取联系人失败%@",error.errorDescription);
         }
         
         //获取黑名单列表
@@ -260,7 +261,7 @@
             NSLog(@"获取黑名单成功 -- %@",blackList);
         }
         else{
-            JLog(@"获取黑名单失败");
+            JLog(@"获取黑名单失败%@",error1.errorDescription);
         }
         
         if (userList != nil && blackList != nil) {
@@ -339,7 +340,7 @@
  */
 - (void)didReceiveDeclinedFromUsername:(NSString *)aUsername{
 
-        [SVProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"%@ 拒绝了好友请求",aUsername]];
+ [SVProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"%@ 拒绝了好友请求",aUsername]];
 }
 #pragma mark - 消息界面相关
 //1.获取会话列表
@@ -352,10 +353,9 @@
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];//
     BOOL isLogin = [[ud objectForKey:@"isLogin"] boolValue];
     if (isLogin) {//如果已经登录，则请求数据
-    
+        
         [self.contactsTableView.mj_header beginRefreshing];
-        //监听好友回调
-        [self addFriendDelegate];
+
     }
 }
 - (void)addFriendDelegate{
@@ -377,11 +377,15 @@
        
         //沙盒存登录状态
         [ud setObject:@(YES) forKey:@"isLogin"];
+        [ud synchronize];
 
         //发送登录成功通知
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"isLoginSucceed" object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"loginSucceed" object:nil];
+        
+        return;
     }
-  [ud synchronize];
+    
+   [ud synchronize];
     
 }
 //掉线重连
@@ -415,6 +419,7 @@
 - (void)didRemovedFromServer{
     JLog(@"当前登录账号已经被从服务器端删除时会收到该回调");
 }
+#pragma mark - 视图启动与消失代理设置
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
@@ -422,8 +427,8 @@
     BOOL isLogin = [[ud objectForKey:@"isLogin"] boolValue];
     if (!isLogin && !firstTimeEnter) {//未登录，并且是第一次进入该界面
         firstTimeEnter = YES;
-        
         [SVProgressHUD showSuccessWithStatus:@"当前为本地模式"];
     }
 }
+
 @end

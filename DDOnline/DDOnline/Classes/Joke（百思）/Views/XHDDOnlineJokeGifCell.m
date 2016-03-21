@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *caiBtn;
 @property (weak, nonatomic) IBOutlet UIButton *dingBtn;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *gifAutoHeight;
+
 @property (weak, nonatomic) IBOutlet UIImageView *headerImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *profile_addv_authen;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
@@ -27,6 +29,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *gifImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *isGifImage;
+@property (weak, nonatomic) IBOutlet UIImageView *loadingImageView;
 
 @end
 
@@ -88,31 +91,33 @@
     //内容
     self.contentLabel.text = gifDetailModel.text;
     
+    self.loadingImageView.hidden = NO;
+    
     //图url
     NSString *gifUrl;
-    CGFloat gifHeight;
-    CGFloat gifWidth;
+
     if (gifDetailModel.gif) {//gif不为空
         
         gifUrl = [gifDetailModel.gif.images lastObject];
-        gifHeight = gifDetailModel.gif.height;
-        gifWidth = gifDetailModel.gif.width;
         self.isGifImage.hidden = NO;
         
     }else{//image不为空
     
         gifUrl = [gifDetailModel.image.download_url lastObject];
-        gifHeight = gifDetailModel.image.height;
-        gifWidth = gifDetailModel.image.width;
+
         self.isGifImage.hidden = YES;
     }
     
-    //图
-    [self.gifImageView sd_setImageWithPreviousCachedImageWithURL:[NSURL URLWithString:gifUrl] andPlaceholderImage:[UIImage imageNamed:@"placeHolder.jpg"] options:SDWebImageRetryFailed progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+    self.gifAutoHeight.constant = gifDetailModel.gifImageHeight;
+    [self.gifImageView layoutIfNeeded];
+
+    [self.gifImageView sd_setImageWithPreviousCachedImageWithURL:[NSURL URLWithString:gifUrl] andPlaceholderImage:[UIImage imageNamed:@""] options:SDWebImageRetryFailed progress:^(NSInteger receivedSize, NSInteger expectedSize) {
         
         JLog(@"%f",receivedSize * 1.0 / expectedSize);
         
     } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+
+        self.loadingImageView.hidden = YES;
 
         
     }];
@@ -140,6 +145,6 @@
 #pragma mark - 类方法返回高度
 + (CGFloat)rowHeightWithgifDetailModel:(JokeBase_List *)gifDetailModel{
  
-    return gifDetailModel.textHeight + 110 + 200;
+    return gifDetailModel.textHeight + 110 + gifDetailModel.gifImageHeight;
 }
 @end

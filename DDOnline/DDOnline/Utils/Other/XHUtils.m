@@ -7,6 +7,9 @@
 //
 
 #import "XHUtils.h"
+#import "XHDDOnlineMainController.h"
+#import "XHDDOnlineRootTabBarController.h"
+#import "RESideMenu.h"
 
 @implementation XHUtils
 //
@@ -127,5 +130,29 @@
     
     return circleImage;
     
+}
++ (UINavigationController *)getCurrentTabBarNavigationCtrl{
+   
+    RESideMenu *sideMenu =(RESideMenu *)[UIApplication sharedApplication].keyWindow.rootViewController;
+    
+    XHDDOnlineRootTabBarController *rootTbc = sideMenu.contentViewController.childViewControllers[0];
+    UINavigationController *nav = rootTbc.selectedViewController;
+
+    return nav;
+}
+//压缩图片
++(UIImage*)imageWithImageSimple:(UIImage*)image scaledToSize:(CGSize)newSize
+{
+    // Create a graphics image context
+    UIGraphicsBeginImageContext(newSize);
+    // Tell the old image to draw in this new context, with the desired
+    // new size
+    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    // Get the new image from the context
+    UIImage* newImage =UIGraphicsGetImageFromCurrentImageContext();
+    // End the context
+    UIGraphicsEndImageContext();
+    // Return the new image.
+    return newImage;
 }
 @end

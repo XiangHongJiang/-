@@ -7,6 +7,10 @@
 //
 
 #import "XHDDOnlineSettingController.h"
+#import "XHDDOnlineFixCell.h"
+#import "SDImageCache.h"
+#import "EMSDKFull.h"
+#import "XHDDOnlineSignInController.h"
 
 @interface XHDDOnlineSettingController ()
 /**
@@ -21,7 +25,7 @@
 
     if (_nameArray == nil) {
         
-        self.nameArray = @[@"自动登录",@"退出登录",@"切换账号",@"清理缓存"];
+        self.nameArray = @[@"自动登录",@"清理缓存",@"切换账号",@"退出登录"];
     }
     return _nameArray;
 }
@@ -30,6 +34,8 @@
     [super viewDidLoad];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"XHDDOnlineFixCell" bundle:nil] forCellReuseIdentifier:@"XHDDOnlineFixCell"];
+    
+    self.tableView.tableFooterView = [[UIView alloc] init];                               
 }
 
 - (void)didReceiveMemoryWarning {
@@ -45,11 +51,80 @@
     return 1;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell ;
-
     
+    XHDDOnlineFixCell *cell = [tableView dequeueReusableCellWithIdentifier:@"XHDDOnlineFixCell"];
+    
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
+    if (indexPath.section == 0) {//@[@"自动登录",@"切换账号",@"清理缓存",@"退出登录"];
+         cell.functionSwitch.hidden = NO;
+        cell.functionSwitch.on = [[[NSUserDefaults standardUserDefaults] objectForKey:@"isAutoLogin"] boolValue];
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+    if (indexPath.section == 1) {
+        
+        cell.nameLabel.text = [NSString stringWithFormat:@"%@(%.2fM)",self.nameArray[indexPath.section],[SDImageCache sharedImageCache].getSize / 1024 / 1024.0];//self.nameArray[indexPath.section];
+        return cell;
+    }
+    cell.nameLabel.text = self.nameArray[indexPath.section];
     
     return cell;
 }
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
 
+    return 20;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    
+    NSInteger section = indexPath.section;
+    
+    if (section == 1) {
+        
+        [[SDImageCache sharedImageCache] cleanDisk];
+        XHDDOnlineFixCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        
+        [SVProgressHUD showSuccessWithStatus:@"清理缓存成功"];
+        cell.nameLabel.text = @"清理缓存(0.00M)";
+        
+    }
+    else if (section == 2){
+        
+        XHDDOnlineSignInController *signCtrl = [[XHDDOnlineSignInController alloc] init];
+        [self.navigationController pushViewController:signCtrl animated:YES];
+
+    }
+    else if (section == 3){
+    
+        if ([EMClient sharedClient].currentUsername.length == 0) {
+            
+            [SVProgressHUD showErrorWithStatus:@"当前未登录"];
+        }
+        else{
+            
+            [self signOutUser];
+        }
+        
+    }
+    
+    
+}
+- (void)signOutUser{
+
+    dispatch_async(JGlobalQueue, ^{
+        
+        //退出原账号
+        if ([EMClient sharedClient].currentUsername.length >0) {
+            EMError *error1 = [[EMClient sharedClient] logout:YES];
+            if (error1) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [SVProgressHUD showErrorWithStatus:error1.errorDescription];
+                });
+ 
+            }
+        }
+    });
+  
+}
+                   
 @end

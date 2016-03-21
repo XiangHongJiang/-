@@ -2500,6 +2500,7 @@
 				BC014A111C8B060300AA4C45 /* XHDDOnlineMineController.h */,
 				BC014A121C8B060300AA4C45 /* XHDDOnlineMineController.m */,
 				BC8794181C9D9B0C0060757E /* XHDDOnlineMineController.xib */,
+				BC6F4DFF1CA047B700CAB0B0 /* 下载 */,
 				BCE86A541C9EBE4A00A40B4C /* 皮肤 */,
 				BCE86A561C9EBE9200A40B4C /* 收藏 */,
 				BCE86A551C9EBE6900A40B4C /* 设置 */,
@@ -3632,6 +3633,13 @@
 				BC513DE11C99442700530B1F /* libHyphenateFullSDK.a */,
 			);
 			path = lib;
+			sourceTree = "<group>";
+		};
+		BC6F4DFF1CA047B700CAB0B0 /* 下载 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "下载";
 			sourceTree = "<group>";
 		};
 		BC8793FA1C9C5FC20060757E /* 登录与注册 */ = {

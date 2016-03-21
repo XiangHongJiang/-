@@ -30,7 +30,7 @@
     
     if (_functionNameArray == nil) {
         
-        _functionNameArray = @[@"我的皮肤",@"我的收藏",@"设置"];
+        _functionNameArray = @[@"我的下载",@"我的收藏",@"我的皮肤",@"设置"];
     }
     
     return _functionNameArray;
@@ -49,6 +49,8 @@
     
     //3.监听皮肤背景更换
     [self changeSkin];
+    
+    self.tableView.tableFooterView = [[UIView alloc] init];
 }
 
 #pragma mark - 添加表头
@@ -76,9 +78,14 @@
 }
 
 #pragma mark - tableView DataSource
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+
+    return self.functionNameArray.count;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return self.functionNameArray.count;
+    return 1;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -88,23 +95,30 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CellID"];
     }
     
-    cell.textLabel.text = self.functionNameArray[indexPath.row];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.textLabel.text = self.functionNameArray[indexPath.section];
     
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    
     UIViewController *ctrl = nil;
     //创建
-    switch (indexPath.row) {
-        case 0://我的皮肤
-            
-            ctrl = [[XHDDOnlineMineSkinController alloc] init];
+    switch (indexPath.section) {
+        case 0://我的下载
+            ctrl = nil;
             break;
+            
             case 1://我的收藏
             break;
             
-            case 2://设置
+            case 2://我的皮肤
+             ctrl = [[XHDDOnlineMineSkinController alloc] init];
+            break;
+            
+            case 3://
             ctrl = [[XHDDOnlineSettingController alloc] init];
             break;
             
@@ -147,6 +161,9 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 
     return 60;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 20;
 }
 #pragma mark - 监听登录
 - (void)configNotifiCationCenter{

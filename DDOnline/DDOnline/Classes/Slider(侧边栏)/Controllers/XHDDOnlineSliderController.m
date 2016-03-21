@@ -11,6 +11,8 @@
 #import "XHDDOnlineSignInController.h"
 #import "XHDDOnlineRootTabBarController.h"
 #import "EMSDKFull.h"
+#import "XHDDOnlineMineSkinController.h"
+#import "XHDDOnlineSettingController.h"
 
 @interface XHDDOnlineSliderController ()<UITableViewDelegate, UITableViewDataSource>
 /** *  cellImageNameArray */
@@ -19,6 +21,12 @@
 @property (nonatomic, copy) NSArray *cellTitleArray;
 /** *  userNameLabel */
 @property (nonatomic, weak) UILabel *userNameLabel;
+/** *  skinAddress */
+@property (nonatomic, copy) NSString *skinAddress;
+/**
+ *  nightSwitch
+ */
+@property (nonatomic, weak) UISwitch * nightSwitch;
 @end
 
 @implementation XHDDOnlineSliderController
@@ -26,11 +34,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //保存当前皮肤
+    self.skinAddress = [[NSUserDefaults standardUserDefaults] objectForKey:@"skinAddress"];
+    
     //1.configTableView
     [self configTableView];
-    
-    //2.监听登录成功状态，改变头像和名字
+    //2.设置启动皮肤
+    [self changeSkin];
+    //3.添加换肤监听
+    [self addNotificationCenter];
+    //4.监听登录成功状态，改变头像和名字
     [self configNotifiCationCenter];
+    
     
 }
 #pragma mark - lazyLoad
@@ -46,7 +61,7 @@
 
     if (_cellTitleArray == nil) {
         
-        _cellTitleArray = @[@"我的下载",@"我的收藏",@"我的分享",@"设置",@"夜间模式"];
+        _cellTitleArray = @[@"我的下载",@"我的收藏",@"换肤",@"设置"/*,@"夜间模式"*/];
     }
     return _cellTitleArray;
 }
@@ -60,11 +75,6 @@
     
     self.tableView.rowHeight = 50;
     self.tableView.sectionHeaderHeight = JAdsViewHeight;
-    //设置启动皮肤
-    [self changeSkin];
-    //添加换肤监听
-    [self addNotificationCenter];
-    
 }
 
 - (void)addNotificationCenter{
@@ -98,6 +108,7 @@
 
     //复用cell
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"sliderCellID" forIndexPath:indexPath];
+    
     
     //修改背景颜色
     // Configure the cell...
@@ -149,12 +160,38 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 #warning 跳转事件
-    
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
-    [self.sideMenuViewController hideMenuViewController];
+    UIViewController *ctrl = nil;
+    NSInteger row = indexPath.row;
+    switch (row) {
+        case 0://我的下载
+            ctrl = nil;
+            break;
+            
+        case 1://我的收藏
+            break;
+            
+        case 2://我的皮肤
+            ctrl = [[XHDDOnlineMineSkinController alloc] init];
+            break;
+            
+        case 3://
+            ctrl = [[XHDDOnlineSettingController alloc] init];
+            break;
+            
+//            case 4://夜间模式
+//        {//取出沙盒当前的皮肤，存起来，然后放进去夜间模式的皮肤，发个通知。OK！
+//            return;
+//        }
+//            break;
+        default:
+            break;
+    }
     
-    NSLog(@"%@",self.cellTitleArray[indexPath.row]);
+    [[XHUtils getCurrentTabBarNavigationCtrl] pushViewController:ctrl animated:NO];
+    
+    [self.sideMenuViewController hideMenuViewController];
 }
 - (void)taped{
     JLog(@"点击了头像");
@@ -200,6 +237,27 @@
     self.headerImageView.image = [UIImage imageWithData:data];
     
 }
+
+//- (void)nightSwitchClick:(UISwitch *)nightSwitch{
+//   
+//    nightSwitch.on = !(nightSwitch.isOn);
+//    
+//    //取出沙盒当前的皮肤，存起来，然后放进去夜间模式的皮肤，发个通知。OK！
+//    
+//    if (nightSwitch.isOn) {//夜间模式
+//        //发送夜间皮肤
+//        [[NSUserDefaults standardUserDefaults] setObject:@"teamTheme/nightType" forKey:@"skinAddress"];
+//    }
+//    else{
+//        //发送原皮肤
+//        [[NSUserDefaults standardUserDefaults] setObject:self.skinAddress forKey:@"skinAddress"];
+//    }
+//    
+//    [[NSUserDefaults standardUserDefaults] synchronize];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"changeSkin" object:nil];
+//
+//}
+
 - (void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }

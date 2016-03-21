@@ -61,11 +61,11 @@
     //开始识别
     [self start];
     
-    [UIView animateWithDuration:1.5 animations:^{
+    [UIView animateWithDuration:2 animations:^{
         self.menuView.y = 0;
     }];
     
-    [UIView animateWithDuration:2 delay:1.5 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+    [UIView animateWithDuration:2 delay:2 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
         
         self.menuView.y = - self.menuView.height;
         
@@ -77,12 +77,7 @@
         self.cancelBtn.centerX = self.cancelBtn.centerX - self.cancelBtn.width * 0.5 - 15;
 
         [self stop];
-        
-        if (_soundString.length == 0) {
-            
-            self.inputTipLabel.text = @"你好像没有说话";
-        }
-        
+
         //如果存在Block对象回调Block
 //        if (_detectSoundSucceedBlock) {
 //            
@@ -202,6 +197,11 @@
     _soundString = resultFromJSON;
 
     self.detectSoundSucceedBlock(_soundString);
+    
+    if (_soundString.length == 0) {
+        
+        self.inputTipLabel.text = @"你好像没有说话";
+    }
     
 }
 #pragma mark - 其他

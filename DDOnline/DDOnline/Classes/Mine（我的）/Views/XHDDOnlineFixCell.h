@@ -10,4 +10,10 @@
 
 @interface XHDDOnlineFixCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *preImageView;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UISwitch *functionSwitch;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *preImageRightAutoLayout;
+
+
 @end

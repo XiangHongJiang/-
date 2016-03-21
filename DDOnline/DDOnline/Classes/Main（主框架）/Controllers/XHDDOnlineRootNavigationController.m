@@ -29,6 +29,25 @@
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeSkin) name:@"changeSkin" object:nil];
 }
+- (void)loginSucceed:(UIViewController *)ctrl{
+    
+    //存储路径
+    NSArray *paths =NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
+    
+    NSString *filePath = [[paths objectAtIndex:0]stringByAppendingPathComponent:[NSString stringWithFormat:@"userHeaderImage"]];
+    NSData *data = [NSData dataWithContentsOfFile:filePath];
+    
+    if (data == nil) {
+        ctrl.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"navicon-40"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(splite)];
+        return;
+    }
+    
+    
+     ctrl.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageWithData:data] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(splite)];
+   
+    
+}
+
 - (void)changeSkin{
 
     NSString *addressPre =  [[NSUserDefaults standardUserDefaults] objectForKey:@"skinAddress"];
@@ -48,20 +67,16 @@
     // Dispose of any resources that can be recreated.
 }
 
-
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated{
     
     if (self.childViewControllers.count == 0) {
         
         //添加侧边栏按钮
         viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"navicon-40"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(splite)];
-        //添加扫一扫功能
-#warning 添加扫一扫功能
-   /*
-        viewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"find-40"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(scan)];
-    */
+     
+        [[NSNotificationCenter defaultCenter] addObserver:viewController selector:@selector(loginSucceed:) name:@"loginSucceed" object:viewController];
 
-//        viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:<#(nonnull UIView *)#>]
+
     }
     
 //    viewController.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:nil action:nil];

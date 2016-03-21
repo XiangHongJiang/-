@@ -45,7 +45,6 @@
     else{
         self.leftBtn.selected = NO;
     }
-    
 }
 
 @end

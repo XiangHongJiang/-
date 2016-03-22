@@ -91,8 +91,10 @@ static CGFloat rowHeight;
 - (void)btnClick:(UIButton *)btn{
     [btn setTitleColor:JColorGray forState:UIControlStateNormal];
     
-
-    Episodes *episodes = self.detailFunPlayArray[btn.tag - JDefaultTag];
+#warning 更改了播放下标，可能会出错
+    NSInteger index = self.detailFunPlayArray.count - btn.tag + JDefaultTag;
+    
+    Episodes *episodes = self.detailFunPlayArray[index];
     NSString *aid = episodes.av_id;
  
     XHDDOnlineFunPlayPlayVideoController *funPlayVideoCtrl = [[XHDDOnlineFunPlayPlayVideoController alloc] init];

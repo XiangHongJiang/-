@@ -433,6 +433,9 @@
 		BC6AFD0B1CA1CDFD004131D5 /* SDCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6AFD021CA1CDFD004131D5 /* SDCollectionViewCell.m */; };
 		BC6AFD0C1CA1CDFD004131D5 /* SDCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6AFD041CA1CDFD004131D5 /* SDCycleScrollView.m */; };
 		BC6AFD0D1CA1CDFD004131D5 /* UIView+SDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6AFD061CA1CDFD004131D5 /* UIView+SDExtension.m */; };
+		BC6AFD1B1CA1EF33004131D5 /* XHDDOnlineJokeDetailCommentsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6AFD191CA1EF33004131D5 /* XHDDOnlineJokeDetailCommentsCell.m */; };
+		BC6AFD1C1CA1EF33004131D5 /* XHDDOnlineJokeDetailCommentsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC6AFD1A1CA1EF33004131D5 /* XHDDOnlineJokeDetailCommentsCell.xib */; };
+		BC6AFD1F1CA1F744004131D5 /* XHDDOnlineJokeCommentsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6AFD1E1CA1F744004131D5 /* XHDDOnlineJokeCommentsModel.m */; };
 		BC6F4E021CA0789C00CAB0B0 /* HistoryMessageModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BC6F4E001CA0789C00CAB0B0 /* HistoryMessageModel.xcdatamodeld */; };
 		BC6F4E5B1CA0856E00CAB0B0 /* Entity+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6F4E581CA0856E00CAB0B0 /* Entity+CoreDataProperties.m */; };
 		BC6F4E5C1CA0856E00CAB0B0 /* Entity.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6F4E5A1CA0856E00CAB0B0 /* Entity.m */; };
@@ -1637,6 +1640,11 @@
 		BC6AFD041CA1CDFD004131D5 /* SDCycleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDCycleScrollView.m; sourceTree = "<group>"; };
 		BC6AFD051CA1CDFD004131D5 /* UIView+SDExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SDExtension.h"; sourceTree = "<group>"; };
 		BC6AFD061CA1CDFD004131D5 /* UIView+SDExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SDExtension.m"; sourceTree = "<group>"; };
+		BC6AFD181CA1EF33004131D5 /* XHDDOnlineJokeDetailCommentsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHDDOnlineJokeDetailCommentsCell.h; sourceTree = "<group>"; };
+		BC6AFD191CA1EF33004131D5 /* XHDDOnlineJokeDetailCommentsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHDDOnlineJokeDetailCommentsCell.m; sourceTree = "<group>"; };
+		BC6AFD1A1CA1EF33004131D5 /* XHDDOnlineJokeDetailCommentsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHDDOnlineJokeDetailCommentsCell.xib; sourceTree = "<group>"; };
+		BC6AFD1D1CA1F744004131D5 /* XHDDOnlineJokeCommentsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHDDOnlineJokeCommentsModel.h; sourceTree = "<group>"; };
+		BC6AFD1E1CA1F744004131D5 /* XHDDOnlineJokeCommentsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHDDOnlineJokeCommentsModel.m; sourceTree = "<group>"; };
 		BC6F4E011CA0789C00CAB0B0 /* HistoryMessageModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HistoryMessageModel.xcdatamodel; sourceTree = "<group>"; };
 		BC6F4E571CA0856E00CAB0B0 /* Entity+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Entity+CoreDataProperties.h"; sourceTree = "<group>"; };
 		BC6F4E581CA0856E00CAB0B0 /* Entity+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Entity+CoreDataProperties.m"; sourceTree = "<group>"; };
@@ -2468,6 +2476,8 @@
 			children = (
 				BC370FC21C95BFE400D7A81C /* XHDDOnlineJokeBaseModel.h */,
 				BC370FC31C95BFE400D7A81C /* XHDDOnlineJokeBaseModel.m */,
+				BC6AFD1D1CA1F744004131D5 /* XHDDOnlineJokeCommentsModel.h */,
+				BC6AFD1E1CA1F744004131D5 /* XHDDOnlineJokeCommentsModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2475,6 +2485,7 @@
 		BC0148011C8AFED600AA4C45 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BC6AFD0F1CA1ED40004131D5 /* 评论详情 */,
 				BCF1E22B1C91E16400CA3338 /* XHDDOnlineJokeCell.h */,
 				BCF1E22C1C91E16400CA3338 /* XHDDOnlineJokeCell.m */,
 				BCF1E22D1C91E16400CA3338 /* XHDDOnlineJokeCell.xib */,
@@ -3705,6 +3716,16 @@
 				BC6AFD001CA1CDFD004131D5 /* TAPageControl.m */,
 			);
 			path = PageControl;
+			sourceTree = "<group>";
+		};
+		BC6AFD0F1CA1ED40004131D5 /* 评论详情 */ = {
+			isa = PBXGroup;
+			children = (
+				BC6AFD181CA1EF33004131D5 /* XHDDOnlineJokeDetailCommentsCell.h */,
+				BC6AFD191CA1EF33004131D5 /* XHDDOnlineJokeDetailCommentsCell.m */,
+				BC6AFD1A1CA1EF33004131D5 /* XHDDOnlineJokeDetailCommentsCell.xib */,
+			);
+			path = "评论详情";
 			sourceTree = "<group>";
 		};
 		BC6F4DFF1CA047B700CAB0B0 /* 下载 */ = {
@@ -5359,6 +5380,7 @@
 				BC1AB0731C8C0BE40007EDF4 /* 069@2x.png in Resources */,
 				BCF1E3151C9298E600CA3338 /* Contents.json in Resources */,
 				BCF1E2C41C9298E600CA3338 /* cell-button-line@2x.png in Resources */,
+				BC6AFD1C1CA1EF33004131D5 /* XHDDOnlineJokeDetailCommentsCell.xib in Resources */,
 				BC1AB0361C8C0BE40007EDF4 /* 008@2x.png in Resources */,
 				BCA401AD1C9B94A80047FEBE /* lxh_zhenjing@2x.png in Resources */,
 				BC1AB0311C8C0BE40007EDF4 /* 003@2x.png in Resources */,
@@ -5610,6 +5632,7 @@
 				BC370FA21C959DE600D7A81C /* XHDDOnlineJokeDetailController.m in Sources */,
 				BC370F8A1C9548FD00D7A81C /* UIStepper+RACSignalSupport.m in Sources */,
 				BCA4FFCD1C99BD6D0047FEBE /* XHDDOnlineChatFunctionView.m in Sources */,
+				BC6AFD1B1CA1EF33004131D5 /* XHDDOnlineJokeDetailCommentsCell.m in Sources */,
 				BC370F411C9548FD00D7A81C /* NSObject+RACKVOWrapper.m in Sources */,
 				BC8794131C9D46FF0060757E /* XHDDOnlineSignInController.m in Sources */,
 				BC0F645F1C8DC62C005F599C /* SDWebImagePrefetcher.m in Sources */,
@@ -5721,6 +5744,7 @@
 				BCE86A701C9FF1B500A40B4C /* XHButton.m in Sources */,
 				BC0F645A1C8DC62C005F599C /* SDWebImageCompat.m in Sources */,
 				BC8D61601C8D794A0043F18F /* MJPropertyKey.m in Sources */,
+				BC6AFD1F1CA1F744004131D5 /* XHDDOnlineJokeCommentsModel.m in Sources */,
 				BC370F3C1C9548FD00D7A81C /* NSIndexSet+RACSequenceAdditions.m in Sources */,
 				BC0FFB621C8DD6A80035B840 /* XHDDOnlineFunPlayHeaderView.m in Sources */,
 				BC0148901C8B013300AA4C45 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,

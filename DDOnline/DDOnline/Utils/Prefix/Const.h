@@ -23,6 +23,9 @@
 #define APPID_VALUE   @"56cfbe50"
 
 #pragma mark - 番剧
+
+static NSString *const kFunPlayScrollUrl = @"http://app.bilibili.com/api/region_ios/13.json?actionKey=appkey&appkey=27eb53fc9058f8c3&build=3060&device=phone&platform=ios&sign=4a1426ff1057705861d5b3c95d47da88&ts=1458655276";
+
 //番剧首页
 static NSString *const kFunPlayUrl = @"http://bangumi.bilibili.com/api/app_index_page?_device=android&_hwid=bcbfd479c4762248&appkey=c1b107428d337928&build=412001&platform=android&ts=1457524612000&sign=74ffb9ba0a6e2a4347322242226ea16b";
 //@"http://bangumi.bilibili.com/api/app_index_page?_device=android&_hwid=bcbfd479c4762248&_ulv=10000&access_key=22478dfaad95807199e6d9f65dd9e539&appkey=c1b107428d337928&build=412001&platform=android&ts=1457443404000&sign=5978e02359c883ff2a86987f76ded418";
@@ -51,7 +54,12 @@ static NSString *const kJokeGifUrl = @"http://s.budejie.com/topic/list/zuixin/10
 //最新小短片
 static NSString *const kJokeVideoUrl = @"http://s.budejie.com/topic/list/zuixin/41/baisishequ-iphone-4.0/0-%d.json";
 
+//最新评论
+static NSString *const kJokeComments =@"http://api.budejie.com/api/api_open.php?a=dataList&appname=baisishequ&asid=8AEA8B2E-DC78-461A-8071-D9535EB7130D&c=comment&client=iphone&data_id=%@&from=ios&hot=1&jbk=1&mac=&market=&openudid=19d40c8eb0d48bb0f2218a8e4a54e3135edcf314&page=1&per=50&udid=&ver=4.0";//17737151
 
+//http://api.budejie.com/api/api_open.php?a=dataList&appname=baisishequ&asid=8AEA8B2E-DC78-461A-8071-D9535EB7130D&c=comment&client=iphone&data_id=17576193&device=ios%20device&from=ios&hot=1&jbk=1&mac=&market=&openudid=19d40c8eb0d48bb0f2218a8e4a54e3135edcf314&page=1&per=50&udid=&ver=4.0
+
+//http://api.budejie.com/api/api_open.php?a=dataList&appname=baisishequ&asid=8AEA8B2E-DC78-461A-8071-D9535EB7130D&c=comment&client=iphone&data_id=%@&from=ios&hot=1&jbk=1&mac=&market=&openudid=19d40c8eb0d48bb0f2218a8e4a54e3135edcf314&page=1&per=50&udid=&ver=4.0
 
 
 

@@ -24,6 +24,8 @@
     [super viewDidLoad];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"XHDDOnlineCategorysDetailCell" bundle:nil] forCellReuseIdentifier:@"XHDDOnlineCategorysDetailCell"];
+    
+    self.tableView.separatorInset = UIEdgeInsetsMake(0, 100, 0, 10);
   
     //1.请求数据
     [self requestData];

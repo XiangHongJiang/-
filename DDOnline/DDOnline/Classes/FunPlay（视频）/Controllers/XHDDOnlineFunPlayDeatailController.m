@@ -58,6 +58,7 @@
     
     tableView.backgroundColor = JColorLightGray;
     
+    
 }
 //添加表头
 - (void)addTableViewHeaderView{
@@ -117,6 +118,8 @@
         make.right.equalTo(0);
         
     }];
+    
+    
     
     //设置表头
     self.tableView.tableHeaderView = headerView;

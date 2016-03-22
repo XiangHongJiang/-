@@ -12,8 +12,9 @@
 #import "XHDDOnlineFunPlayModel.h"
 #import "XHDDOnlineLiveModel.h"
 #import "XHDDOnlineFunPlaySearchController.h"
+#import "SDCycleScrollView.h"
 
-@interface XHDDOnlineFunPlayController ()<UIScrollViewDelegate,UISearchBarDelegate>
+@interface XHDDOnlineFunPlayController ()<UIScrollViewDelegate,UISearchBarDelegate,SDCycleScrollViewDelegate>
 /** *  管理的scrollView */
 @property (nonatomic, weak) UIScrollView * scrollView;
 /** *  管理的直播tableView */
@@ -26,19 +27,36 @@
 @property (nonatomic, strong) XHDDOnlineLiveModel *liveModel;
 /** *  添加搜索表头 */
 @property (nonatomic, weak) UISearchBar *searchFunPlay;
+/** *  headerUrlArray */
+@property (nonatomic, strong) NSMutableArray *scrollUrlArray;
+/**
+ *  <#Description#>
+ */
+@property (nonatomic, weak) SDCycleScrollView * cycleScrollView;
 @end
 
 @implementation XHDDOnlineFunPlayController
 
+- (NSMutableArray *)scrollUrlArray{
+
+    if (_scrollUrlArray == nil) {
+        
+        self.scrollUrlArray = [NSMutableArray array];
+    }
+    return  _scrollUrlArray;
+}
+
 - (void)loadView{
     [super loadView];
-    
     //1.设置ScrollView
     [self configScrollView];
     //2.加载直播视图
-    [self loadLiveView];
+//    [self loadLiveView];
     //3.加载番剧视图
     [self loadFunPlayView];
+    
+    //0.请求adsUrl
+    [self requestScrollUrl];
     //4.添加搜索
     [self addFunPlaySearch];
 
@@ -53,6 +71,28 @@
     //开始刷新
     [self.funPlayTableView.mj_header beginRefreshing];
 
+}
+
+- (void)requestScrollUrl{
+
+    [XHNetHelp getDataWithPath:kFunPlayScrollUrl andParams:nil andComplete:^(BOOL succeed, id result) {
+        if (succeed) {//请求成功
+            //解析
+            NSDictionary *scrollDict = [NSJSONSerialization JSONObjectWithData:result options:NSJSONReadingMutableContainers error:nil];
+        
+            NSArray *urlArray = scrollDict[@"result"][@"banners"];
+            
+            for (NSDictionary *tempDict in urlArray) {
+                
+                [self.scrollUrlArray addObject:tempDict[@"img"]];
+
+            }
+            
+            _cycleScrollView.imageURLStringsGroup = self.scrollUrlArray;
+        }
+        
+    }];
+    
 }
 
 #pragma mark - setupUI
@@ -73,7 +113,7 @@
     scrollView.showsVerticalScrollIndicator = NO;
     //设置代理
     scrollView.delegate = self;    
-    scrollView.contentSize = CGSizeMake(JScreenWidth * 2, 0);
+    scrollView.contentSize = CGSizeMake(JScreenWidth - JPedding , 0);
     
 }
 /** 加载直播视图  */
@@ -90,6 +130,20 @@
     //1.funPlayTableView
     XHDDOnlineFunPlayTableView *funPlayTableView = [XHDDOnlineFunPlayTableView funPlayTableView];
     self.funPlayTableView = funPlayTableView;
+    
+    //设置循环视图
+    SDCycleScrollView *cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, JScreenWidth - JPedding, JAdsViewHeight) delegate:self placeholderImage:nil];
+    cycleScrollView.currentPageDotColor = [UIColor greenColor];
+    cycleScrollView.autoScrollTimeInterval = 1.5;
+    cycleScrollView.pageControlAliment = SDCycleScrollViewPageContolAlimentRight;
+    
+    UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, JScreenWidth - JPedding, JAdsViewHeight + 8)];
+    [contentView addSubview:cycleScrollView];
+    
+    self.cycleScrollView = cycleScrollView;
+    
+    funPlayTableView.tableHeaderView = contentView;
+    
     [self.scrollView addSubview:funPlayTableView];
     funPlayTableView.backgroundColor = JColorNavBg;
 }

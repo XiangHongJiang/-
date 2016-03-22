@@ -38,6 +38,8 @@
     [self.view addSubview:videoView];
     self.videoView = videoView;
 
+    self.view.backgroundColor = JColorNavBg;
+    
 }
 
 - (void)viewDidLoad {

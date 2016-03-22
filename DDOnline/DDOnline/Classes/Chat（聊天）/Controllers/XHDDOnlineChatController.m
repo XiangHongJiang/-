@@ -472,11 +472,15 @@
     BOOL isLogin = [[ud objectForKey:@"isLogin"] boolValue];
     if (!isLogin && !firstTimeEnter) {//未登录，并且是第一次进入该界面
         firstTimeEnter = YES;
-        [SVProgressHUD showSuccessWithStatus:@"当前为本地模式"];
+        [SVProgressHUD showSuccessWithStatus:@"当前未登陆"];
     }
     
-    //从数据库获取数据
-    [self getDataFromCoreDataDB];
+    if ([EMClient sharedClient].currentUsername.length > 0) {//当前有登录
+        
+        //从数据库获取数据
+        [self getDataFromCoreDataDB];
+    }
+    
     [[EMClient sharedClient].chatManager addDelegate:self delegateQueue:nil];
 }
 - (void)viewWillDisappear:(BOOL)animated{
@@ -520,10 +524,8 @@
 - (void)getDataFromCoreDataDB{//执行一次查询，取出本地化数据,存储最新一条
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"HistoryMessageEntity"];
     NSArray *results = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
-    
 #warning 获取之前所有的聊天的对象//必须登录
     for (int i = 0; i < results.count; i ++) {
-        
         Entity *entityModel = results[i];
         NSString *name = entityModel.name;
         

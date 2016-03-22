@@ -14,6 +14,7 @@
 + (NSDictionary *)objectClassInArray{
     return @{@"list" : [JokeBase_List class]};
 }
+
 @end
 @implementation JokeBase_Info
 
@@ -24,6 +25,11 @@
 
 + (NSDictionary *)objectClassInArray{
     return @{@"tags" : [JokeBase_Tags class]};
+}
+
++ (NSDictionary *)mj_replacedKeyFromPropertyName{
+    
+    return @{@"ID":@"id"};
 }
 //textHeight
 - (void)setText:(NSString *)text{
@@ -91,6 +97,11 @@
 
 
 @implementation JokeBase_Tags
+
++ (NSDictionary *)mj_replacedKeyFromPropertyName{
+
+    return @{@"ID":@"id"};
+}
 
 @end
 

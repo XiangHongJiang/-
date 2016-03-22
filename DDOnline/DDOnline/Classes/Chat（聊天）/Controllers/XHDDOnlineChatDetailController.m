@@ -74,7 +74,7 @@
     [self.chatContentTableView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resignInput)]];
     
     //3.获取当前会话的历史
-    [self getLastMessageFromDB];
+//    [self getLastMessageFromDB];
     
 }
 - (void)resignInput{
@@ -119,22 +119,30 @@
         
         NSString *name = entityModel.name;
         
-        if (![name isEqualToString:[NSString stringWithFormat:@"%@/%@",self.navigationItem.title,[EMClient sharedClient].currentUsername]]) {
+        
+        if (![name isEqualToString:[NSString stringWithFormat:@"%@/%@",[EMClient sharedClient].currentUsername,self.navigationItem.title]]) {//(非)自己与某某
             continue;
         }
+        
+        //自己与某某
         NSString *time = entityModel.time;
         NSString *text = entityModel.message;
         BOOL type =  [entityModel.type boolValue];
         
-        NSDictionary *dict = @{@"text":text,@"time":time,@"type":@(type)};
+        //取出用户名
+        NSString *userName ;
+        if (type) {//来自他人
+            userName =[[name componentsSeparatedByString:@"/"] lastObject];
+            
+        }else{
+            userName =[[name componentsSeparatedByString:@"/"] firstObject];
+        }
+        NSDictionary *dict = @{@"text":text,@"time":time,@"type":@(type),@"name":userName};
        
         XHDDOnlineChatMessageModel *model = [XHDDOnlineChatMessageModel messageWithDict:dict];
-        
         [self.messagesArray addObject:model];
         
     }
-//    [self.messagesArray addObjectsFromArray:results];
-    
     //刷新数据
     [self.chatContentTableView reloadData];
     [self setSendOrReceiveMessageTableViewScroll];
@@ -155,7 +163,14 @@
 - (XHDDOnlineChatMessageModel *)createMessageWithMessageText:(NSString *)messageText andIsFromOther:(BOOL)fromOther{
 
     NSString *time = [self getCurrentSystemTimeStr];
-    NSDictionary *dict = @{@"text":messageText,@"time":time,@"type":@(fromOther)};
+    
+    NSString *name = [EMClient sharedClient].currentUsername;//自己发送
+    
+    if (fromOther) {//来自他人的模型
+        name = self.navigationItem.title;
+    }
+    
+    NSDictionary *dict = @{@"text":messageText,@"time":time,@"type":@(fromOther),@"name":name};
     XHDDOnlineChatMessageModel *message = [XHDDOnlineChatMessageModel messageWithDict:dict];
 
     return message;
@@ -164,7 +179,6 @@
 - (IBAction)sendBtn:(UIButton *)sender {
     
     NSString *messageText = self.inputMessageTextView.text;
-    
     XHDDOnlineChatMessageModel *message = [self createMessageWithMessageText:messageText andIsFromOther:NO];
     
     //1.向服务器发送
@@ -195,7 +209,7 @@
     NSString *from = [[EMClient sharedClient] currentUsername];//自己的账号
     NSString *friendID = self.navigationItem.title;
     
-    NSDictionary *messageDict = @{@"text":messageModel.text,@"time":messageModel.time,@"type":@(messageModel.type)};
+    NSDictionary *messageDict = @{@"text":messageModel.text,@"time":messageModel.time,@"type":@(messageModel.type),@"name":messageModel.name};
     
     //生成Message
     EMMessage *message = [[EMMessage alloc] initWithConversationID:friendID from:from to:friendID body:body ext:messageDict];
@@ -212,18 +226,13 @@
         if (!error) {
             
             JLog(@"发送消息成功");
-            //添加到会话历史中
-            [self.currentConversation insertMessage:messageBody];
-            BOOL ret =  [self.currentConversation updateConversationExtToDB];
-            JLog(@"%d",ret);
-            
+
             //添加到数据库
-            
             //创建一个实体
             Entity *messageEntity = (Entity *)[NSEntityDescription insertNewObjectForEntityForName:@"HistoryMessageEntity" inManagedObjectContext:_managedObjectContext];
             
             //实体赋值
-            messageEntity.name = [NSString stringWithFormat:@"%@/%@",self.navigationItem.title,[EMClient sharedClient].currentUsername];
+            messageEntity.name = [NSString stringWithFormat:@"%@/%@",[EMClient sharedClient].currentUsername,self.navigationItem.title];
             messageEntity.message = messageModel.text;
             messageEntity.time = messageModel.time;
             messageEntity.type = @(messageModel.type);
@@ -233,7 +242,6 @@
             
                 NSLog(@"保存实体成功");
             }
-            
             
         }
         else {
@@ -323,13 +331,7 @@
     for (EMMessage *message in aMessages) {
         // cmd消息中的扩展属性
         NSDictionary *ext = message.ext;
-        
-        //接收到消息插入到当前会话历史中
-        BOOL ret = [self.currentConversation insertMessage:message];
-        [self.currentConversation updateConversationExtToDB];
-        if (!ret) {
-            JLog(@"插入到本地失败");
-        }
+
         
        XHDDOnlineChatMessageModel *model = [self createMessageWithMessageText:ext[@"text"] andIsFromOther:YES];
         
@@ -337,7 +339,7 @@
         Entity *messageEntity = (Entity *)[NSEntityDescription insertNewObjectForEntityForName:@"HistoryMessageEntity" inManagedObjectContext:_managedObjectContext];
         
         //实体赋值
-        messageEntity.name = [NSString stringWithFormat:@"%@/%@",self.navigationItem.title,[EMClient sharedClient].currentUsername];
+        messageEntity.name = [NSString stringWithFormat:@"%@/%@",[EMClient sharedClient].currentUsername, self.navigationItem.title];
         messageEntity.message = model.text;
         messageEntity.time = model.time;
         messageEntity.type = @(YES);
@@ -348,7 +350,6 @@
             NSLog(@"保存实体成功");
         }
         
-       
         [self.messagesArray addObject:model];
         [self.chatContentTableView reloadData];
         //设置滚动到底部
@@ -361,23 +362,23 @@
 //
 //    
 //}
-- (void)getLastMessageFromDB{
-
-    NSArray *historyMessageArray = [self.currentConversation loadMoreMessagesFromId:self.navigationItem.title limit:10];
-    
-    for (EMMessage *message in historyMessageArray) {//0x00007fdc10e18f20  //0x00007fdc13a4f130
-        // cmd消息中的扩展属性
-        NSDictionary *ext = message.ext;
-        XHDDOnlineChatMessageModel *model = [XHDDOnlineChatMessageModel messageWithDict:ext];
-        [self.messagesArray addObject:model];
-    }
-    //如果有历史数据
-    if (self.messagesArray.count > 0) {
-        [self.chatContentTableView reloadData];
-        //设置滚动到底部
-        [self setSendOrReceiveMessageTableViewScroll];
-    }
-    
-}
+//- (void)getLastMessageFromDB{
+//
+//    NSArray *historyMessageArray = [self.currentConversation loadMoreMessagesFromId:self.navigationItem.title limit:10];
+//    
+//    for (EMMessage *message in historyMessageArray) {//0x00007fdc10e18f20  //0x00007fdc13a4f130
+//        // cmd消息中的扩展属性
+//        NSDictionary *ext = message.ext;
+//        XHDDOnlineChatMessageModel *model = [XHDDOnlineChatMessageModel messageWithDict:ext];
+//        [self.messagesArray addObject:model];
+//    }
+//    //如果有历史数据
+//    if (self.messagesArray.count > 0) {
+//        [self.chatContentTableView reloadData];
+//        //设置滚动到底部
+//        [self setSendOrReceiveMessageTableViewScroll];
+//    }
+//    
+//}
 
 @end

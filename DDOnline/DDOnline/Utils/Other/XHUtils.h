@@ -13,6 +13,9 @@
 + (NSString *)timeStringFromDateString:(NSString *)dateString;
 
 + (CGSize)calculateSizeWithText:(NSString *)text maxSize:(CGSize)maxSize font:(CGFloat)font;
+/**
+ * 截取任意位置的image
+ */
 + (UIImage *)clipImage:(UIImage *)image withRect:(CGRect)rect;
 
 + (UILabel *)createLabelFrame:(CGRect)frame text:(NSString *)text font:(UIFont *)font;

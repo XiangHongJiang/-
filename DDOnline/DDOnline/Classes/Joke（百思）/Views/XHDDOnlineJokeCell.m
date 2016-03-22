@@ -183,7 +183,6 @@
         default:
             break;
     }
-    
     return rowHeight;
 }
 
@@ -198,6 +197,24 @@
     
     [self.viewController.navigationController pushViewController:jokeDetailCtrl animated:NO];
     
+}
+
+- (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    if (self.jokeType == JokeTypeVideo) {
+        
+        XHDDOnlineJokeVideoCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+        
+    }
+}
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    if (self.jokeType == JokeTypeVideo) {
+        
+//        XHDDOnlineJokeVideoCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+//        [cell.playView.player play];
+    }
 }
 
 @end

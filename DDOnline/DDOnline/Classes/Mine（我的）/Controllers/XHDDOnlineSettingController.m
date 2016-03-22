@@ -81,7 +81,7 @@
     
     if (section == 1) {
         
-        [[SDImageCache sharedImageCache] cleanDisk];
+        [[SDImageCache sharedImageCache] clearDisk];
         XHDDOnlineFixCell *cell = [tableView cellForRowAtIndexPath:indexPath];
         
         [SVProgressHUD showSuccessWithStatus:@"清理缓存成功"];

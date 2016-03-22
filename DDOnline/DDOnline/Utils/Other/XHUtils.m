@@ -60,7 +60,7 @@
     
     return dateStr;
 }
-//clipImage
+//clipImage：截取image
 +(UIImage *)clipImage:(UIImage *)image withRect:(CGRect)rect{
 
     CGImageRef cgImage = image.CGImage;
@@ -103,6 +103,9 @@
     [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
     return button;
 }
+/**
+ * 画圆
+ */
 + (UIImage *)circleImage:(UIImage *)image{
     //开启image绘制
     UIGraphicsBeginImageContextWithOptions(image.size, NO, 0.0);
@@ -131,6 +134,7 @@
     return circleImage;
     
 }
+//获取当前导航控制器
 + (UINavigationController *)getCurrentTabBarNavigationCtrl{
    
     RESideMenu *sideMenu =(RESideMenu *)[UIApplication sharedApplication].keyWindow.rootViewController;

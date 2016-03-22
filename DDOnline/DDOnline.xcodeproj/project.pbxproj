@@ -429,6 +429,9 @@
 		BC6F4E021CA0789C00CAB0B0 /* HistoryMessageModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BC6F4E001CA0789C00CAB0B0 /* HistoryMessageModel.xcdatamodeld */; };
 		BC6F4E5B1CA0856E00CAB0B0 /* Entity+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6F4E581CA0856E00CAB0B0 /* Entity+CoreDataProperties.m */; };
 		BC6F4E5C1CA0856E00CAB0B0 /* Entity.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6F4E5A1CA0856E00CAB0B0 /* Entity.m */; };
+		BC6F4E611CA1268500CAB0B0 /* XHDDOnlineNotReadMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6F4E5F1CA1268500CAB0B0 /* XHDDOnlineNotReadMessageCell.m */; };
+		BC6F4E621CA1268500CAB0B0 /* XHDDOnlineNotReadMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC6F4E601CA1268500CAB0B0 /* XHDDOnlineNotReadMessageCell.xib */; };
+		BC6F4E681CA1652000CAB0B0 /* XHDDOnlineLastestMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6F4E671CA1652000CAB0B0 /* XHDDOnlineLastestMessageModel.m */; };
 		BC87940E1C9D2E840060757E /* XHDDOnlineRegistController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC87940C1C9D2E840060757E /* XHDDOnlineRegistController.m */; };
 		BC87940F1C9D2E840060757E /* XHDDOnlineRegistController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC87940D1C9D2E840060757E /* XHDDOnlineRegistController.xib */; };
 		BC8794131C9D46FF0060757E /* XHDDOnlineSignInController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8794111C9D46FF0060757E /* XHDDOnlineSignInController.m */; };
@@ -1618,6 +1621,11 @@
 		BC6F4E581CA0856E00CAB0B0 /* Entity+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Entity+CoreDataProperties.m"; sourceTree = "<group>"; };
 		BC6F4E591CA0856E00CAB0B0 /* Entity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entity.h; sourceTree = "<group>"; };
 		BC6F4E5A1CA0856E00CAB0B0 /* Entity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entity.m; sourceTree = "<group>"; };
+		BC6F4E5E1CA1268500CAB0B0 /* XHDDOnlineNotReadMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHDDOnlineNotReadMessageCell.h; sourceTree = "<group>"; };
+		BC6F4E5F1CA1268500CAB0B0 /* XHDDOnlineNotReadMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHDDOnlineNotReadMessageCell.m; sourceTree = "<group>"; };
+		BC6F4E601CA1268500CAB0B0 /* XHDDOnlineNotReadMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHDDOnlineNotReadMessageCell.xib; sourceTree = "<group>"; };
+		BC6F4E661CA1652000CAB0B0 /* XHDDOnlineLastestMessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHDDOnlineLastestMessageModel.h; sourceTree = "<group>"; };
+		BC6F4E671CA1652000CAB0B0 /* XHDDOnlineLastestMessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHDDOnlineLastestMessageModel.m; sourceTree = "<group>"; };
 		BC87940B1C9D2E840060757E /* XHDDOnlineRegistController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHDDOnlineRegistController.h; sourceTree = "<group>"; };
 		BC87940C1C9D2E840060757E /* XHDDOnlineRegistController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHDDOnlineRegistController.m; sourceTree = "<group>"; };
 		BC87940D1C9D2E840060757E /* XHDDOnlineRegistController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHDDOnlineRegistController.xib; sourceTree = "<group>"; };
@@ -2344,6 +2352,8 @@
 		BC0147F81C8AFED600AA4C45 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				BC6F4E661CA1652000CAB0B0 /* XHDDOnlineLastestMessageModel.h */,
+				BC6F4E671CA1652000CAB0B0 /* XHDDOnlineLastestMessageModel.m */,
 				BCA401B71C9B9D640047FEBE /* XHDDOnlineChatMessageModel.h */,
 				BCA401B81C9B9D640047FEBE /* XHDDOnlineChatMessageModel.m */,
 			);
@@ -2356,6 +2366,8 @@
 				BCA4FFCB1C99BD6D0047FEBE /* XHDDOnlineChatFunctionView.h */,
 				BCA4FFCC1C99BD6D0047FEBE /* XHDDOnlineChatFunctionView.m */,
 				BCA4FFD01C99BD9F0047FEBE /* XHDDOnlineChatFunctionView.xib */,
+				BCA401BA1C9B9DAD0047FEBE /* XHDDOnlineChatMessageCell.h */,
+				BCA401BB1C9B9DAD0047FEBE /* XHDDOnlineChatMessageCell.m */,
 				BCA4FFCF1C99BD7C0047FEBE /* 消息 */,
 				BCA4FFCE1C99BD710047FEBE /* 联系人 */,
 			);
@@ -3897,8 +3909,9 @@
 			children = (
 				BCFCCB731C97F6D5003B4308 /* XHDDOnlineChatMessageTableView.h */,
 				BCFCCB741C97F6D5003B4308 /* XHDDOnlineChatMessageTableView.m */,
-				BCA401BA1C9B9DAD0047FEBE /* XHDDOnlineChatMessageCell.h */,
-				BCA401BB1C9B9DAD0047FEBE /* XHDDOnlineChatMessageCell.m */,
+				BC6F4E5E1CA1268500CAB0B0 /* XHDDOnlineNotReadMessageCell.h */,
+				BC6F4E5F1CA1268500CAB0B0 /* XHDDOnlineNotReadMessageCell.m */,
+				BC6F4E601CA1268500CAB0B0 /* XHDDOnlineNotReadMessageCell.xib */,
 			);
 			name = "消息";
 			sourceTree = "<group>";
@@ -5018,6 +5031,7 @@
 				BC1AB0981C8C0BE40007EDF4 /* bowtie@2x.png in Resources */,
 				BCA400F91C9B94A80047FEBE /* d_shuijiao@2x.png in Resources */,
 				BCA401081C9B94A80047FEBE /* d_yun@2x.png in Resources */,
+				BC6F4E621CA1268500CAB0B0 /* XHDDOnlineNotReadMessageCell.xib in Resources */,
 				BC1AB0591C8C0BE40007EDF4 /* 043@2x.png in Resources */,
 				BCA401771C9B94A80047FEBE /* lxh_oye.gif in Resources */,
 				BCF1E37E1C92994700CA3338 /* Contents.json in Resources */,
@@ -5486,6 +5500,7 @@
 				BC8D615E1C8D794A0043F18F /* MJFoundation.m in Sources */,
 				BCC58FF31C97F2580071FC55 /* UIImage+Color.m in Sources */,
 				BCC58FCC1C97E7700071FC55 /* UIImageView+BetterFace.m in Sources */,
+				BC6F4E681CA1652000CAB0B0 /* XHDDOnlineLastestMessageModel.m in Sources */,
 				BC01498A1C8B014A00AA4C45 /* MJRefreshComponent.m in Sources */,
 				BC8D61641C8D794A0043F18F /* NSObject+MJKeyValue.m in Sources */,
 				BC3965D11C8EBB2900BC23EF /* AFURLSessionManager.m in Sources */,
@@ -5578,6 +5593,7 @@
 				BC01498D1C8B014A00AA4C45 /* MJRefreshAutoGifFooter.m in Sources */,
 				BC3965D51C8EBB2900BC23EF /* UIButton+AFNetworking.m in Sources */,
 				BC3965CD1C8EBB2900BC23EF /* AFSecurityPolicy.m in Sources */,
+				BC6F4E611CA1268500CAB0B0 /* XHDDOnlineNotReadMessageCell.m in Sources */,
 				BC3965CE1C8EBB2900BC23EF /* AFURLConnectionOperation.m in Sources */,
 				BC370F861C9548FD00D7A81C /* UIImagePickerController+RACSignalSupport.m in Sources */,
 				BC0F64621C8DC62C005F599C /* UIImage+MultiFormat.m in Sources */,
@@ -5830,7 +5846,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;

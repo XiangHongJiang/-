@@ -37,11 +37,11 @@
     //2.添加极光推送
     [self configJPushService:launchOptions];
   
-    //3.环信通信：因为存在自动登录，所以应该放在后面
-    [self configEMob:launchOptions];//appKey
-    
     //4.设置根视图控制器
     [self setRootViewController];
+    
+    //3.环信通信：因为存在自动登录，所以应该放在后面
+    [self configEMob:launchOptions];//appKey
    
     return YES;
 }

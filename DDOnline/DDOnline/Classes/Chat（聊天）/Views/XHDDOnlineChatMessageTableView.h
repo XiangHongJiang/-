@@ -12,7 +12,7 @@
 /**
  *  消息数组
  */
-@property (nonatomic, copy) NSArray *messageArray;
+@property (nonatomic, copy) NSDictionary *messageDict;
 
 + (instancetype)chatMessageTableView;
 

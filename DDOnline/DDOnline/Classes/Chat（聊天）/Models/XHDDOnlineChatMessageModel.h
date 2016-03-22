@@ -22,6 +22,8 @@ typedef enum MessageType{
 @property (nonatomic, copy) NSString *time;
 
 @property (nonatomic, assign) MessageType type;
+/** *  消息所有者 */
+@property (nonatomic, copy) NSString *name;
 
 #pragma mark - 确定宽高
 @property (nonatomic, assign) CGRect timeFrame;

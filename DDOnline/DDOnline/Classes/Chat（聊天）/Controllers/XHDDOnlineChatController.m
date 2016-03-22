@@ -13,11 +13,20 @@
 #import "EMSDKFull.h"
 #import "XHDDOnlineChatFunctionView.h"
 #import "XHDDOnlineChatAddFriendController.h"
+#import "XHDDOnlineChatMessageModel.h"
 
-@interface XHDDOnlineChatController ()<UIScrollViewDelegate,EMContactManagerDelegate,UIAlertViewDelegate,EMClientDelegate>
+#import "Entity+CoreDataProperties.h"
+
+@interface XHDDOnlineChatController ()<UIScrollViewDelegate,EMContactManagerDelegate,UIAlertViewDelegate,EMClientDelegate,EMChatManagerDelegate>
 {
     BOOL firstTimeEnter;
+    
 }
+/**
+ *     CoreDada中管理数据的上下文，做增删改查需要使用到
+ */
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+
 /** *  消息btn */
 @property (nonatomic, weak) UIButton *leftBtn;
 /** *  联系人btn */
@@ -31,10 +40,47 @@
 /** *  联系人数组 */
 @property (nonatomic, strong) NSMutableArray *contactsDataArray;
 /** *  消息数组 */
-@property (nonatomic, strong) NSMutableArray *messageDataArray;
+@property (nonatomic, strong) NSMutableDictionary *messageDataDict;
 @end
 
 @implementation XHDDOnlineChatController
+
+- (NSManagedObjectContext *)managedObjectContext{
+
+    if (_managedObjectContext == nil) {
+       
+        //1.获取路径;编译后类型会变成mode; 根据路径加载文件中所有的模型
+        NSString *momdPath = [[NSBundle mainBundle] pathForResource:@"HistoryMessageModel" ofType:@"momd"];
+        NSManagedObjectModel *managedModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:[NSURL fileURLWithPath:momdPath]];
+        
+        //2.创建持久化存储协调器（相当于数据库和文件的连接器）
+        NSPersistentStoreCoordinator *coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:managedModel];
+        
+        //3.指定数据库的存储路径
+        NSString *savaPath = [NSHomeDirectory() stringByAppendingString:@"/Documents/historyMessageInfo.sqlist"];
+        
+        //4.设置路径
+        NSPersistentStore *sotre = [coordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:[NSURL fileURLWithPath:savaPath] options:nil error:nil];
+        //5.创建托管上下文
+        _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+        
+        //6.关联协调器
+        _managedObjectContext.persistentStoreCoordinator = coordinator;
+        
+    }
+    
+    return _managedObjectContext;
+}
+
+- (NSMutableDictionary *)messageDataDict{
+
+    if (_messageDataDict == nil) {
+        
+        _messageDataDict = [NSMutableDictionary dictionary];
+        
+    }
+    return _messageDataDict;
+}
 
 - (NSMutableArray *)contactsDataArray{
 
@@ -53,6 +99,7 @@
     [self loadNavTitileView];
     //添加右btn
     [self addRightBarBtn];
+
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -216,7 +263,6 @@
 //        self.contactsTableView.enterEditting = NO;
     }
     else{
-        //                  self.contactsTableView.enterEditting = YES;
         JLog(@"消息进入编辑状态");
     }
 
@@ -333,7 +379,6 @@
     [self.contactsDataArray[0] addObject:aUsername];
     self.contactsTableView.contactsArray = self.contactsDataArray;
 }
-
 /*!
  @method
  @brief 用户A发送加用户B为好友的申请，用户B拒绝后，用户A会收到这个回调
@@ -429,6 +474,64 @@
         firstTimeEnter = YES;
         [SVProgressHUD showSuccessWithStatus:@"当前为本地模式"];
     }
+    
+    //从数据库获取数据
+    [self getDataFromCoreDataDB];
+    [[EMClient sharedClient].chatManager addDelegate:self delegateQueue:nil];
 }
-
+- (void)viewWillDisappear:(BOOL)animated{
+    
+    [super viewWillDisappear:animated];
+    
+    //移除消息回调
+    [[EMClient sharedClient].chatManager removeDelegate:self];
+}
+#pragma mark - 离线消息监听 - 解析消息回调
+- (void)didReceiveMessages:(NSArray *)aMessages{//接收到哪个实体就保存哪个实体
+    
+    for (EMMessage *message in aMessages) {
+        // cmd消息中的扩展属性
+        NSDictionary *ext = message.ext;
+        
+        XHDDOnlineChatMessageModel *model = [XHDDOnlineChatMessageModel messageWithDict:ext];
+        
+        //创建一个实体
+        Entity *messageEntity = (Entity *)[NSEntityDescription insertNewObjectForEntityForName:@"HistoryMessageEntity" inManagedObjectContext:self.managedObjectContext];
+        
+        //实体赋值
+        messageEntity.name = [NSString stringWithFormat:@"%@/%@",[EMClient sharedClient].currentUsername,model.name];
+        messageEntity.message = model.text;
+        messageEntity.time = model.time;
+        messageEntity.type = @(YES);
+        
+        //实体保存
+        if ([_managedObjectContext save:nil]){
+            NSLog(@"保存实体成功");
+        }
+        
+        self.navigationController.tabBarItem.badgeValue = [NSString stringWithFormat:@"%d",[self.navigationController.tabBarItem.badgeValue intValue] + 1];
+        
+        //更新消息界面最新显示
+        [self.messageDataDict setObject:messageEntity forKey:messageEntity.name];
+        self.messageTableView.messageDict = self.messageDataDict;
+        
+    }
+}
+- (void)getDataFromCoreDataDB{//执行一次查询，取出本地化数据,存储最新一条
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"HistoryMessageEntity"];
+    NSArray *results = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
+    
+#warning 获取之前所有的聊天的对象//必须登录
+    for (int i = 0; i < results.count; i ++) {
+        
+        Entity *entityModel = results[i];
+        NSString *name = entityModel.name;
+        
+        [self.messageDataDict setObject:entityModel forKey:name];
+        
+    }
+    //自动刷新了
+    self.messageTableView.messageDict = self.messageDataDict;
+    
+}
 @end

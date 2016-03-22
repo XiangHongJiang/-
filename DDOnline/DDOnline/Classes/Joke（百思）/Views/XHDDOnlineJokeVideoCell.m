@@ -7,7 +7,7 @@
 //
 
 #import "XHDDOnlineJokeVideoCell.h"
-#import "CLVideoPlayerView.h"
+
 
 @interface XHDDOnlineJokeVideoCell()
 
@@ -26,17 +26,14 @@
 //内容
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *gifImageView;
-@property (weak, nonatomic) IBOutlet UIButton *playVideoBtn;
+
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *videoImageViewAutoLayHeight;
 //播放设置
 @property (weak, nonatomic) IBOutlet UILabel *playcountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *videotimeLabel;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
-/**
- *  playView
- */
-@property (nonatomic, weak) CLVideoPlayerView *playView;
+
 
 @end
 
@@ -68,23 +65,21 @@
 - (IBAction)playVideoAction:(UIButton *)sender {
     
     self.playView.hidden = NO;
-    
-    JLog(@"播放");
     sender.hidden = YES;
     
     [self.contentView bringSubviewToFront:self.playView];
     
-    self.selected = !self.selected;
-    if (self.selected == NO) {
-        [self.playView.player pause];
-        [self.contentView sendSubviewToBack:self.playView];
-        return;
-    }
-    else if (self.playView.urlString.length >0){
-    
-        [self.playView.player play];
-        return;
-    }
+//    self.selected = !self.selected;    
+//    if (self.selected == NO) {
+//        [self.playView.player pause];
+//        [self.contentView sendSubviewToBack:self.playView];
+//        return;
+//    }
+//    else if (self.playView.urlString.length >0){
+//    
+//        [self.playView.player play];
+//        return;
+//    }
     
     self.playView.urlString = [self.videoDetailModel.video.video firstObject];
     
@@ -154,8 +149,6 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
-
     
     // Configure the view for the selected state
 }
@@ -163,8 +156,6 @@
 
     return videoDetailModel.textHeight + 110 + videoDetailModel.videoImageHeight;
 }
-
-//@property (nonatomic, nullable) SEL               editAction NS_DEPRECATED_IOS(2_0, 3_0) __TVOS_PROHIBITED;                  // action to call on insert/delete call. set by UITableView
 
 
 @end

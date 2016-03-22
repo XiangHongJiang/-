@@ -56,14 +56,14 @@
     self.likeCountLabel.text = commentsModel.like_count;
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    
-    if (section == 1) {
-        return 30;
-    }else{
-        
-        return 0;
-    }
-}
+//-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+//    
+//    if (section == 1) {
+//        return 30;
+//    }else{
+//        
+//        return 0;
+//    }
+//}
 
 @end

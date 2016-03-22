@@ -98,7 +98,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Profile_manIcon" width="13" height="13"/>
+        <image name="Profile_manIcon" width="14" height="14"/>
         <image name="mainCellDing" width="20" height="20"/>
         <image name="mainCellDingClick" width="20" height="20"/>
     </resources>

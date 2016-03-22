@@ -73,6 +73,11 @@
     //110其他子视图的位置
     return pureTextDetailModel.textHeight + 110;
 }
+- (IBAction)duanziDingBtn:(UIButton *)sender {
+    
+    sender.selected = !sender.selected;
+    
+}
 /**
  * 设置底部按钮文字
  */

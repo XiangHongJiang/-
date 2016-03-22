@@ -39,6 +39,10 @@
 @end
 
 @implementation XHDDOnlineJokeVideoCell
+- (IBAction)videoDingBtn:(UIButton *)sender {
+    sender.selected = !sender.selected;
+    
+}
 
 - (CLVideoPlayerView *)playView{
 

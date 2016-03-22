@@ -77,6 +77,10 @@
     
     // Configure the view for the selected state
 }
+- (IBAction)gifDingBtn:(UIButton *)sender {
+    
+    sender.selected = !sender.selected;
+}
 #pragma mark - 赋值模型
 - (void)setGifDetailModel:(JokeBase_List *)gifDetailModel{
 

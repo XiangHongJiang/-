@@ -78,7 +78,11 @@
                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <state key="selected" image="mainCellDingClick"/>
                                         <state key="highlighted" image="mainCellDingClick"/>
+                                        <connections>
+                                            <action selector="gifDingBtn:" destination="3cd-vW-ao3" eventType="touchUpInside" id="gIx-fi-rBR"/>
+                                        </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cell-button-line" translatesAutoresizingMaskIntoConstraints="NO" id="5fX-3C-xdh" userLabel="分割线">
                                         <rect key="frame" x="93" y="0.0" width="1" height="30"/>

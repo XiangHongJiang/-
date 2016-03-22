@@ -27,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *gifImageView;
 
+@property (weak, nonatomic) IBOutlet UILabel *DDonlineViewLabel;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *videoImageViewAutoLayHeight;
 //播放设置
@@ -45,9 +46,10 @@
         
         CLVideoPlayerView *view = [CLVideoPlayerView videoPlayerView];
         view.frame = CGRectMake(0, 0, JScreenWidth - 20, self.videoDetailModel.videoImageHeight);
-        self.playView = view;
         
         [self.gifImageView addSubview:view];
+        _playView = view;
+
     }
     
     return _playView;
@@ -65,31 +67,21 @@
 - (IBAction)playVideoAction:(UIButton *)sender {
     
     self.playView.hidden = NO;
+    self.playcountLabel.hidden = YES;
+    self.videotimeLabel.hidden = YES;
     sender.hidden = YES;
     
     [self.contentView bringSubviewToFront:self.playView];
-    
-//    self.selected = !self.selected;    
-//    if (self.selected == NO) {
-//        [self.playView.player pause];
-//        [self.contentView sendSubviewToBack:self.playView];
-//        return;
-//    }
-//    else if (self.playView.urlString.length >0){
-//    
-//        [self.playView.player play];
-//        return;
-//    }
     
     self.playView.urlString = [self.videoDetailModel.video.video firstObject];
     
 }
 
-
 - (void)setVideoDetailModel:(JokeBase_List *)videoDetailModel{
 
     _videoDetailModel = videoDetailModel;
-    
+    self.playcountLabel.hidden = NO;
+    self.videotimeLabel.hidden = NO;
     self.playVideoBtn.hidden = NO;
     self.playView.hidden = YES;
     self.playView.frame = CGRectMake(0, 0, JScreenWidth - 20, videoDetailModel.videoImageHeight);
@@ -145,6 +137,9 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    
+    self.DDonlineViewLabel.layer.cornerRadius = 4;
+    self.DDonlineViewLabel.layer.masksToBounds = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

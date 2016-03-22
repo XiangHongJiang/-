@@ -33,7 +33,16 @@
    
     //设置背景图片00
     NSString *picName = [NSString stringWithFormat:@"%@/setting_teams_bg.jpg",skinModel.address];
-    self.teamBGView.image = [UIImage imageNamed:picName];
+   self.teamBGView.image = [UIImage imageNamed:picName];
+    
+    CGRect frame = self.teamBGView.frame;
+    self.teamBGView.frame = CGRectMake(0, 0, 0, 0);
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        
+        self.teamBGView.frame = frame;
+
+    }];
     
     self.teamName.text = skinModel.name;
     

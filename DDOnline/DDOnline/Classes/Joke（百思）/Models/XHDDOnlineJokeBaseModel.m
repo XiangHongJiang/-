@@ -74,9 +74,9 @@
     
     CGFloat height = video.height / rat;
     
-    if (height > JScreenHeight * 0.8) {
+    if (height > JScreenHeight * 0.75) {
         
-        height = JScreenHeight * 0.8;
+        height = JScreenHeight * 0.75;
     }
     
     self.videoImageHeight = height;

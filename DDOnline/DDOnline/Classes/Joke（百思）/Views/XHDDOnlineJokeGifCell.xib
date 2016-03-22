@@ -181,6 +181,14 @@
                                     <constraint firstAttribute="height" constant="120" id="K2H-c6-U2L"/>
                                 </constraints>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TPG-Fd-g8w" customClass="DALabeledCircularProgressView">
+                                <rect key="frame" x="138" y="133" width="100" height="100"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="Wfp-ER-6GN"/>
+                                    <constraint firstAttribute="width" constant="100" id="YH3-mc-7Vw"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -190,8 +198,10 @@
                             <constraint firstItem="8qB-Ei-Ruw" firstAttribute="top" secondItem="axn-Ei-XAm" secondAttribute="bottom" constant="10" id="Cer-qT-4uw"/>
                             <constraint firstItem="F6V-52-rww" firstAttribute="top" secondItem="8qB-Ei-Ruw" secondAttribute="bottom" constant="10" id="Gv8-Mw-Kye"/>
                             <constraint firstItem="k9z-P9-T1G" firstAttribute="leading" secondItem="MEW-dv-3V4" secondAttribute="leading" constant="10" id="HfJ-mC-zhI"/>
+                            <constraint firstItem="TPG-Fd-g8w" firstAttribute="centerY" secondItem="wVr-AO-Z14" secondAttribute="centerY" id="I37-Zz-F9R"/>
                             <constraint firstItem="axn-Ei-XAm" firstAttribute="leading" secondItem="k9z-P9-T1G" secondAttribute="trailing" constant="10" id="JIE-kK-Hth"/>
                             <constraint firstItem="axn-Ei-XAm" firstAttribute="top" secondItem="wYn-Cn-Ujh" secondAttribute="bottom" id="PbA-A5-uYF"/>
+                            <constraint firstItem="TPG-Fd-g8w" firstAttribute="centerX" secondItem="wVr-AO-Z14" secondAttribute="centerX" id="Svf-5l-FIi"/>
                             <constraint firstItem="tUj-La-Cjp" firstAttribute="leading" secondItem="MEW-dv-3V4" secondAttribute="leading" constant="10" id="T2W-eE-G6I"/>
                             <constraint firstItem="tUj-La-Cjp" firstAttribute="centerX" secondItem="wVr-AO-Z14" secondAttribute="centerX" id="UFB-d0-kZm"/>
                             <constraint firstItem="wVr-AO-Z14" firstAttribute="leading" secondItem="MEW-dv-3V4" secondAttribute="leading" constant="10" id="ZJn-KA-qL8"/>
@@ -222,6 +232,7 @@
                 <outlet property="bottomView" destination="yXv-3W-prN" id="GtL-LU-cnT"/>
                 <outlet property="caiBtn" destination="0ry-Bd-R3y" id="bG7-cK-yUb"/>
                 <outlet property="contentLabel" destination="8qB-Ei-Ruw" id="kgk-AE-BC6"/>
+                <outlet property="daLabel" destination="TPG-Fd-g8w" id="kmx-iR-eIK"/>
                 <outlet property="dingBtn" destination="dN3-mT-75m" id="dtg-OT-Png"/>
                 <outlet property="gifAutoHeight" destination="d0M-w3-Qwz" id="zcK-6S-mM2"/>
                 <outlet property="gifImageView" destination="wVr-AO-Z14" id="uuE-ZP-4ju"/>

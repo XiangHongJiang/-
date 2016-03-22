@@ -64,19 +64,18 @@
     
     CLVideoPlayerView *videoPlayer = [[NSBundle mainBundle]loadNibNamed:NSStringFromClass([self class]) owner:nil options:nil].firstObject;
     
+
+
     //视图创建的时候菊花开始转动
     [videoPlayer.indicatorView startAnimating];
     return videoPlayer;
 }
-
-
 -(void)awakeFromNib{
     
     //创建播放器
     self.player = [[AVPlayer alloc]init];
     //创建播放的图层
     self.playerLayer = [AVPlayerLayer playerLayerWithPlayer:self.player];
-    
     //添加图层到imageView上
     [self.imageView.layer addSublayer:self.playerLayer];
     

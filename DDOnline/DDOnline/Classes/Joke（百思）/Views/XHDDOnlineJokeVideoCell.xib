@@ -197,6 +197,17 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DDOnline" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qXt-Ud-VgI">
+                                <rect key="frame" x="281" y="93" width="80" height="25"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.80000000000000004" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="Giy-VC-aVi"/>
+                                    <constraint firstAttribute="width" constant="80" id="Mba-E7-tAR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -216,6 +227,7 @@
                             <constraint firstItem="nH6-AU-vWO" firstAttribute="leading" secondItem="Jt0-oz-PNW" secondAttribute="leading" constant="10" id="W8b-fv-rCP"/>
                             <constraint firstItem="8vI-Mx-rCb" firstAttribute="leading" secondItem="Jt0-oz-PNW" secondAttribute="leading" id="XUB-2S-WXh"/>
                             <constraint firstItem="tKN-fe-fhd" firstAttribute="centerY" secondItem="gOM-R4-4ie" secondAttribute="centerY" constant="0.5" id="a7S-HU-4df"/>
+                            <constraint firstAttribute="trailing" secondItem="qXt-Ud-VgI" secondAttribute="trailing" constant="15" id="j79-oB-2fh"/>
                             <constraint firstItem="ALy-P8-SeR" firstAttribute="leading" secondItem="Jt0-oz-PNW" secondAttribute="leading" constant="10" id="kl4-Rc-moL"/>
                             <constraint firstItem="tKN-fe-fhd" firstAttribute="leading" secondItem="Jt0-oz-PNW" secondAttribute="leading" constant="10" id="lXx-tO-f4a"/>
                             <constraint firstItem="mfk-8I-3bI" firstAttribute="leading" secondItem="tKN-fe-fhd" secondAttribute="leading" constant="5" id="nZh-gy-niU"/>
@@ -223,6 +235,7 @@
                             <constraint firstAttribute="bottom" secondItem="8vI-Mx-rCb" secondAttribute="bottom" constant="1" id="q3T-R9-SGQ"/>
                             <constraint firstItem="tKN-fe-fhd" firstAttribute="centerX" secondItem="gOM-R4-4ie" secondAttribute="centerX" constant="-0.5" id="sSb-15-ywH"/>
                             <constraint firstItem="Jnq-Ni-q68" firstAttribute="leading" secondItem="ALy-P8-SeR" secondAttribute="trailing" constant="10" id="vGj-M5-u3a"/>
+                            <constraint firstItem="qXt-Ud-VgI" firstAttribute="top" secondItem="nH6-AU-vWO" secondAttribute="bottom" constant="15" id="vdc-xu-ttr"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -235,6 +248,7 @@
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
+                <outlet property="DDonlineViewLabel" destination="qXt-Ud-VgI" id="4Qb-Xa-yaf"/>
                 <outlet property="bottomView" destination="8vI-Mx-rCb" id="TOS-zb-YWq"/>
                 <outlet property="caiBtn" destination="1LK-r5-9HD" id="FlF-im-EoX"/>
                 <outlet property="contentLabel" destination="nH6-AU-vWO" id="gch-2S-Cii"/>

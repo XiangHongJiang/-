@@ -63,7 +63,13 @@
     }
     if (indexPath.section == 1) {
         
-        cell.nameLabel.text = [NSString stringWithFormat:@"%@(%.2fM)",self.nameArray[indexPath.section],[SDImageCache sharedImageCache].getSize / 1024 / 1024.0];//self.nameArray[indexPath.section];
+        cell.nameLabel.text = self.nameArray[indexPath.section];//self.nameArray[indexPath.section];
+        
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
+        label.text = [NSString stringWithFormat:@"( %.2fM )",[SDImageCache sharedImageCache].getSize / 1024 / 1024.0];
+        label.textColor = [UIColor colorWithRed:1.000 green:0.056 blue:0.000 alpha:0.800];
+        cell.accessoryView = label;
+        label.textAlignment = NSTextAlignmentRight;
         return cell;
     }
     cell.nameLabel.text = self.nameArray[indexPath.section];
@@ -85,7 +91,11 @@
         XHDDOnlineFixCell *cell = [tableView cellForRowAtIndexPath:indexPath];
         
         [SVProgressHUD showSuccessWithStatus:@"清理缓存成功"];
+        
         cell.nameLabel.text = @"清理缓存(0.00M)";
+        
+        
+//        cell.accessoryView = ;
         
     }
     else if (section == 2){

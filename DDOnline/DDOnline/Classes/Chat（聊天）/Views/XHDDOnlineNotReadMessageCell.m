@@ -35,7 +35,7 @@
     NSString *message = [NSString stringWithFormat:@"%@:%@",nameArray.lastObject,latestModel.lastMessage];
     
     if (!latestModel.fromOther) {
-        message = [NSString stringWithFormat:@"%@(我):%@",nameArray.firstObject,latestModel.lastMessage];
+        message = [NSString stringWithFormat:@"%@(我):  %@",nameArray.firstObject,latestModel.lastMessage];
     }    
     self.latestMessage.text = message;
 }

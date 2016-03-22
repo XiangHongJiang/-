@@ -97,7 +97,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
     UINavigationController *nav = [XHUtils getCurrentTabBarNavigationCtrl];
-    nav.tabBarItem.badgeValue = @"0";
+    nav.tabBarItem.badgeValue = nil;
     
 }
 

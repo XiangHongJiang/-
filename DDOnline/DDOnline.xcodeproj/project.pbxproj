@@ -426,6 +426,13 @@
 		BC513D401C99101A00530B1F /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BC513D3F1C99101A00530B1F /* libiconv.dylib */; };
 		BC513D421C99102600530B1F /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BC513D411C99102600530B1F /* libsqlite3.dylib */; };
 		BC513DE21C99442700530B1F /* libHyphenateFullSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC513DE11C99442700530B1F /* libHyphenateFullSDK.a */; };
+		BC6AFD071CA1CDFD004131D5 /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6AFCFA1CA1CDFD004131D5 /* TAAbstractDotView.m */; };
+		BC6AFD081CA1CDFD004131D5 /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6AFCFC1CA1CDFD004131D5 /* TAAnimatedDotView.m */; };
+		BC6AFD091CA1CDFD004131D5 /* TADotView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6AFCFE1CA1CDFD004131D5 /* TADotView.m */; };
+		BC6AFD0A1CA1CDFD004131D5 /* TAPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6AFD001CA1CDFD004131D5 /* TAPageControl.m */; };
+		BC6AFD0B1CA1CDFD004131D5 /* SDCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6AFD021CA1CDFD004131D5 /* SDCollectionViewCell.m */; };
+		BC6AFD0C1CA1CDFD004131D5 /* SDCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6AFD041CA1CDFD004131D5 /* SDCycleScrollView.m */; };
+		BC6AFD0D1CA1CDFD004131D5 /* UIView+SDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6AFD061CA1CDFD004131D5 /* UIView+SDExtension.m */; };
 		BC6F4E021CA0789C00CAB0B0 /* HistoryMessageModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BC6F4E001CA0789C00CAB0B0 /* HistoryMessageModel.xcdatamodeld */; };
 		BC6F4E5B1CA0856E00CAB0B0 /* Entity+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6F4E581CA0856E00CAB0B0 /* Entity+CoreDataProperties.m */; };
 		BC6F4E5C1CA0856E00CAB0B0 /* Entity.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6F4E5A1CA0856E00CAB0B0 /* Entity.m */; };
@@ -1616,6 +1623,20 @@
 		BC513DD61C991F9600530B1F /* IEMGroupManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IEMGroupManager.h; sourceTree = "<group>"; };
 		BC513DD71C991F9600530B1F /* OpenGLView20.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenGLView20.h; sourceTree = "<group>"; };
 		BC513DE11C99442700530B1F /* libHyphenateFullSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libHyphenateFullSDK.a; sourceTree = "<group>"; };
+		BC6AFCF91CA1CDFD004131D5 /* TAAbstractDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAbstractDotView.h; sourceTree = "<group>"; };
+		BC6AFCFA1CA1CDFD004131D5 /* TAAbstractDotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAAbstractDotView.m; sourceTree = "<group>"; };
+		BC6AFCFB1CA1CDFD004131D5 /* TAAnimatedDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAnimatedDotView.h; sourceTree = "<group>"; };
+		BC6AFCFC1CA1CDFD004131D5 /* TAAnimatedDotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAAnimatedDotView.m; sourceTree = "<group>"; };
+		BC6AFCFD1CA1CDFD004131D5 /* TADotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TADotView.h; sourceTree = "<group>"; };
+		BC6AFCFE1CA1CDFD004131D5 /* TADotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TADotView.m; sourceTree = "<group>"; };
+		BC6AFCFF1CA1CDFD004131D5 /* TAPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAPageControl.h; sourceTree = "<group>"; };
+		BC6AFD001CA1CDFD004131D5 /* TAPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAPageControl.m; sourceTree = "<group>"; };
+		BC6AFD011CA1CDFD004131D5 /* SDCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDCollectionViewCell.h; sourceTree = "<group>"; };
+		BC6AFD021CA1CDFD004131D5 /* SDCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDCollectionViewCell.m; sourceTree = "<group>"; };
+		BC6AFD031CA1CDFD004131D5 /* SDCycleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDCycleScrollView.h; sourceTree = "<group>"; };
+		BC6AFD041CA1CDFD004131D5 /* SDCycleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDCycleScrollView.m; sourceTree = "<group>"; };
+		BC6AFD051CA1CDFD004131D5 /* UIView+SDExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SDExtension.h"; sourceTree = "<group>"; };
+		BC6AFD061CA1CDFD004131D5 /* UIView+SDExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SDExtension.m"; sourceTree = "<group>"; };
 		BC6F4E011CA0789C00CAB0B0 /* HistoryMessageModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HistoryMessageModel.xcdatamodel; sourceTree = "<group>"; };
 		BC6F4E571CA0856E00CAB0B0 /* Entity+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Entity+CoreDataProperties.h"; sourceTree = "<group>"; };
 		BC6F4E581CA0856E00CAB0B0 /* Entity+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Entity+CoreDataProperties.m"; sourceTree = "<group>"; };
@@ -2682,6 +2703,7 @@
 		BC0148241C8AFF7900AA4C45 /* ThirdPart */ = {
 			isa = PBXGroup;
 			children = (
+				BC6AFCF71CA1CDFD004131D5 /* SDCycleScrollView */,
 				BC370E711C9548FD00D7A81C /* ReactiveCocoa */,
 				BC50CA0A1C93B88700DEF3CC /* DACircularProgress */,
 				BC50CA121C93B88700DEF3CC /* NJKWebViewProgress */,
@@ -3654,6 +3676,35 @@
 				BC513DE11C99442700530B1F /* libHyphenateFullSDK.a */,
 			);
 			path = lib;
+			sourceTree = "<group>";
+		};
+		BC6AFCF71CA1CDFD004131D5 /* SDCycleScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				BC6AFCF81CA1CDFD004131D5 /* PageControl */,
+				BC6AFD011CA1CDFD004131D5 /* SDCollectionViewCell.h */,
+				BC6AFD021CA1CDFD004131D5 /* SDCollectionViewCell.m */,
+				BC6AFD031CA1CDFD004131D5 /* SDCycleScrollView.h */,
+				BC6AFD041CA1CDFD004131D5 /* SDCycleScrollView.m */,
+				BC6AFD051CA1CDFD004131D5 /* UIView+SDExtension.h */,
+				BC6AFD061CA1CDFD004131D5 /* UIView+SDExtension.m */,
+			);
+			path = SDCycleScrollView;
+			sourceTree = "<group>";
+		};
+		BC6AFCF81CA1CDFD004131D5 /* PageControl */ = {
+			isa = PBXGroup;
+			children = (
+				BC6AFCF91CA1CDFD004131D5 /* TAAbstractDotView.h */,
+				BC6AFCFA1CA1CDFD004131D5 /* TAAbstractDotView.m */,
+				BC6AFCFB1CA1CDFD004131D5 /* TAAnimatedDotView.h */,
+				BC6AFCFC1CA1CDFD004131D5 /* TAAnimatedDotView.m */,
+				BC6AFCFD1CA1CDFD004131D5 /* TADotView.h */,
+				BC6AFCFE1CA1CDFD004131D5 /* TADotView.m */,
+				BC6AFCFF1CA1CDFD004131D5 /* TAPageControl.h */,
+				BC6AFD001CA1CDFD004131D5 /* TAPageControl.m */,
+			);
+			path = PageControl;
 			sourceTree = "<group>";
 		};
 		BC6F4DFF1CA047B700CAB0B0 /* 下载 */ = {
@@ -5531,11 +5582,13 @@
 				BCF1E22A1C91CFD100CA3338 /* XHQuickNavView.m in Sources */,
 				BCC58FCD1C97E7700071FC55 /* UIImageView+FaceAwareFill.m in Sources */,
 				BC0149951C8B014A00AA4C45 /* MJRefreshStateHeader.m in Sources */,
+				BC6AFD0D1CA1CDFD004131D5 /* UIView+SDExtension.m in Sources */,
 				BC370F3F1C9548FD00D7A81C /* NSObject+RACDeallocating.m in Sources */,
 				BC370F7A1C9548FD00D7A81C /* RACUnarySequence.m in Sources */,
 				BC0F645B1C8DC62C005F599C /* SDWebImageDecoder.m in Sources */,
 				BC370F431C9548FD00D7A81C /* NSObject+RACPropertySubscribing.m in Sources */,
 				BC0B50E71C90100B00117B67 /* XHDDOnlineFunPlayDetailModel.m in Sources */,
+				BC6AFD0C1CA1CDFD004131D5 /* SDCycleScrollView.m in Sources */,
 				BC01488E1C8B013300AA4C45 /* MASViewConstraint.m in Sources */,
 				BCC58FCB1C97E7700071FC55 /* UIImageView+Addition.m in Sources */,
 				BCF1E2031C91651D00CA3338 /* XHDDOnlineFunPlayPlayVideoController.m in Sources */,
@@ -5607,6 +5660,7 @@
 				BCA4FFE91C9B1BF30047FEBE /* XHDDOnlineChatDetailController.m in Sources */,
 				BC50CA341C94527700DEF3CC /* IATConfig.m in Sources */,
 				BC01499A1C8B014A00AA4C45 /* UIView+MJExtension.m in Sources */,
+				BC6AFD0B1CA1CDFD004131D5 /* SDCollectionViewCell.m in Sources */,
 				BC0149881C8B014A00AA4C45 /* MJRefreshAutoFooter.m in Sources */,
 				BC3965CA1C8EBB2900BC23EF /* AFHTTPRequestOperationManager.m in Sources */,
 				BC370F7E1C9548FD00D7A81C /* UIAlertView+RACSignalSupport.m in Sources */,
@@ -5660,6 +5714,7 @@
 				BC370F621C9548FD00D7A81C /* RACMulticastConnection.m in Sources */,
 				BC3965A11C8E92FD00BC23EF /* XHDDOnlineRecommendCategoryDetailCell.m in Sources */,
 				BC3965CB1C8EBB2900BC23EF /* AFHTTPSessionManager.m in Sources */,
+				BC6AFD081CA1CDFD004131D5 /* TAAnimatedDotView.m in Sources */,
 				BC370F491C9548FD00D7A81C /* NSString+RACSupport.m in Sources */,
 				BC0F645E1C8DC62C005F599C /* SDWebImageManager.m in Sources */,
 				BC370F5E1C9548FD00D7A81C /* RACIndexSetSequence.m in Sources */,
@@ -5713,6 +5768,8 @@
 				BC370F801C9548FD00D7A81C /* UIButton+RACCommandSupport.m in Sources */,
 				BC014A131C8B060300AA4C45 /* XHDDOnlineMineController.m in Sources */,
 				BC370F461C9548FD00D7A81C /* NSSet+RACSequenceAdditions.m in Sources */,
+				BC6AFD071CA1CDFD004131D5 /* TAAbstractDotView.m in Sources */,
+				BC6AFD0A1CA1CDFD004131D5 /* TAPageControl.m in Sources */,
 				BC370F521C9548FD00D7A81C /* RACCompoundDisposableProvider.d in Sources */,
 				BC370F481C9548FD00D7A81C /* NSString+RACSequenceAdditions.m in Sources */,
 				BC01499B1C8B014A00AA4C45 /* README.md in Sources */,
@@ -5723,6 +5780,7 @@
 				BC3965D81C8EBB2900BC23EF /* UIRefreshControl+AFNetworking.m in Sources */,
 				BC370F871C9548FD00D7A81C /* UIRefreshControl+RACCommandSupport.m in Sources */,
 				BC370D4B1C95105900D7A81C /* XHUIFactory.m in Sources */,
+				BC6AFD091CA1CDFD004131D5 /* TADotView.m in Sources */,
 				BC370F571C9548FD00D7A81C /* RACEagerSequence.m in Sources */,
 				BC3965CC1C8EBB2900BC23EF /* AFNetworkReachabilityManager.m in Sources */,
 				BC370F3B1C9548FD00D7A81C /* NSFileHandle+RACSupport.m in Sources */,

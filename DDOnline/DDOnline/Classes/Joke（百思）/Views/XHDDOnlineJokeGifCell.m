@@ -8,6 +8,7 @@
 
 #import "XHDDOnlineJokeGifCell.h"
 #import "XHDDOnlineJokeGifWindowView.h"
+#import "DALabeledCircularProgressView.h"
 
 @interface XHDDOnlineJokeGifCell()
 
@@ -23,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 
+@property (weak, nonatomic) IBOutlet DALabeledCircularProgressView *daLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
@@ -111,14 +113,15 @@
     self.gifAutoHeight.constant = gifDetailModel.gifImageHeight;
     [self.gifImageView layoutIfNeeded];
 
+    self.daLabel.hidden = NO;
     [self.gifImageView sd_setImageWithPreviousCachedImageWithURL:[NSURL URLWithString:gifUrl] andPlaceholderImage:[UIImage imageNamed:@""] options:SDWebImageRetryFailed progress:^(NSInteger receivedSize, NSInteger expectedSize) {
         
-        JLog(@"%f",receivedSize * 1.0 / expectedSize);
+        self.daLabel.progressLabel.text = [NSString stringWithFormat:@"%.0f %%",receivedSize * 1.0 / ABS(expectedSize) * 100];
         
     } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
 
+        self.daLabel.hidden = YES;
         self.loadingImageView.hidden = YES;
-
         
     }];
     

@@ -15,6 +15,7 @@
 #import "XHDDOnlineJokeVideoCell.h"
 
 #import "XHDDOnlineJokeDetailController.h"
+#import "CLVideoPlayerView.h"
 
 
 
@@ -201,11 +202,10 @@
 
 - (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
 
-    if (self.jokeType == JokeTypeVideo) {
-        
-        XHDDOnlineJokeVideoCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    
-        
+    if ([cell isKindOfClass:NSClassFromString(@"XHDDOnlineJokeVideoCell")]) {
+       
+        XHDDOnlineJokeVideoCell *videoCell = (XHDDOnlineJokeVideoCell *)cell;
+        [videoCell.playView.player pause];
     }
 }
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{

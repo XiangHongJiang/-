@@ -15,25 +15,25 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zm7-dc-wQ1" userLabel="headImageView">
-                        <rect key="frame" x="10" y="10" width="60" height="60"/>
+                        <rect key="frame" x="10" y="10" width="50" height="50"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="60" id="FfY-7X-Dvx"/>
-                            <constraint firstAttribute="width" constant="60" id="QGj-6M-XrZ"/>
+                            <constraint firstAttribute="height" constant="50" id="FfY-7X-Dvx"/>
+                            <constraint firstAttribute="width" constant="50" id="QGj-6M-XrZ"/>
                         </constraints>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Profile_manIcon" translatesAutoresizingMaskIntoConstraints="NO" id="RVt-lu-oA3" userLabel="sexImage">
-                        <rect key="frame" x="80" y="10" width="14" height="20"/>
+                        <rect key="frame" x="70" y="10" width="14" height="20"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="14" id="RDo-e1-E91"/>
                             <constraint firstAttribute="height" constant="20" id="UbL-jr-8U5"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nPk-5f-tWP" userLabel="nameLabel">
-                        <rect key="frame" x="104" y="10" width="166" height="21"/>
+                        <rect key="frame" x="94" y="10" width="176" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="Pdx-Ex-KqZ"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -60,31 +60,34 @@
                         <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ChY-Oh-PEB" userLabel="commentLabel">
-                        <rect key="frame" x="80" y="35" width="190" height="20"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="20" id="tRz-TG-r9F"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ChY-Oh-PEB" userLabel="commentLabel">
+                        <rect key="frame" x="70" y="35" width="200" height="17"/>
+                        <attributedString key="attributedText">
+                            <fragment content="Label">
+                                <attributes>
+                                    <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="nPk-5f-tWP" firstAttribute="leading" secondItem="RVt-lu-oA3" secondAttribute="trailing" constant="10" id="0Ud-Mz-MRf"/>
+                    <constraint firstItem="ChY-Oh-PEB" firstAttribute="leading" secondItem="RVt-lu-oA3" secondAttribute="leading" id="1ZJ-sm-n1s"/>
                     <constraint firstItem="nPk-5f-tWP" firstAttribute="top" secondItem="Zm7-dc-wQ1" secondAttribute="top" id="72N-7k-3E6"/>
                     <constraint firstAttribute="trailing" secondItem="AK2-rI-80b" secondAttribute="trailing" constant="10" id="8cQ-z2-Gpp"/>
+                    <constraint firstItem="o3n-A2-lDq" firstAttribute="leading" secondItem="ChY-Oh-PEB" secondAttribute="trailing" constant="20" id="Anx-mP-iYR"/>
                     <constraint firstAttribute="trailing" secondItem="o3n-A2-lDq" secondAttribute="trailing" constant="10" id="G8r-uq-uYS"/>
                     <constraint firstItem="AK2-rI-80b" firstAttribute="leading" secondItem="nPk-5f-tWP" secondAttribute="trailing" constant="20" id="IhJ-iF-n5F"/>
                     <constraint firstItem="o3n-A2-lDq" firstAttribute="top" secondItem="AK2-rI-80b" secondAttribute="bottom" constant="5" id="Mfx-vL-pil"/>
-                    <constraint firstItem="ChY-Oh-PEB" firstAttribute="leading" secondItem="RVt-lu-oA3" secondAttribute="leading" id="Ne9-DC-8B8"/>
                     <constraint firstItem="Zm7-dc-wQ1" firstAttribute="top" secondItem="hrZ-vs-DwC" secondAttribute="top" constant="10" id="Toj-lV-Nig"/>
                     <constraint firstItem="RVt-lu-oA3" firstAttribute="leading" secondItem="Zm7-dc-wQ1" secondAttribute="trailing" constant="10" id="ZPz-Xc-LFb"/>
                     <constraint firstItem="Zm7-dc-wQ1" firstAttribute="leading" secondItem="hrZ-vs-DwC" secondAttribute="leading" constant="10" id="a0G-76-hAh"/>
-                    <constraint firstItem="o3n-A2-lDq" firstAttribute="leading" secondItem="ChY-Oh-PEB" secondAttribute="trailing" constant="20" id="hDz-rB-4QG"/>
                     <constraint firstItem="RVt-lu-oA3" firstAttribute="top" secondItem="Zm7-dc-wQ1" secondAttribute="top" id="hIu-cc-9rP"/>
                     <constraint firstItem="AK2-rI-80b" firstAttribute="top" secondItem="Zm7-dc-wQ1" secondAttribute="top" id="mzb-US-aE0"/>
-                    <constraint firstItem="o3n-A2-lDq" firstAttribute="top" secondItem="ChY-Oh-PEB" secondAttribute="top" id="sCm-jL-2oz"/>
+                    <constraint firstItem="ChY-Oh-PEB" firstAttribute="top" secondItem="nPk-5f-tWP" secondAttribute="bottom" constant="4" id="wlk-mo-XcR"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

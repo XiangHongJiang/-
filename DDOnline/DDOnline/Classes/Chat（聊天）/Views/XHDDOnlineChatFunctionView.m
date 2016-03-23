@@ -28,7 +28,7 @@
 
     if (_functionNameArray == nil) {
         
-        _functionNameArray = @[@"删除",@"添加好友",@"扫一扫"];
+        _functionNameArray = @[@"删除好友",@"添加好友"/*,@"扫一扫"*/];
         
         self.imageNameArray = @[@"sec_aio_entery",@"right_menu_addFri",@"right_menu_QR"];
     }

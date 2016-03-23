@@ -80,6 +80,14 @@
 - (IBAction)gifDingBtn:(UIButton *)sender {
     
     sender.selected = !sender.selected;
+    if (sender.selected) {
+        
+        [self setupButtonTitle:self.dingBtn count:[self.dingBtn.titleLabel.text integerValue] + 1 placeholder:@"顶"];
+    }
+    else{
+        
+        [self setupButtonTitle:self.dingBtn count:[self.dingBtn.titleLabel.text integerValue] - 1 placeholder:@"顶"];
+    }
 }
 #pragma mark - 赋值模型
 - (void)setGifDetailModel:(JokeBase_List *)gifDetailModel{
@@ -134,6 +142,19 @@
     [self setupButtonTitle:self.caiBtn count:gifDetailModel.down placeholder:@"踩"];
     [self setupButtonTitle:self.shareBtn count:[gifDetailModel.bookmark integerValue] placeholder:@"分享"];
     [self setupButtonTitle:self.pinglunBtn count:[gifDetailModel.comment integerValue] placeholder:@"评论"];
+}
+- (IBAction)gifCaiBtn:(UIButton *)sender {
+    sender.selected = !sender.selected;
+    
+    if (sender.selected) {
+        
+        [self setupButtonTitle:self.caiBtn count:[self.caiBtn.titleLabel.text integerValue] + 1 placeholder:@"踩"];
+    }
+    else{
+        
+        [self setupButtonTitle:self.caiBtn count:[self.caiBtn.titleLabel.text integerValue] - 1 placeholder:@"踩"];
+    }
+    
 }
 /**
  * 设置底部按钮文字

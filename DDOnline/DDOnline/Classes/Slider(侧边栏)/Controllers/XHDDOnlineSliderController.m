@@ -53,15 +53,15 @@
 
     if (_cellImageNameArray == nil) {
         
-        _cellImageNameArray = @[@"sidemenu_QA",@"sidemenu-software",@"sidemenu_blog",@"sidemenu_setting",@"sidemenu-night"];
+        _cellImageNameArray = @[/*@"sidemenu_QA",@"sidemenu-software",*/@"sidemenu_blog",@"sidemenu_setting",@"sidemenu-night"];
     }
     return _cellImageNameArray;
 }
 - (NSArray *)cellTitleArray{
 
     if (_cellTitleArray == nil) {
-        
-        _cellTitleArray = @[@"我的下载",@"我的收藏",@"换肤",@"设置"/*,@"夜间模式"*/];
+#warning message 阉割
+        _cellTitleArray = @[/*@"我的下载",@"我的收藏",*/@"换肤",@"设置"/*,@"夜间模式"*/];
     }
     return _cellTitleArray;
 }
@@ -74,7 +74,7 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     self.tableView.rowHeight = 50;
-    self.tableView.sectionHeaderHeight = JAdsViewHeight;
+    self.tableView.sectionHeaderHeight = 180;
 }
 
 - (void)addNotificationCenter{
@@ -126,18 +126,18 @@
     //添加表头视图
     UIView *headView = [[UIView alloc] init];
 //    headView.backgroundColor = JColorAlert;
-    headView.frame = CGRectMake(0, 0, JScreenWidth, 120);
+    headView.frame = CGRectMake(0, 0, JScreenWidth, 180);
     
     
-    UIImageView *headerBG = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, JScreenWidth * 0.8, 120)];
+    UIImageView *headerBG = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, JScreenWidth * 0.8, 180)];
     [headView addSubview:headerBG];
     headerBG.image = [UIImage imageNamed:@"HeaderBG01"];
     
     
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, 15, 60, 60)];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, 45, 80, 80)];
     [headView addSubview:imageView];
     imageView.image = [UIImage imageNamed:@"defaultUserIcon"];
-    imageView.layer.cornerRadius = 30;
+    imageView.layer.cornerRadius = 40;
     imageView.layer.masksToBounds = YES;
     imageView.backgroundColor = [UIColor grayColor];
     imageView.userInteractionEnabled = YES;
@@ -148,7 +148,7 @@
     [imageView addGestureRecognizer:tapGR];
     
     //名字label
-    UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 80, 200, 30)];
+    UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 130, 200, 30)];
     nameLabel.text = @"点击头像登录";
     nameLabel.textColor = [UIColor whiteColor];
     nameLabel.font = [UIFont systemFontOfSize:15];
@@ -165,18 +165,19 @@
     UIViewController *ctrl = nil;
     NSInteger row = indexPath.row;
     switch (row) {
-        case 0://我的下载
-            ctrl = nil;
-            break;
+#warning message 阉割侧边栏
+//        case 0://我的下载
+//            ctrl = nil;
+//            break;
+//            
+//        case 1://我的收藏
+//            break;
             
-        case 1://我的收藏
-            break;
-            
-        case 2://我的皮肤
+        case 0://我的皮肤
             ctrl = [[XHDDOnlineMineSkinController alloc] init];
             break;
             
-        case 3://
+        case 1://
             ctrl = [[XHDDOnlineSettingController alloc] init];
             break;
             

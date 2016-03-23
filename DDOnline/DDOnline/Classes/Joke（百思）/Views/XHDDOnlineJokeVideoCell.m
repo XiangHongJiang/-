@@ -39,10 +39,36 @@
 @end
 
 @implementation XHDDOnlineJokeVideoCell
+
+- (IBAction)videoCaiBtn:(UIButton *)sender {
+    
+    sender.selected = !sender.selected;
+    
+    if (sender.selected) {
+        
+        [self setupButtonTitle:self.caiBtn count:[self.caiBtn.titleLabel.text integerValue] + 1 placeholder:@"踩"];
+    }
+    else{
+        
+        [self setupButtonTitle:self.caiBtn count:[self.caiBtn.titleLabel.text integerValue] - 1 placeholder:@"踩"];
+    }
+
+}
+
 - (IBAction)videoDingBtn:(UIButton *)sender {
     sender.selected = !sender.selected;
     
+    if (sender.selected) {
+        
+           [self setupButtonTitle:self.dingBtn count:[self.dingBtn.titleLabel.text integerValue] + 1 placeholder:@"顶"];
+    }
+    else{
+        
+                   [self setupButtonTitle:self.dingBtn count:[self.dingBtn.titleLabel.text integerValue] - 1 placeholder:@"顶"];
+    }
+    
 }
+
 
 - (CLVideoPlayerView *)playView{
 

@@ -94,7 +94,7 @@ static CGFloat rowHeight;
 #warning 更改了播放下标，可能会出错
     NSInteger index = self.detailFunPlayArray.count - btn.tag + JDefaultTag;
     
-    Episodes *episodes = self.detailFunPlayArray[index];
+    Episodes *episodes = self.detailFunPlayArray[index - 1];
     NSString *aid = episodes.av_id;
  
     XHDDOnlineFunPlayPlayVideoController *funPlayVideoCtrl = [[XHDDOnlineFunPlayPlayVideoController alloc] init];

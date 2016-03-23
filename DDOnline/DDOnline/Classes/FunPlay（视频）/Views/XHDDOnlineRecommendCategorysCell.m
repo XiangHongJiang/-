@@ -54,6 +54,8 @@
     
     collectionView.contentOffset = CGPointMake(JSelfW, 0);
     
+    collectionView.showsHorizontalScrollIndicator = NO;
+    collectionView.showsVerticalScrollIndicator = NO;
     //3.设置代理
     collectionView.dataSource = self;
     collectionView.delegate = self;

@@ -32,23 +32,24 @@
     self.delegate = self;
 
     //2.添加加号按钮
-    [self addAddButton];
+//    [self addAddButton];
 }
 #pragma mark - setupUI
 //添加
 - (void)addSubCtrlWithNav{
 
     //管理的子视图控制器的名字数组，用于快速创建
-    NSArray *vcNameArray = @[@"FunPlay", @"Joke",@"",@"Chat", @"Mine"];
-    NSArray *titleNameArray = @[@"每日一看", @"每日一笑", @"",@"每日一聊", @"Zone"];
+    NSArray *vcNameArray = @[@"FunPlay", @"Joke",@"Chat", @"Mine"];
+    NSArray *titleNameArray = @[@"每日一番", @"每日一笑",@"每日一聊", @"Zone"];
     for (int i = 0; i < vcNameArray.count; i ++) {
         //设置第三页为空页
-        if (i == 2) {
-            
-            [self addChildViewController:[[UIViewController alloc] init]];
-            continue;
-        }
-        
+#warning 阉割
+//        if (i == 2) {
+//            
+//            [self addChildViewController:[[UIViewController alloc] init]];
+//            continue;
+//        }
+
         //拼接名字
         NSString *name = [NSString stringWithFormat:@"XHDDOnline%@Controller", vcNameArray[i]];
         //获取类
@@ -60,13 +61,13 @@
         NSString *title = titleNameArray[i];
         
         //获取图片
-        NSString *imageName = [NSString stringWithFormat:@"TabBar_Client_%d_n",i+1];
-        NSString *selectedImageName = [NSString stringWithFormat:@"TabBar_Client_%d_p",i+1];
+        NSString *imageName = [NSString stringWithFormat:@"TabBar_Client_%d_n",i + 1];
+        NSString *selectedImageName = [NSString stringWithFormat:@"TabBar_Client_%d_p",i + 1];
         
-        if (i > 2) {
-            imageName = [NSString stringWithFormat:@"TabBar_Client_%d_n",i];
-            selectedImageName = [NSString stringWithFormat:@"TabBar_Client_%d_p",i];
-        }
+//        if (i > 2) {
+//            imageName = [NSString stringWithFormat:@"TabBar_Client_%d_n",i];
+//            selectedImageName = [NSString stringWithFormat:@"TabBar_Client_%d_p",i];
+//        }
         //添加带导航的控制器：设置标题，图片
         [self addNavToViewController:vc withTitle:title imageName:imageName selectedImageName:selectedImageName];
         
@@ -103,24 +104,24 @@
     
 }
 #pragma mark - response
-- (void)addAdction:(UIButton *)btn{
-#warning 弹出分享视图在windows上
-    NSLog(@"点击了中间加号按钮");
-}
+//- (void)addAdction:(UIButton *)btn{
+//#warning 弹出分享视图在windows上
+//    NSLog(@"点击了中间加号按钮");
+//}
 #pragma mark - UITabBarControllerDelegate
 //设置第三页不可点击
-- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController{
-
-    NSArray *array = tabBarController.viewControllers;
-    NSUInteger index = [array indexOfObject:viewController];
-    
-    if (index == 2) {//第3个页面不可选中
-        [self addAdction:self.addButton];
-        return NO;
-    }
-    
-    return YES;
-}
+//- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController{
+//
+//    NSArray *array = tabBarController.viewControllers;
+//    NSUInteger index = [array indexOfObject:viewController];
+//    
+//    if (index == 2) {//第3个页面不可选中
+//        [self addAdction:self.addButton];
+//        return NO;
+//    }
+//    
+//    return YES;
+//}
 
 
 @end

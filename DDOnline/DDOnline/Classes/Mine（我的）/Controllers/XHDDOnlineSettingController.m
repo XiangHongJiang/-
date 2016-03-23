@@ -66,11 +66,24 @@
         cell.nameLabel.text = self.nameArray[indexPath.section];//self.nameArray[indexPath.section];
         
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
-        label.text = [NSString stringWithFormat:@"( %.2fM )",[SDImageCache sharedImageCache].getSize / 1024 / 1024.0];
+        label.text = [NSString stringWithFormat:@"( %.2fM )",[SDImageCache sharedImageCache].getSize / 1024 / 1024.0 * 0.25];
         label.textColor = [UIColor colorWithRed:1.000 green:0.056 blue:0.000 alpha:0.800];
         cell.accessoryView = label;
         label.textAlignment = NSTextAlignmentRight;
         return cell;
+    }
+    if (indexPath.section == 3) {
+        
+        NSString *text = [NSString stringWithFormat:@"%@(未登陆)",self.nameArray[indexPath.section]];
+        if ([EMClient sharedClient].currentUsername.length > 0) {
+            
+            text = [NSString stringWithFormat:@"%@(%@)",self.nameArray[indexPath.section],[EMClient sharedClient].currentUsername];
+            
+        }
+        cell.nameLabel.text = text;
+        
+        return cell;
+        
     }
     cell.nameLabel.text = self.nameArray[indexPath.section];
     
@@ -111,15 +124,15 @@
             [SVProgressHUD showErrorWithStatus:@"当前未登录"];
         }
         else{
-            
-            [self signOutUser];
+            XHDDOnlineFixCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+            [self signOutUser:cell];
         }
         
     }
     
     
 }
-- (void)signOutUser{
+- (void)signOutUser:(XHDDOnlineFixCell *)cell{
 
     dispatch_async(JGlobalQueue, ^{
         
@@ -136,11 +149,19 @@
             }
             else{
             [SVProgressHUD showSuccessWithStatus:@"退出成功！"];
+               
+            cell.textLabel.text = @"退出登陆(未登陆)";
+                
             }
                  });
         }
     });
   
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
 }
                    
 @end

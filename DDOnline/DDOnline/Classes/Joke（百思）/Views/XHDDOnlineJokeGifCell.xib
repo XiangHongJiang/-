@@ -99,7 +99,11 @@
                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <state key="selected" image="mainCellCaiClick"/>
                                         <state key="highlighted" image="mainCellDingClick"/>
+                                        <connections>
+                                            <action selector="gifCaiBtn:" destination="3cd-vW-ao3" eventType="touchUpInside" id="MH2-P0-5zK"/>
+                                        </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cell-button-line" translatesAutoresizingMaskIntoConstraints="NO" id="3z6-Sb-QQl" userLabel="分割线">
                                         <rect key="frame" x="188" y="0.0" width="1" height="30"/>
@@ -258,6 +262,7 @@
         <image name="cell-content-line" width="299" height="1"/>
         <image name="common-gif" width="31" height="31"/>
         <image name="mainCellCai" width="20" height="20"/>
+        <image name="mainCellCaiClick" width="20" height="20"/>
         <image name="mainCellComment" width="20" height="20"/>
         <image name="mainCellDing" width="20" height="20"/>
         <image name="mainCellDingClick" width="20" height="20"/>

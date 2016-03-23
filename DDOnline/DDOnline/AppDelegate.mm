@@ -31,12 +31,14 @@
     //0.启动App设置登录状态与判断沙盒皮肤状态
     [self configFirstLaunch];
     
-    //1.语音识别设置
-    [self speechRecognizeServiceInit];
     
-    //2.添加极光推送
-    [self configJPushService:launchOptions];
-  
+    dispatch_async(JGlobalQueue, ^{//防止启动阻塞线程
+        //1.语音识别设置
+        [self speechRecognizeServiceInit];
+        //2.添加极光推送
+        [self configJPushService:launchOptions];
+    });
+    
     //4.设置根视图控制器
     [self setRootViewController];
     

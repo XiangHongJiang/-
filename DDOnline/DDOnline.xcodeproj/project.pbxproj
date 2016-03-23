@@ -436,6 +436,7 @@
 		BC6AFD1B1CA1EF33004131D5 /* XHDDOnlineJokeDetailCommentsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6AFD191CA1EF33004131D5 /* XHDDOnlineJokeDetailCommentsCell.m */; };
 		BC6AFD1C1CA1EF33004131D5 /* XHDDOnlineJokeDetailCommentsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC6AFD1A1CA1EF33004131D5 /* XHDDOnlineJokeDetailCommentsCell.xib */; };
 		BC6AFD1F1CA1F744004131D5 /* XHDDOnlineJokeCommentsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6AFD1E1CA1F744004131D5 /* XHDDOnlineJokeCommentsModel.m */; };
+		BC6AFD241CA2188E004131D5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC6AFD231CA2188E004131D5 /* Images.xcassets */; };
 		BC6F4E021CA0789C00CAB0B0 /* HistoryMessageModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BC6F4E001CA0789C00CAB0B0 /* HistoryMessageModel.xcdatamodeld */; };
 		BC6F4E5B1CA0856E00CAB0B0 /* Entity+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6F4E581CA0856E00CAB0B0 /* Entity+CoreDataProperties.m */; };
 		BC6F4E5C1CA0856E00CAB0B0 /* Entity.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6F4E5A1CA0856E00CAB0B0 /* Entity.m */; };
@@ -1645,6 +1646,7 @@
 		BC6AFD1A1CA1EF33004131D5 /* XHDDOnlineJokeDetailCommentsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHDDOnlineJokeDetailCommentsCell.xib; sourceTree = "<group>"; };
 		BC6AFD1D1CA1F744004131D5 /* XHDDOnlineJokeCommentsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHDDOnlineJokeCommentsModel.h; sourceTree = "<group>"; };
 		BC6AFD1E1CA1F744004131D5 /* XHDDOnlineJokeCommentsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHDDOnlineJokeCommentsModel.m; sourceTree = "<group>"; };
+		BC6AFD231CA2188E004131D5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		BC6F4E011CA0789C00CAB0B0 /* HistoryMessageModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HistoryMessageModel.xcdatamodel; sourceTree = "<group>"; };
 		BC6F4E571CA0856E00CAB0B0 /* Entity+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Entity+CoreDataProperties.h"; sourceTree = "<group>"; };
 		BC6F4E581CA0856E00CAB0B0 /* Entity+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Entity+CoreDataProperties.m"; sourceTree = "<group>"; };
@@ -2285,6 +2287,7 @@
 				BC01480A1C8AFED600AA4C45 /* Resource */,
 				BC0147F51C8AFED600AA4C45 /* Classes */,
 				BC0147F31C8AFCC700AA4C45 /* Application */,
+				BC6AFD231CA2188E004131D5 /* Images.xcassets */,
 				BC0147C01C8AFCAF00AA4C45 /* Supporting Files */,
 			);
 			path = DDOnline;
@@ -2485,12 +2488,8 @@
 		BC0148011C8AFED600AA4C45 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BC6AFD251CA2DAFB004131D5 /* main */,
 				BC6AFD0F1CA1ED40004131D5 /* 评论详情 */,
-				BCF1E22B1C91E16400CA3338 /* XHDDOnlineJokeCell.h */,
-				BCF1E22C1C91E16400CA3338 /* XHDDOnlineJokeCell.m */,
-				BCF1E22D1C91E16400CA3338 /* XHDDOnlineJokeCell.xib */,
-				BCF1E2281C91CFD100CA3338 /* XHQuickNavView.h */,
-				BCF1E2291C91CFD100CA3338 /* XHQuickNavView.m */,
 				BCF1E3A81C92B78F00CA3338 /* 段子 */,
 				BCF1E3A91C92B79600CA3338 /* 图 */,
 				BCF1E3AA1C92B79D00CA3338 /* 短视频 */,
@@ -3726,6 +3725,18 @@
 				BC6AFD1A1CA1EF33004131D5 /* XHDDOnlineJokeDetailCommentsCell.xib */,
 			);
 			path = "评论详情";
+			sourceTree = "<group>";
+		};
+		BC6AFD251CA2DAFB004131D5 /* main */ = {
+			isa = PBXGroup;
+			children = (
+				BCF1E22B1C91E16400CA3338 /* XHDDOnlineJokeCell.h */,
+				BCF1E22C1C91E16400CA3338 /* XHDDOnlineJokeCell.m */,
+				BCF1E22D1C91E16400CA3338 /* XHDDOnlineJokeCell.xib */,
+				BCF1E2281C91CFD100CA3338 /* XHQuickNavView.h */,
+				BCF1E2291C91CFD100CA3338 /* XHQuickNavView.m */,
+			);
+			name = main;
 			sourceTree = "<group>";
 		};
 		BC6F4DFF1CA047B700CAB0B0 /* 下载 */ = {
@@ -5094,6 +5105,7 @@
 				BC1AB0541C8C0BE40007EDF4 /* 038@2x.png in Resources */,
 				BC1AB0771C8C0BE40007EDF4 /* 073@2x.png in Resources */,
 				BCA401191C9B94A80047FEBE /* h_lai@2x.png in Resources */,
+				BC6AFD241CA2188E004131D5 /* Images.xcassets in Resources */,
 				BCF1E2CC1C9298E600CA3338 /* Contents.json in Resources */,
 				BC50CA2C1C94354C00DEF3CC /* XHSearchCtrlView.xib in Resources */,
 				BCA401221C9B94A80047FEBE /* o_fahongbao@2x.png in Resources */,
@@ -5954,6 +5966,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
@@ -5982,6 +5995,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;

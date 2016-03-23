@@ -17,6 +17,15 @@
 @end
 @implementation Comments_Data
 
+- (void)setContent:(NSString *)content{
+
+    _content = content;
+    
+    CGSize size = [XHUtils calculateSizeWithText:content maxSize:CGSizeMake(JScreenWidth - 120, JScreenHeight) font:14];
+    
+    self.rowHeight = size.height + 50;
+}
+
 @end
 
 

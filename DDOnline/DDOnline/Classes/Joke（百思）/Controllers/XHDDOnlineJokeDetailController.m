@@ -138,7 +138,9 @@
 
     if (indexPath.section == 1) {
      
-        return 80;
+        Comments_Data *commentsModel = self.commentsModel.data[indexPath.row];
+        
+        return commentsModel.rowHeight;
     }
     
     if (self.jokeType == JokeTypeDuanzi) {

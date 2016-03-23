@@ -27,10 +27,10 @@
 
 @implementation XHDDOnlineMineController
 - (NSArray *)functionNameArray{
-    
+     
     if (_functionNameArray == nil) {
-        
-        _functionNameArray = @[@"我的下载",@"我的收藏",@"我的皮肤",@"设置"];
+#warning message  阉割
+        _functionNameArray = @[/*@"我的下载",@"我的收藏",*/@"我的皮肤",@"设置"];
     }
     
     return _functionNameArray;
@@ -107,18 +107,19 @@
     UIViewController *ctrl = nil;
     //创建
     switch (indexPath.section) {
-        case 0://我的下载
+#warning message 阉割
+       /* case 0://我的下载
             ctrl = nil;
             break;
             
             case 1://我的收藏
             break;
             
-            case 2://我的皮肤
+       */     case 0://我的皮肤
              ctrl = [[XHDDOnlineMineSkinController alloc] init];
             break;
             
-            case 3://
+            case 1://
             ctrl = [[XHDDOnlineSettingController alloc] init];
             break;
             
@@ -258,10 +259,8 @@
                 
                 JLog(@"存储失败");
             }
-
         });
     }];
-    
 }
 #pragma mark - 更换皮肤
 - (void)changeSkin{

@@ -73,10 +73,31 @@
     //110其他子视图的位置
     return pureTextDetailModel.textHeight + 110;
 }
+- (IBAction)duanziCaiBtn:(UIButton *)sender {
+    sender.selected = !sender.selected;
+    
+    if (sender.selected) {
+        
+        [self setupButtonTitle:self.caiBtn count:[self.caiBtn.titleLabel.text integerValue] + 1 placeholder:@"踩"];
+    }
+    else{
+        
+        [self setupButtonTitle:self.caiBtn count:[self.caiBtn.titleLabel.text integerValue] - 1 placeholder:@"踩"];
+    }
+}
+
 - (IBAction)duanziDingBtn:(UIButton *)sender {
     
     sender.selected = !sender.selected;
     
+    if (sender.selected) {
+        
+        [self setupButtonTitle:self.dingBtn count:[self.dingBtn.titleLabel.text integerValue] + 1 placeholder:@"顶"];
+    }
+    else{
+        
+        [self setupButtonTitle:self.dingBtn count:[self.dingBtn.titleLabel.text integerValue] - 1 placeholder:@"顶"];
+    }
 }
 /**
  * 设置底部按钮文字

@@ -291,7 +291,10 @@
     dispatch_async(JGlobalQueue, ^{
         
         //获取好友列表
+      
         EMError *error = nil;
+//        NSArray *userList = [NSArray arrayWithArray: [[EMClient sharedClient].contactManager getContactsFromServerWithError:&error]];
+        
         NSArray *userList = [[EMClient sharedClient].contactManager getContactsFromServerWithError:&error];
         if (!error) {
             NSLog(@"获取好友成功 -- %@",userList);
@@ -299,10 +302,12 @@
         else{
             JLog(@"获取联系人失败%@",error.errorDescription);
         }
-        
         //获取黑名单列表
         EMError *error1 = nil;
+//        NSArray *blackList = [NSArray arrayWithArray:[[EMClient sharedClient].contactManager getBlackListFromServerWithError:&error1]];
+        
         NSArray *blackList = [[EMClient sharedClient].contactManager getBlackListFromServerWithError:&error1];
+        
         if (!error1) {
             NSLog(@"获取黑名单成功 -- %@",blackList);
         }
@@ -400,7 +405,8 @@
     if (isLogin) {//如果已经登录，则请求数据
         
         [self.contactsTableView.mj_header beginRefreshing];
-
+        [self.navigationController popToRootViewControllerAnimated:NO];
+        
     }
 }
 - (void)addFriendDelegate{
@@ -529,8 +535,11 @@
         Entity *entityModel = results[i];
         NSString *name = entityModel.name;
         
-        [self.messageDataDict setObject:entityModel forKey:name];
+        if (![name containsString:[EMClient sharedClient].currentUsername]) {
+            continue;
+        }
         
+        [self.messageDataDict setObject:entityModel forKey:name];
     }
     //自动刷新了
     self.messageTableView.messageDict = self.messageDataDict;

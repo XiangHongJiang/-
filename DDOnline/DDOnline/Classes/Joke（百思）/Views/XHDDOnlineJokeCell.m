@@ -44,6 +44,8 @@
     self.jokeTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(requestData)];
     //添加上啦加载
     self.jokeTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(requestMoreData)];
+    
+    self.jokeTableView.mj_footer.hidden = YES;
 }
 #pragma mark - 根据传进来的类型，进行数据请求
 - (void)setJokeType:(JokeType)jokeType{
@@ -65,7 +67,7 @@
             break;
     }
     
-    [self requestData];
+    [self.jokeTableView.mj_header beginRefreshing];
 }
 #pragma mark - 请求数据,下拉刷新
 - (void)requestData{
@@ -89,6 +91,8 @@
             
             //刷新tableView
             [weakSelf.jokeTableView reloadData];
+            
+            weakSelf.jokeTableView.mj_footer.hidden = NO;
             
         }
         else{
@@ -195,6 +199,13 @@
     //传入模型和类型
     jokeDetailCtrl.jokeBaseDetailModel = self.jokeBaseModel.list[indexPath.row];
     jokeDetailCtrl.jokeType = self.jokeType;
+    
+    if (self.jokeType == JokeTypeVideo) {
+        
+        XHDDOnlineJokeVideoCell *videoCell = [tableView cellForRowAtIndexPath:indexPath];
+        
+        [videoCell.playView.player pause];
+    }
     
     [self.viewController.navigationController pushViewController:jokeDetailCtrl animated:NO];
     

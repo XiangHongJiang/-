@@ -71,7 +71,11 @@
     contactsTableView.dataSource = contactsTableView;
     
 //    contactsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
+   /*
+    NSArray *placeHold1 = [NSArray array];
+    NSArray *placeHold2 = [NSArray array];
+    NSMutableArray *mArray = [NSMutableArray arrayWithObjects:placeHold1,placeHold2, nil];
+    contactsTableView.contactsArray = mArray;*/
     //添加搜索
     [contactsTableView addSearchBar];
     

@@ -55,10 +55,10 @@
     //3.加载番剧视图
     [self loadFunPlayView];
     
-    //0.请求adsUrl
+    //4.请求adsUrl
     [self requestScrollUrl];
-    //4.添加搜索
-    [self addFunPlaySearch];
+    //5.添加搜索
+//    [self addFunPlaySearch];
 
 }
 - (void)viewDidLoad {
@@ -151,6 +151,13 @@
 - (void)addRefresh{
 
     self.funPlayTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(requestFunPlayData)];
+    
+    self.funPlayTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(noMoreData)];
+    
+
+}
+- (void)noMoreData{
+    [self.funPlayTableView.mj_footer endRefreshingWithNoMoreData];
 }
 /** *  添加表头搜索*/
 - (void)addFunPlaySearch{

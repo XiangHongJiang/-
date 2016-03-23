@@ -68,7 +68,6 @@
 - (BOOL)prefersStatusBarHidden{
 
     return [[(UINavigationController *)self.rootTbc.selectedViewController topViewController] prefersStatusBarHidden];
-    
 }
 
 

@@ -34,6 +34,29 @@
 - (IBAction)zanBtnClick:(UIButton *)sender {
     
     sender.selected = !sender.selected;
+    
+    if (sender.selected) {
+        
+        [self setupButtonTitle:sender count:[sender.titleLabel.text integerValue] + 1 placeholder:@"顶"];
+    }
+    else{
+        
+        [self setupButtonTitle:sender count:[sender.titleLabel.text integerValue] - 1 placeholder:@"顶"];
+    }
+}
+
+/**
+ * 设置底部按钮文字
+ */
+- (void)setupButtonTitle:(UIButton *)button count:(NSInteger)count placeholder:(NSString *)placeholder
+{
+    
+    if (count > 10000) {
+        placeholder = [NSString stringWithFormat:@"%.1f万", count / 10000.0];
+    } else if (count > 0) {
+        placeholder = [NSString stringWithFormat:@"%zd", count];
+    }
+    [button setTitle:placeholder forState:UIControlStateNormal];
 }
 -(void)setCommentsModel:(Comments_Data *)commentsModel{
     _commentsModel = commentsModel;
